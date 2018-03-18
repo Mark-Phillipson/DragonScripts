@@ -2,6 +2,10 @@
     Public Declare Function api_GetComputerName Lib "kernel32" Alias "GetComputerNameA" (ByVal lpBuffer As String, nSize As Long) As Long
 
 'Advanced Scripting generic functions
+Function GetConnectionString() As String
+		GetConnectionString="Provider=SQLOLEDB;Data Source=SURFACEPRO;Initial Catalog=MyDatabase;Integrated Security=SSPI;"
+End Function
+
 Function str2int (num As String )
 	Select Case num
 		Case "1 hundred"
@@ -226,11 +230,6 @@ Function Strip(varFld As Variant, StrCharToRemove As String) As String
 
 
 End Function
-
-Function GetConnectionString() As String
-		GetConnectionString="Provider=SQLOLEDB;Data Source=SURFACEPRO;Initial Catalog=MyDatabase;Integrated Security=SSPI;"
-End Function
-
 
 Public Function atCNames(UOrC As Integer) As String
 '**************************************************
