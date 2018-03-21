@@ -3,7 +3,7 @@
 
 'Advanced Scripting generic functions
 Function GetConnectionString() As String
-		GetConnectionString="Provider=SQLOLEDB;Data Source=SURFACEPRO;Initial Catalog=DragonScripts;Integrated Security=SSPI;"
+		GetConnectionString="Provider=SQLOLEDB;Data Source={Your Computer Name};Initial Catalog=DragonScripts;Integrated Security=SSPI;"
 End Function
 
 Function str2int (num As String )
