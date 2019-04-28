@@ -16742,31 +16742,6 @@ Heardword "Mouse","Up"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Arrow Double Click" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-ButtonClick 1,2 'Syntax ButtonClick button, count (number of clicks)
-End Sub
-]]></content>
-    </Command>
-    <Command name="Arrow &lt;Direction&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-if ListVar1="Left" Then
- HeardWord "move","mouse","left"
-end if
-if ListVar1="Right" Then
- HeardWord "move","mouse","right"
-end if
-if ListVar1="Down" Then
- HeardWord "move","mouse","down"
-end if
-if ListVar1="Up" Then
- HeardWord "move","mouse","up"
-end if
-End Sub
-]]></content>
-    </Command>
     <Command name="&lt;myalphabet&gt; &lt;myalphabet&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -16965,6 +16940,53 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
  ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
+End Sub
+]]></content>
+    </Command>
+    <Command name="Export My Commands" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Reference {43A12576-A5A2-438D-A728-30528B20F0A6}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\voctools.dll#Dragon NaturallySpeaking Vocabulary Tools#DgnVocTools
+'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
+'#Reference {DCC5B1B5-4BF4-45FA-AFB5-01F7DEDFAF93}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\formfiller.exe#Dragon FormFiller#DgnFormFillerLib
+Sub Main
+
+Dim eng As New DgnEngineControl
+
+commandsFileLocation = eng.SpeakerDirectory & eng.Speaker & "\Current\MyCmds.dat"
+
+newCommandsFile = "Win10 " & Format (Now, "mm-dd-yyyy") & ".dat"
+
+FileCopy commandsFileLocation, "D:\AdvancedScriptingBackup\" + newCommandsFile
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Arrow &lt;0to500&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ Shell "C:\Users\MPhil\source\repos\DictationBoxMSP\MouseControl\bin\Release\MouseControl.exe" & " /" & ListVar1,vbHide
+End Sub
+]]></content>
+    </Command>
+    <Command name="Close Window" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Arrow &lt;MouseControl&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & ListVar1,vbHide
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Halt" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & "Stop",vbHide
 End Sub
 ]]></content>
     </Command>
@@ -21522,6 +21544,20 @@ End Sub
       <value><![CDATA[two maximise]]></value>
       <value><![CDATA[top]]></value>
       <value><![CDATA[bottom]]></value>
+    </List>
+    <List name="MouseControl">
+      <value><![CDATA[right-click]]></value>
+      <value><![CDATA[left]]></value>
+      <value><![CDATA[right]]></value>
+      <value><![CDATA[down]]></value>
+      <value><![CDATA[up]]></value>
+      <value><![CDATA[click]]></value>
+      <value><![CDATA[stop]]></value>
+      <value><![CDATA[double-click]]></value>
+      <value><![CDATA[upper-left]]></value>
+      <value><![CDATA[lower-left]]></value>
+      <value><![CDATA[upper-right]]></value>
+      <value><![CDATA[lower-right]]></value>
     </List>
   </Lists>
   <Commands scope="application" module="outlook" company="Microsoft Corporation" moduleDescription="Microsoft Outlook">
@@ -27292,6 +27328,29 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SetMousePosition 1,-1340,72
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mark As Unread" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+u"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mark As Read" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+i"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Green Chevron" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,368,127
 Wait 0.1
 ButtonClick 1,1
 End Sub
@@ -38653,6 +38712,16 @@ SendKeys "^%{F7}"
 End Sub
 ]]></content>
     </Command>
+    <Command name="Set Configuration" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%r"
+Wait 0.1
+SendKeys "^%r"
+
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="application" module="Code" company="Microsoft Corporation" moduleDescription="Visual Studio Code">
     <Command name="Find &lt;NextOrPrevious&gt; &lt;dictation&gt;" group="" enabled="true">
@@ -38901,21 +38970,6 @@ SendKeys "+{Space}{Del}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Insert Control" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "%"
-Wait 0.3
-SendKeys "JD"
-Wait 0.4
-SendKeys "C"
-Wait 0.4
-SendKeys "1"
-
-
-End Sub
-]]></content>
-    </Command>
     <Command name="Find Again" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -38974,6 +39028,26 @@ SendKeys "+{F6}"
 End Sub
 ]]></content>
     </Command>
+    <Command name="Select" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,410,375
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Insert Access Control" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+'SendKeys "%"
+'Wait 0.7
+SendKeys "%JD"
+Wait 0.8
+SendKeys "C1"
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="application" module="MicrosoftEdgeCP" company="Microsoft Corporation" moduleDescription="Microsoft Edge Content Process">
     <Command name="Search &lt;web_2&gt; for &lt;dictation&gt;" group="" enabled="true">
@@ -39023,6 +39097,13 @@ End Sub
 SendKeys "^+{F10}"
 Wait 0.1
 SendKeys "e"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Find Again" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{F3}"
 End Sub
 ]]></content>
     </Command>
@@ -39952,20 +40033,6 @@ ButtonClick 1,1
 End Sub
 ]]></content>
     </Command>
-    <Command name="Move &lt;Direction&gt;" group="" enabled="true">
-      <description></description>
-      <content type="DVC (Dragon Voice Commands)"><![CDATA[If _arg1="Right" Then SendSystemKeys "{Right 5}"
-If _arg1="Left" Then SendSystemKeys "{Left 5}"
-If _arg1="Up" Then SendSystemKeys "{Up 5}"
-If _arg1="Down" Then SendSystemKeys "{Down 5}"]]></content>
-    </Command>
-    <Command name="Fly &lt;Direction&gt;" group="" enabled="true">
-      <description></description>
-      <content type="DVC (Dragon Voice Commands)"><![CDATA[If _arg1="Right" Then SendSystemKeys "{Right 20}"
-If _arg1="Left" Then SendSystemKeys "{Left 20}"
-If _arg1="Up" Then SendSystemKeys "{Up 20}"
-If _arg1="Down" Then SendSystemKeys "{Down 20}"]]></content>
-    </Command>
     <Command name="Explorer" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -39994,6 +40061,173 @@ End Sub
     <Command name="MouseGrid" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
+End Sub
+]]></content>
+    </Command>
+    <Command name="Continue" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1490,950
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Play" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,150,1000
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Objectives" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1300,17
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Improve For" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1442,880
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Improved Five" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1528,880
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Improved Six" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1620,880
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Third One" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1194,956
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Third Two" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1274,956
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Third Three" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1364,956
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Third Four" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1440,956
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Third Five" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1530,956
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Third Six" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1620,956
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Third Column To" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,805,922
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Second Column To" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,800,850
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Second Column One" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,726,850
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Contains One" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1188,728
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Move &lt;Direction&gt;" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[If _arg1="Right" Then SendSystemKeys "{Right 3}"
+If _arg1="Left" Then SendSystemKeys "{Left 3}"
+If _arg1="Up" Then SendSystemKeys "{Up 3}"
+If _arg1="Down" Then SendSystemKeys "{Down 3}"]]></content>
+    </Command>
+    <Command name="Fly &lt;Direction&gt;" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[If _arg1="Right" Then SendSystemKeys "{Right 6}"
+If _arg1="Left" Then SendSystemKeys "{Left 6}"
+If _arg1="Up" Then SendSystemKeys "{Up 6}"
+If _arg1="Down" Then SendSystemKeys "{Down 6}"]]></content>
+    </Command>
+  </Commands>
+  <Commands scope="window" module="firefox" company="Mozilla Corporation" moduleDescription="Firefox" windowTitle="Inbox - mphillipson0@gmail.com - Gmail - Mozilla Firefox" windowClass="MozillaWindowClass">
+    <Command name="Mark As Read" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+i"
 End Sub
 ]]></content>
     </Command>
