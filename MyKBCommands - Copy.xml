@@ -16755,6 +16755,103 @@ if t2 = "space" Then t2 = " "
 End Sub
 ]]></content>
     </Command>
+    <Command name="&lt;var&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+   SendKeys "var "
+End Sub
+]]></content>
+    </Command>
+    <Command name="Window Right" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[SendSystemKeys "{Win+Right}"]]></content>
+    </Command>
+    <Command name="WINDOW &lt;window position&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Wait 0.01
+If ListVar1 = "left half" Then PositionWindow 1, 1
+If ListVar1 = "two left half" Then PositionWindow 2, 1
+If ListVar1 = "right half" Then PositionWindow 1, 2
+If ListVar1 = "two right half" Then PositionWindow 2, 2
+If ListVar1 = "top half" Then PositionWindow 1,3
+If ListVar1 = "bottom half" Then PositionWindow 1, 4
+If ListVar1 = "middle" Then PositionWindow 1, 5
+If ListVar1 = "top left" Then PositionWindow 1, 6
+If ListVar1 = "top right" Then PositionWindow 1, 7
+If ListVar1 = "bottom left" Then PositionWindow 1, 8
+If ListVar1 = "bottom right" Then PositionWindow 1, 9
+If ListVar1 = "maximise" Then PositionWindow 1, 10
+if ListVar1="monitor one" Then PositionWindow 1,10
+'if ListVar1="monitor two" Then PositionWindow 3, 10
+if ListVar1="left" Then SendKeys "{WindowsHold}{Left}"
+if ListVar1="right" Then SendKeys "{WindowsHold}{Right}"
+if ListVar1="top" Then SendKeys "{WindowsHold}{Up}"
+if ListVar1="bottom" Then SendKeys "{WindowsHold}{Down}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Righty" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ButtonClick 2,1 'Syntax ButtonClick button, count (number of clicks)
+End Sub
+]]></content>
+    </Command>
+    <Command name="Doubly" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ ButtonClick 1,2 'Syntax ButtonClick button, count (number of clicks)
+End Sub
+]]></content>
+    </Command>
+    <Command name="Lefty" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
+End Sub
+]]></content>
+    </Command>
+    <Command name="Export My Commands" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Reference {43A12576-A5A2-438D-A728-30528B20F0A6}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\voctools.dll#Dragon NaturallySpeaking Vocabulary Tools#DgnVocTools
+'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
+'#Reference {DCC5B1B5-4BF4-45FA-AFB5-01F7DEDFAF93}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\formfiller.exe#Dragon FormFiller#DgnFormFillerLib
+Sub Main
+
+Dim eng As New DgnEngineControl
+
+commandsFileLocation = eng.SpeakerDirectory & eng.Speaker & "\Current\MyCmds.dat"
+
+newCommandsFile = "Win10 " & Format (Now, "mm-dd-yyyy") & ".dat"
+
+FileCopy commandsFileLocation, "D:\AdvancedScriptingBackup\" + newCommandsFile
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Close Window" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Arrow &lt;MouseControl&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & ListVar1,vbHide
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Halt" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & "Stop",vbHide
+End Sub
+]]></content>
+    </Command>
     <Command name="&lt;screenlocation&gt; &lt;atoz&gt; &lt;0_9&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA['#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
@@ -16848,7 +16945,7 @@ Sub Main
  Case "Title bar"
   longTop= 15
  Case "Ribbon","Menu"
-  longTop= 90
+  longTop= 85
  Case "Tab line","Document Heading"
   longTop= 197
  Case "Horizontal Scrollbar"
@@ -16886,107 +16983,12 @@ Function  SetMousePositionW(integerRelative As Integer, integerLeft As Integer, 
 End Function
 ]]></content>
     </Command>
-    <Command name="&lt;var&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-   SendKeys "var "
-End Sub
-]]></content>
-    </Command>
-    <Command name="Window Right" group="" enabled="true">
-      <description></description>
-      <content type="DVC (Dragon Voice Commands)"><![CDATA[SendSystemKeys "{Win+Right}"]]></content>
-    </Command>
-    <Command name="WINDOW &lt;window position&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-Wait 0.01
-If ListVar1 = "left half" Then PositionWindow 1, 1
-If ListVar1 = "two left half" Then PositionWindow 2, 1
-If ListVar1 = "right half" Then PositionWindow 1, 2
-If ListVar1 = "two right half" Then PositionWindow 2, 2
-If ListVar1 = "top half" Then PositionWindow 1,3
-If ListVar1 = "bottom half" Then PositionWindow 1, 4
-If ListVar1 = "middle" Then PositionWindow 1, 5
-If ListVar1 = "top left" Then PositionWindow 1, 6
-If ListVar1 = "top right" Then PositionWindow 1, 7
-If ListVar1 = "bottom left" Then PositionWindow 1, 8
-If ListVar1 = "bottom right" Then PositionWindow 1, 9
-If ListVar1 = "maximise" Then PositionWindow 1, 10
-if ListVar1="monitor one" Then PositionWindow 1,10
-'if ListVar1="monitor two" Then PositionWindow 3, 10
-if ListVar1="left" Then SendKeys "{WindowsHold}{Left}"
-if ListVar1="right" Then SendKeys "{WindowsHold}{Right}"
-if ListVar1="top" Then SendKeys "{WindowsHold}{Up}"
-if ListVar1="bottom" Then SendKeys "{WindowsHold}{Down}"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Righty" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-ButtonClick 2,1 'Syntax ButtonClick button, count (number of clicks)
-End Sub
-]]></content>
-    </Command>
-    <Command name="Doubly" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
- ButtonClick 1,2 'Syntax ButtonClick button, count (number of clicks)
-End Sub
-]]></content>
-    </Command>
-    <Command name="Lefty" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
- ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
-End Sub
-]]></content>
-    </Command>
-    <Command name="Export My Commands" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Reference {43A12576-A5A2-438D-A728-30528B20F0A6}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\voctools.dll#Dragon NaturallySpeaking Vocabulary Tools#DgnVocTools
-'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
-'#Reference {DCC5B1B5-4BF4-45FA-AFB5-01F7DEDFAF93}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\formfiller.exe#Dragon FormFiller#DgnFormFillerLib
-Sub Main
-
-Dim eng As New DgnEngineControl
-
-commandsFileLocation = eng.SpeakerDirectory & eng.Speaker & "\Current\MyCmds.dat"
-
-newCommandsFile = "Win10 " & Format (Now, "mm-dd-yyyy") & ".dat"
-
-FileCopy commandsFileLocation, "D:\AdvancedScriptingBackup\" + newCommandsFile
-
-End Sub
-]]></content>
-    </Command>
     <Command name="Arrow &lt;0to500&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
- Shell "C:\Users\MPhil\source\repos\DictationBoxMSP\MouseControl\bin\Release\MouseControl.exe" & " /" & ListVar1,vbHide
-End Sub
-]]></content>
-    </Command>
-    <Command name="Close Window" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "%{F4}"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Arrow &lt;MouseControl&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
- Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & ListVar1,vbHide
+ Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" _
+ & " /" & ListVar1,vbHide
 
-End Sub
-]]></content>
-    </Command>
-    <Command name="Halt" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
- Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & "Stop",vbHide
 End Sub
 ]]></content>
     </Command>
