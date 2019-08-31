@@ -13868,109 +13868,6 @@ ErrorHandler::
 End Sub
 ]]></content>
     </Command>
-    <Command name="&lt;scrollbar&gt; &lt;atoz&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
-Type RECT
- Left As Long
- Top As Long
- Right As Long
- Bottom As Long
-End Type
-Type POINTAPI
- x As Long
- y As Long
-End Type
-' declare Win32 API functions
-Declare Function GetWindowRect Lib "user32" Alias "GetWindowRect" (ByVal hwnd As Long, lpRect As RECT) As Long
-Declare Function GetForegroundWindow& Lib "user32" ()
-Private Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
-
-Sub Main
- Dim intTop As Long
- Dim LongLeft As Long
-
- Select Case ListVar2
- Case "Zero"
-  intTop=5
- Case "Alpha"
-  intTop= 50
- Case "Bravo"
-  intTop= 100
- Case "Charlie"
-  intTop= 150
- Case "Delta"
-  intTop= 200
- Case "Echo"
-  intTop= 250
- Case "Foxtrot"
-  intTop= 300
- Case "Golf"
-  intTop= 350
- Case "Hotel"
-  intTop= 400
- Case "India"
-  intTop= 450
- Case "Juliet"
-  intTop= 500
- Case "Kilo"
-  intTop= 550
- Case "Lima"
-  intTop= 600
- Case "Mike"
-  intTop= 650
- Case "November"
-  intTop= 700
- Case "Oscar"
-  intTop= 750
- Case "Papa"
-  intTop= 800
- Case "Qubec"
-  intTop= 850
- Case "Romeo"
-  intTop= 900
- Case "Sierra"
-  intTop= 950
- Case "Tango"
-  intTop= 1000
- Case "Uniform"
-  intTop= 1050
- End Select
- Select Case ListVar1
- Case "Scrollbar","Scrollbar Left"
-  LongLeft = 1665
- Case Else
-  LongLeft = 3350
- End Select
- SetMousePositionWinAPI False,LongLeft, intTop
- ButtonClick 1,1
-End Sub
-
-Function  SetMousePositionWinAPI(BooleanRelative As Boolean ,integerLeft As Integer, integerTop As Integer)
- Dim hwnd As Long
- Dim offset As POINTAPI
- Dim result As POINTAPI
- If BooleanRelative Then
-  hwnd = GetForegroundWindow
-  offset.x= integerLeft
-  offset.y= integerTop
-  result = GetWinCurPos(hwnd,offset)
- Else
-  result.x=integerLeft
-  result.y=integerTop
- End If
- SetCursorPos(result.x, result.y)
-End Function
-Function GetWinCurPos(hwnd As Long,pt As POINTAPI) As POINTAPI
- Dim wRect As RECT
- Dim result As POINTAPI
- GetWindowRect hwnd, wRect
- result.x = pt.x + wRect.Left
- result.y = pt.y + wRect.Top
- GetWinCurPos = result
-End Function
-]]></content>
-    </Command>
     <Command name="Display List" group="" enabled="true">
       <description>testing display a list</description>
       <content type="WinWrap Basic"><![CDATA['#Reference #System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL
@@ -15383,26 +15280,6 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SendKeys "%{F4}"
-
-End Sub
-]]></content>
-    </Command>
-    <Command name="Arrow &lt;MouseControlSpeed&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-Dim argument as String
-if ListVar1="Slowest" Then
- argument="500"
-elseif ListVar1="Slow" Then
- argument="400"
-elseif ListVar1="Average" Then
- argument="100"
-elseif ListVar1="Fast" Then
- argument="30"
-elseif ListVar1="Fastest" Then
- argument="2"
-End if
-Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & argument,vbHide
 
 End Sub
 ]]></content>
@@ -17032,285 +16909,6 @@ Public Sub SendKeysWithCRLF(stringValue As String)
 End Sub
 ]]></content>
     </Command>
-    <Command name="&lt;programminglanguage&gt; &lt;categories&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
-'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
-'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
-Dim catList(100) As String
-Dim IntelliSenseList(100) As String
-Dim Remarks As Variant
-Sub Main
- Dim strLanguage As String
- Dim strApp As String
- Dim listnames() As String
- Dim result As String
- Dim strCommandLine As String
- On Error GoTo ErrorHandler
-' MsgBox atCNames(0), vbOkOnly, "Computer Name?"
-'    If UtilityProvider.IsDebugMode Then
-'           UtilityProvider.SetContextValue(0,"IntelliSense")
-'           UtilityProvider.SetContextValue(1,"Text Blocks")
-'    End If
-    Dim Connection As ADODB.Connection
-    Set Connection = New ADODB.Connection
-    Connection.ConnectionString = GetConnectionString()' "Provider=SQLOLEDB;Data Source=USER-HP;Initial Catalog=MyDatabase;Integrated Security=SSPI;"
-    Connection.Open
-
- strLanguage= ListVar1
- Dim stringCategory As String
- stringCategory=ListVar2
- If strLanguage="IntelliSense" Then strLanguage="Not Applicable"
- If strLanguage="C#" Then strLanguage="C Sharp"
- Do
-  'used this statement to refer to the first list argument
-  If stringCategory ="Categories" Or result ="Show Categories" Then
-   GetArrayOfCategory strLanguage, Connection
-'   ExecuteScript "SetRecognitionMode 2",0 ' CommandModeOn
-  Dim EngineControl As New DgnEngineControl
-    
-   result = EngineControl.PromptValue(catList(), "choose your category", 1400, 700)
-'   ExecuteScript "SetRecognitionMode 0",0 ' NormalModeOn
-
-
-   If result="Quit Menu" Then Exit Sub
-   stringCategory= result
-   GetIntelliSenseArray(result, strLanguage, Connection)
-  Else
-   GetIntelliSenseArray(stringCategory, strLanguage, Connection)
-  End If
-
-'  ExecuteScript "SetRecognitionMode 2",0 ' CommandModeOn
-  result = EngineControl.PromptValue(IntelliSenseList(), "choose your item", 1400, 700)
-'  ExecuteScript "SetRecognitionMode 0",0 ' NormalModeOn
-  If result="Edit List" Then
-   strCommandLine="C:\Msoffice\Access\DragonScripts.accdb"
-            strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
-            & Chr(34)  & strCommandLine & Chr(34)  & " /cmd " &  Chr(34)  & strLanguage & "|" & stringCategory  & Chr(34)
-            Shell(strCommandLine,vbMaximizedFocus)
-   Connection.Close
-   Set Connection= Nothing
-   Exit Sub
-  End If
-  If result="Quit Menu" Then End
-  If Not result="Show Categories" Then
-   Exit Do
-  End If
- Loop
- Dim strSendKeysValue As String
- Dim stringDeliveryType As String
- strSendKeysValue=GetSendKeys_Value(result, strLanguage, stringCategory, stringDeliveryType, Connection)
- Dim stringClipboardBackup As String
- stringClipboardBackup= Clipboard
- Connection.Close
- Set Connection= Nothing
-
-' MsgBox strSendKeysValue
- If Len(Remarks & "")>0 Then
-  'SendDragonKeys "'" & Remarks  & vbCr  & strSendKeysValue
-  ' DragonMsg Remarks
-'  EngineControl.DragonBar.ShowMessage 0, Remarks
- End If
-' EngineControl.DragonBar.ShowMessage showmessageNone, "Starting Send Keys Process"
- Select Case stringDeliveryType
- Case "Copy and Paste"
-   Clipboard strSendKeysValue
-   Wait 0.4
-   SendKeys "^v"
-   Wait 0.1
-  Clipboard stringClipboardBackup
- Case "Send Keys","Send Dragon Keys","Send System Keys"
-    strSendKeysValue=Replace(strSendKeysValue,"(","{(}")
-    strSendKeysValue=Replace(strSendKeysValue,")","{)}")
-  If InStr(strSendKeysValue,Chr(13)) = 0 Then
-    If Len(strSendKeysValue)> 100 Then
-     SendKeys Left (strSendKeysValue, 100), True
-     Wait 0.1
-     SendKeys Mid(strSendKeysValue, 101), True
-    Else
-     SendKeys strSendKeysValue, True
-    End If
-  Else
-   SendKeysWithCRLF strSendKeysValue
-  End If
- Case "Execute as Script"
-  'VoiceCommand.ExecuteScript strSendKeysValue,0
- Case "Clipboard Only"
-  Clipboard strSendKeysValue
- End Select
-' EngineControl.DragonBar.ShowMessage showmessageNoBeep , "Finished Send Keys Process"
-ExitHere:
- Exit Sub
-
-
-ErrorHandler:
- If Err.Number= 521 Or Err.Number= 10140 Then ' I believe this is can't access the clipboard
-  Resume Next
- End If
- MsgBox Err.Number  & " " & Err.Description,,"IntelliSense script; An Error Has Occurred "
- Resume ExitHere
-End Sub
-
-Function GetIntelliSenseArray(strCategory As String, strLanguage As String, Connection As ADODB.Connection)
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
- Dim stringSQLText As String
- Dim k As Integer
-    stringSQLText = "SELECT CustomIntelliSense.Display_Value" & vbCrLf
-    stringSQLText = stringSQLText & "           , Languages.Language" & vbCrLf
-    stringSQLText = stringSQLText & "           , CustomIntelliSense.LanguageID" & vbCrLf
-    stringSQLText = stringSQLText & "           , Computers.ComputerName" & vbCrLf
-    stringSQLText = stringSQLText & "        FROM (Languages " & vbCrLf
-    stringSQLText = stringSQLText & "  INNER JOIN (Categories " & vbCrLf
-    stringSQLText = stringSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
-    stringSQLText = stringSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
-    stringSQLText = stringSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID) " & vbCrLf
-    stringSQLText = stringSQLText & "   LEFT JOIN Computers " & vbCrLf
-    stringSQLText = stringSQLText & "          ON CustomIntelliSense.ComputerID = Computers.ID" & vbCrLf
-    stringSQLText = stringSQLText & "       WHERE (((Languages.Language)='" & strLanguage & "') " & vbCrLf
-    stringSQLText = stringSQLText & "         AND ((Categories.Category)='" & strCategory & "') " & vbCrLf
-    stringSQLText = stringSQLText & "         AND ((Computers.ComputerName)='" & atCNames(0) & "' Or (Computers.ComputerName) Is Null))" & vbCrLf
-    stringSQLText = stringSQLText & "    ORDER BY CustomIntelliSense.Display_Value;"
-
-    Recordset.Open stringSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-        Erase IntelliSenseList()
-    End If
- Do Until Recordset.EOF
-  k=k+1
-  IntelliSenseList(k)=   Recordset.Fields("Display_Value")
-     Recordset.MoveNext
- Loop
- Recordset.Close
- Set Recordset= Nothing
-  IntelliSenseList(k+1)="Edit List"
- IntelliSenseList(k+2)="Quit Menu"
-End Function
-
-Function GetArrayOfCategory(strLanguage As String, Connection As ADODB.Connection)
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    On Error GoTo GetArrayOfCategory_Error
- Dim k As Integer
- Dim strSQLText As String
-    strSQLText = "SELECT DISTINCT Categories.*" & vbCrLf
-    strSQLText = strSQLText & "           , Languages.Language" & vbCrLf
-    strSQLText = strSQLText & "        FROM Languages " & vbCrLf
-    strSQLText = strSQLText & "  INNER JOIN (Categories " & vbCrLf
-    strSQLText = strSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
-    strSQLText = strSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
-    strSQLText = strSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID" & vbCrLf
-    strSQLText = strSQLText & "       WHERE (((Categories.Category_Type)='IntelliSense Command') " & vbCrLf
-    strSQLText = strSQLText & "         AND ((Languages.Language)='" & strLanguage  & "'))"
- strSQLText = strSQLText & "    ORDER BY Categories.Category;"
-    Recordset.Open strSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-    End If
-
- Do Until Recordset.EOF
-  k=k+1
-  catList(k)= Recordset.Fields("Category")
-
-  Recordset.MoveNext
- Loop
- Recordset.Close
- Set Recordset= Nothing
- k= k +1
-catList(k)="Quit Menu"
-ExitHere:
-   Exit Function
-
-GetArrayOfCategory_Error:
-    Select Case Err.Number
-    '1
-    Case Else
-        MsgBox "Unexpected Error:" _
-            & vbCrLf & "Error " & Err.Number & " " & Err.Description _
-            & " in procedure GetArrayOfCategory of VBA Document Form_test some code" _
-            , vbCritical, "Please Investigate"
-        Resume ExitHere
-        ' Resume 'For Debug Only
-    End Select
-
-End Function
-
-
-Function GetSendKeys_Value(strName As String, strLanguage As String, stringCategory As String, stringDeliveryType As String, Connection As ADODB.Connection) As String
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    Dim StringSQLText As String
-    Dim k As Integer
-    StringSQLText = "SELECT Top 1 CustomIntelliSense.SendKeys_Value" & vbCrLf
-    StringSQLText = StringSQLText & "           , CustomIntelliSense.Remarks" & vbCrLf
-    StringSQLText = StringSQLText & "           , Languages.Language" & vbCrLf
-    StringSQLText = StringSQLText & "           , CustomIntelliSense.Display_Value" & vbCrLf
- StringSQLText = StringSQLText & "           , CustomIntelliSense.DeliveryType" & vbCrLf
-    StringSQLText = StringSQLText & "           , Categories.Category" & vbCrLf
-    StringSQLText = StringSQLText & "        FROM Languages " & vbCrLf
-    StringSQLText = StringSQLText & "  INNER JOIN (Categories " & vbCrLf
-    StringSQLText = StringSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
-    StringSQLText = StringSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
-    StringSQLText = StringSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID" & vbCrLf
-    StringSQLText = StringSQLText & "       WHERE (((Languages.Language)='" & strLanguage & "') " & vbCrLf
-    StringSQLText = StringSQLText & "         AND ((CustomIntelliSense.Display_Value)='" & strName & "') " & vbCrLf
-    StringSQLText = StringSQLText & "         AND ((Categories.Category)='" & stringCategory & "'))" & vbCrLf
-    StringSQLText = StringSQLText & "    ORDER BY CustomIntelliSense.Display_Value;"
-    Recordset.Open StringSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-        ' GetSendKeys_Value = Replace(Recordset![SendKeys_Value], Chr(10), "")
-        GetSendKeys_Value= Recordset![SendKeys_Value]
-        Remarks = Recordset![Remarks]
-        stringDeliveryType= Recordset![DeliveryType]
-    Else
-        MsgBox " cannot find command line for " & strName
-    End If
-
-    Recordset.Close
- Set Recordset= Nothing
-
-
-End Function
-
-Function FileExists(FileName As String)
-
-
- On Error Resume Next
- FileExists = False
- FileExists = (Dir(FileName) <> "")
-
-
-
-End Function
-
-
-Public Sub SendKeysWithCRLF(stringValue As String)
-    Dim stringTemporary As String
-    Dim integerPosition As Integer
-    'integerPosition = InStr(stringValue, Chr(13) & Chr(10))
-    integerPosition = InStr(stringValue, Chr(13))
-    'integerPosition = InStr(stringValue,  Chr(10))
-    If integerPosition > 0 Then
-        stringTemporary = Left(stringValue, integerPosition - 1)
-        Do
-
-            'Debug.Print stringTemporary
-            SendKeys stringTemporary, True
-            SendKeys "{Enter}"
-
-            stringValue = Mid(stringValue, integerPosition + 2)
-            integerPosition = InStr(stringValue, Chr(13) )
-            If integerPosition = 0 Then Exit Do
-            stringTemporary = Left(stringValue, integerPosition - 1)
-        Loop
-    End If
-    SendKeys stringValue
-    'Debug.Print stringValue
-End Sub
-]]></content>
-    </Command>
     <Command name="&lt;screen&gt; &lt;atoz&gt; &lt;atoz&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[
@@ -17697,6 +17295,480 @@ Function FileExists(FileName As String)
 
 
 End Function
+]]></content>
+    </Command>
+    <Command name="Quotes &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ SendKeys """
+ SendKeys ListVar1
+ SendKeys """
+ SendKeys "{Space}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Execute Command &lt;commands&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+
+Dim commandToExecute as String
+commandToExecute=Mid$(ListVar1,1,InStr(ListVar1, "\")-1)
+
+' Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\ExecuteCommands.exe" _
+ ' & " /" & commandToExecute,vbHide
+
+Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\ExecuteCommands.exe" _
+ & " " & commandToExecute,vbHide
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;programminglanguage&gt; &lt;categories&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
+'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
+'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+Dim catList(100) As String
+Dim IntelliSenseList(100) As String
+Dim Remarks As Variant
+Sub Main
+ Dim strLanguage As String
+ Dim strApp As String
+ Dim listnames() As String
+ Dim result As String
+ Dim strCommandLine As String
+ On Error GoTo ErrorHandler
+' MsgBox atCNames(0), vbOkOnly, "Computer Name?"
+'    If UtilityProvider.IsDebugMode Then
+'           UtilityProvider.SetContextValue(0,"IntelliSense")
+'           UtilityProvider.SetContextValue(1,"Text Blocks")
+'    End If
+    Dim Connection As ADODB.Connection
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString = GetConnectionString()' "Provider=SQLOLEDB;Data Source=USER-HP;Initial Catalog=MyDatabase;Integrated Security=SSPI;"
+    Connection.Open
+
+ strLanguage= ListVar1
+ Dim stringCategory As String
+ stringCategory=ListVar2
+ If strLanguage="IntelliSense" Then strLanguage="Not Applicable"
+ If strLanguage="C#" Then strLanguage="C Sharp"
+ Do
+  'used this statement to refer to the first list argument
+  If stringCategory ="Categories" Or result ="Show Categories" Then
+   GetArrayOfCategory strLanguage, Connection
+'   ExecuteScript "SetRecognitionMode 2",0 ' CommandModeOn
+  Dim EngineControl As New DgnEngineControl
+    
+   result = EngineControl.PromptValue(catList(), "choose your category", 1400, 700)
+'   ExecuteScript "SetRecognitionMode 0",0 ' NormalModeOn
+
+
+   If result="Quit Menu" Then Exit Sub
+   stringCategory= result
+   GetIntelliSenseArray(result, strLanguage, Connection)
+  Else
+   GetIntelliSenseArray(stringCategory, strLanguage, Connection)
+  End If
+
+'  ExecuteScript "SetRecognitionMode 2",0 ' CommandModeOn
+  result = EngineControl.PromptValue(IntelliSenseList(), "choose your item", 1400, 700)
+'  ExecuteScript "SetRecognitionMode 0",0 ' NormalModeOn
+  If result="Edit List" Then
+   strCommandLine="C:\Msoffice\Access\DragonScripts.accdb"
+            strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
+            & Chr(34)  & strCommandLine & Chr(34)  & " /cmd " &  Chr(34)  & strLanguage & "|" & stringCategory  & Chr(34)
+            Shell(strCommandLine,vbMaximizedFocus)
+   Connection.Close
+   Set Connection= Nothing
+   Exit Sub
+  End If
+  If result="Quit Menu" Then End
+  If Not result="Show Categories" Then
+   Exit Do
+  End If
+ Loop
+ Dim strSendKeysValue As String
+ Dim stringDeliveryType As String
+ strSendKeysValue=GetSendKeys_Value(result, strLanguage, stringCategory, stringDeliveryType, Connection)
+ Dim stringClipboardBackup As String
+ stringClipboardBackup= Clipboard
+ Connection.Close
+ Set Connection= Nothing
+
+' MsgBox strSendKeysValue
+ If Len(Remarks & "")>0 Then
+  'SendDragonKeys "'" & Remarks  & vbCr  & strSendKeysValue
+  ' DragonMsg Remarks
+'  EngineControl.DragonBar.ShowMessage 0, Remarks
+ End If
+' EngineControl.DragonBar.ShowMessage showmessageNone, "Starting Send Keys Process"
+ Select Case stringDeliveryType
+ Case "Copy and Paste"
+   Clipboard strSendKeysValue
+   Wait 0.4
+   SendKeys "^v"
+   Wait 0.1
+  Clipboard stringClipboardBackup
+ Case "Send Keys","Send Dragon Keys","Send System Keys"
+    strSendKeysValue=Replace(strSendKeysValue,"(","{(}")
+    strSendKeysValue=Replace(strSendKeysValue,")","{)}")
+  If InStr(strSendKeysValue,Chr(13)) = 0 Then
+    If Len(strSendKeysValue)> 100 Then
+     SendKeys Left (strSendKeysValue, 100), True
+     Wait 0.1
+     SendKeys Mid(strSendKeysValue, 101), True
+    Else
+     SendKeys strSendKeysValue, True
+    End If
+  Else
+   SendKeysWithCRLF strSendKeysValue
+  End If
+ Case "Execute as Script"
+  'VoiceCommand.ExecuteScript strSendKeysValue,0
+ Case "Clipboard Only"
+  Clipboard strSendKeysValue
+ End Select
+' EngineControl.DragonBar.ShowMessage showmessageNoBeep , "Finished Send Keys Process"
+ExitHere:
+ Exit Sub
+
+
+ErrorHandler:
+ If Err.Number= 521 Or Err.Number= 10140 Then ' I believe this is can't access the clipboard
+  Resume Next
+ End If
+ MsgBox Err.Number  & " " & Err.Description,,"IntelliSense script; An Error Has Occurred "
+ Resume ExitHere
+End Sub
+
+Function GetIntelliSenseArray(strCategory As String, strLanguage As String, Connection As ADODB.Connection)
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+ Dim stringSQLText As String
+ Dim k As Integer
+    stringSQLText = "SELECT CustomIntelliSense.Display_Value" & vbCrLf
+    stringSQLText = stringSQLText & "           , Languages.Language" & vbCrLf
+    stringSQLText = stringSQLText & "           , CustomIntelliSense.LanguageID" & vbCrLf
+    stringSQLText = stringSQLText & "           , Computers.ComputerName" & vbCrLf
+    stringSQLText = stringSQLText & "        FROM (Languages " & vbCrLf
+    stringSQLText = stringSQLText & "  INNER JOIN (Categories " & vbCrLf
+    stringSQLText = stringSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
+    stringSQLText = stringSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
+    stringSQLText = stringSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID) " & vbCrLf
+    stringSQLText = stringSQLText & "   LEFT JOIN Computers " & vbCrLf
+    stringSQLText = stringSQLText & "          ON CustomIntelliSense.ComputerID = Computers.ID" & vbCrLf
+    stringSQLText = stringSQLText & "       WHERE (((Languages.Language)='" & strLanguage & "') " & vbCrLf
+    stringSQLText = stringSQLText & "         AND ((Categories.Category)='" & strCategory & "') " & vbCrLf
+    stringSQLText = stringSQLText & "         AND ((Computers.ComputerName)='" & atCNames(0) & "' Or (Computers.ComputerName) Is Null))" & vbCrLf
+    stringSQLText = stringSQLText & "    ORDER BY CustomIntelliSense.Display_Value;"
+
+    Recordset.Open stringSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+        Erase IntelliSenseList()
+    End If
+ Do Until Recordset.EOF
+  k=k+1
+  IntelliSenseList(k)=   Recordset.Fields("Display_Value")
+     Recordset.MoveNext
+ Loop
+ Recordset.Close
+ Set Recordset= Nothing
+  IntelliSenseList(k+1)="Edit List"
+ IntelliSenseList(k+2)="Quit Menu"
+End Function
+
+Function GetArrayOfCategory(strLanguage As String, Connection As ADODB.Connection)
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    On Error GoTo GetArrayOfCategory_Error
+ Dim k As Integer
+ Dim strSQLText As String
+    strSQLText = "SELECT DISTINCT Categories.*" & vbCrLf
+    strSQLText = strSQLText & "           , Languages.Language" & vbCrLf
+    strSQLText = strSQLText & "        FROM Languages " & vbCrLf
+    strSQLText = strSQLText & "  INNER JOIN (Categories " & vbCrLf
+    strSQLText = strSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
+    strSQLText = strSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
+    strSQLText = strSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID" & vbCrLf
+    strSQLText = strSQLText & "       WHERE (((Categories.Category_Type)='IntelliSense Command') " & vbCrLf
+    strSQLText = strSQLText & "         AND ((Languages.Language)='" & strLanguage  & "'))"
+ strSQLText = strSQLText & "    ORDER BY Categories.Category;"
+    Recordset.Open strSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+    End If
+
+ Do Until Recordset.EOF
+  k=k+1
+  catList(k)= Recordset.Fields("Category")
+
+  Recordset.MoveNext
+ Loop
+ Recordset.Close
+ Set Recordset= Nothing
+ k= k +1
+catList(k)="Quit Menu"
+ExitHere:
+   Exit Function
+
+GetArrayOfCategory_Error:
+    Select Case Err.Number
+    '1
+    Case Else
+        MsgBox "Unexpected Error:" _
+            & vbCrLf & "Error " & Err.Number & " " & Err.Description _
+            & " in procedure GetArrayOfCategory of VBA Document Form_test some code" _
+            , vbCritical, "Please Investigate"
+        Resume ExitHere
+        ' Resume 'For Debug Only
+    End Select
+
+End Function
+
+
+Function GetSendKeys_Value(strName As String, strLanguage As String, stringCategory As String, stringDeliveryType As String, Connection As ADODB.Connection) As String
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Dim StringSQLText As String
+    Dim k As Integer
+    StringSQLText = "SELECT Top 1 CustomIntelliSense.SendKeys_Value" & vbCrLf
+    StringSQLText = StringSQLText & "           , CustomIntelliSense.Remarks" & vbCrLf
+    StringSQLText = StringSQLText & "           , Languages.Language" & vbCrLf
+    StringSQLText = StringSQLText & "           , CustomIntelliSense.Display_Value" & vbCrLf
+ StringSQLText = StringSQLText & "           , CustomIntelliSense.DeliveryType" & vbCrLf
+    StringSQLText = StringSQLText & "           , Categories.Category" & vbCrLf
+    StringSQLText = StringSQLText & "        FROM Languages " & vbCrLf
+    StringSQLText = StringSQLText & "  INNER JOIN (Categories " & vbCrLf
+    StringSQLText = StringSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
+    StringSQLText = StringSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
+    StringSQLText = StringSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID" & vbCrLf
+    StringSQLText = StringSQLText & "       WHERE (((Languages.Language)='" & strLanguage & "') " & vbCrLf
+    StringSQLText = StringSQLText & "         AND ((CustomIntelliSense.Display_Value)='" & strName & "') " & vbCrLf
+    StringSQLText = StringSQLText & "         AND ((Categories.Category)='" & stringCategory & "'))" & vbCrLf
+    StringSQLText = StringSQLText & "    ORDER BY CustomIntelliSense.Display_Value;"
+    Recordset.Open StringSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+        ' GetSendKeys_Value = Replace(Recordset![SendKeys_Value], Chr(10), "")
+        GetSendKeys_Value= Recordset![SendKeys_Value]
+        Remarks = Recordset![Remarks]
+        stringDeliveryType= Recordset![DeliveryType]
+    Else
+        MsgBox " cannot find command line for " & strName
+    End If
+
+    Recordset.Close
+ Set Recordset= Nothing
+
+
+End Function
+
+Function FileExists(FileName As String)
+
+
+ On Error Resume Next
+ FileExists = False
+ FileExists = (Dir(FileName) <> "")
+
+
+
+End Function
+
+
+Public Sub SendKeysWithCRLF(stringValue As String)
+    Dim stringTemporary As String
+    Dim integerPosition As Integer
+    'integerPosition = InStr(stringValue, Chr(13) & Chr(10))
+    integerPosition = InStr(stringValue, Chr(13))
+    'integerPosition = InStr(stringValue,  Chr(10))
+    If integerPosition > 0 Then
+        stringTemporary = Left(stringValue, integerPosition - 1)
+        Do
+
+            'Debug.Print stringTemporary
+            SendKeys stringTemporary, True
+            SendKeys "{Enter}"
+
+            stringValue = Mid(stringValue, integerPosition + 2)
+            integerPosition = InStr(stringValue, Chr(13) )
+            If integerPosition = 0 Then Exit Do
+            stringTemporary = Left(stringValue, integerPosition - 1)
+        Loop
+    End If
+    SendKeys stringValue
+    'Debug.Print stringValue
+End Sub
+]]></content>
+    </Command>
+    <Command name="Arrow &lt;MouseControlSpeed&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim argument as String
+if ListVar1="Slowest" Then
+ argument="500"
+elseif ListVar1="Slow" Then
+ argument="400"
+elseif ListVar1="Average" Then
+ argument="70"
+elseif ListVar1="Fast" Then
+ argument="10"
+elseif ListVar1="Fastest" Then
+ argument="1"
+End if
+Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & argument,vbHide
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;scrollbar&gt; &lt;atoz&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+Type RECT
+ Left As Long
+ Top As Long
+ Right As Long
+ Bottom As Long
+End Type
+Type POINTAPI
+ x As Long
+ y As Long
+End Type
+' declare Win32 API functions
+Declare Function GetWindowRect Lib "user32" Alias "GetWindowRect" (ByVal hwnd As Long, lpRect As RECT) As Long
+Declare Function GetForegroundWindow& Lib "user32" ()
+Private Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
+
+Sub Main
+ Dim intTop As Long
+ Dim LongLeft As Long
+
+ Select Case ListVar2
+ Case "Zero"
+  intTop=5
+ Case "Alpha"
+  intTop= 50
+ Case "Bravo"
+  intTop= 100
+ Case "Charlie"
+  intTop= 150
+ Case "Delta"
+  intTop= 200
+ Case "Echo"
+  intTop= 250
+ Case "Foxtrot"
+  intTop= 300
+ Case "Golf"
+  intTop= 350
+ Case "Hotel"
+  intTop= 400
+ Case "India"
+  intTop= 450
+ Case "Juliet"
+  intTop= 500
+ Case "Kilo"
+  intTop= 550
+ Case "Lima"
+  intTop= 600
+ Case "Mike"
+  intTop= 650
+ Case "November"
+  intTop= 700
+ Case "Oscar"
+  intTop= 750
+ Case "Papa"
+  intTop= 800
+ Case "Qubec"
+  intTop= 850
+ Case "Romeo"
+  intTop= 900
+ Case "Sierra"
+  intTop= 950
+ Case "Tango"
+  intTop= 1000
+ Case "Uniform"
+  intTop= 1050
+ End Select
+ Select Case ListVar1
+ Case "Scrollbar","Scrollbar Left"
+  LongLeft = 1665
+ Case Else
+  LongLeft = 3350
+ End Select
+ SetMousePositionWinAPI False,LongLeft, intTop
+ ButtonClick 1,1
+End Sub
+
+Function  SetMousePositionWinAPI(BooleanRelative As Boolean ,integerLeft As Integer, integerTop As Integer)
+ Dim hwnd As Long
+ Dim offset As POINTAPI
+ Dim result As POINTAPI
+ If BooleanRelative Then
+  hwnd = GetForegroundWindow
+  offset.x= integerLeft
+  offset.y= integerTop
+  result = GetWinCurPos(hwnd,offset)
+ Else
+  result.x=integerLeft
+  result.y=integerTop
+ End If
+ SetCursorPos(result.x, result.y)
+End Function
+Function GetWinCurPos(hwnd As Long,pt As POINTAPI) As POINTAPI
+ Dim wRect As RECT
+ Dim result As POINTAPI
+ GetWindowRect hwnd, wRect
+ result.x = pt.x + wRect.Left
+ result.y = pt.y + wRect.Top
+ GetWinCurPos = result
+End Function
+]]></content>
+    </Command>
+    <Command name="Arches" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+Wait 0.2
+SetMousePosition 1,1562,530
+Wait 0.1
+ButtonClick 1,5
+End Sub
+]]></content>
+    </Command>
+    <Command name="Dojo Upgrade" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SendKeys "{F9}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Commando" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SendKeys "{F8}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mouseclick &lt;1to12&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[
+' Option Explicit
+Dim i As Integer
+Dim j As Integer
+Dim k As Integer
+Sub Main
+ ' j = str2int(UtilityProvider.ContextValue (0))
+j=ListVar1
+ For i = 1 To j
+
+  ButtonClick 1,1
+  Wait 0.1
+
+ Next i
+End Sub
 ]]></content>
     </Command>
   </Commands>
@@ -22390,22 +22462,6 @@ End Function
       <value><![CDATA[Structured Query Language]]></value>
       <value><![CDATA[Hypertext Helper]]></value>
     </List>
-    <List name="programminglanguage">
-      <value><![CDATA[C sharp]]></value>
-      <value><![CDATA[C#]]></value>
-      <value><![CDATA[CSS]]></value>
-      <value><![CDATA[HTML]]></value>
-      <value><![CDATA[IntelliSense]]></value>
-      <value><![CDATA[JavaScript]]></value>
-      <value><![CDATA[Not Applicable]]></value>
-      <value><![CDATA[Transact SQL]]></value>
-      <value><![CDATA[Visual Basic]]></value>
-      <value><![CDATA[Razor]]></value>
-      <value><![CDATA[Bootstrap]]></value>
-      <value><![CDATA[jQuery]]></value>
-      <value><![CDATA[Language Integrated Query]]></value>
-      <value><![CDATA[Entity]]></value>
-    </List>
     <List name="categories">
       <value><![CDATA[Access]]></value>
       <value><![CDATA[Action Filters]]></value>
@@ -22774,6 +22830,72 @@ End Function
       <value><![CDATA[Windows Azure Database]]></value>
       <value><![CDATA[Windows Azure Elliott Password]]></value>
       <value><![CDATA[Windows Azure Elliott Username]]></value>
+    </List>
+    <List name="htmltags">
+      <value><![CDATA[Abbreviation]]></value>
+      <value><![CDATA[Anchor]]></value>
+      <value><![CDATA[Body]]></value>
+      <value><![CDATA[Bold]]></value>
+      <value><![CDATA[Button]]></value>
+      <value><![CDATA[Caption]]></value>
+      <value><![CDATA[Delta Delta]]></value>
+      <value><![CDATA[Delta Lima]]></value>
+      <value><![CDATA[Delta Tango]]></value>
+      <value><![CDATA[Div]]></value>
+      <value><![CDATA[Emphasis]]></value>
+      <value><![CDATA[Form]]></value>
+      <value><![CDATA[Hyper Text]]></value>
+      <value><![CDATA[Image]]></value>
+      <value><![CDATA[Input]]></value>
+      <value><![CDATA[Label]]></value>
+      <value><![CDATA[Line Break]]></value>
+      <value><![CDATA[List Item]]></value>
+      <value><![CDATA[Navigation]]></value>
+      <value><![CDATA[Ordered List]]></value>
+      <value><![CDATA[Paragraph]]></value>
+      <value><![CDATA[Script]]></value>
+      <value><![CDATA[Section]]></value>
+      <value><![CDATA[Select]]></value>
+      <value><![CDATA[Small]]></value>
+      <value><![CDATA[Span]]></value>
+      <value><![CDATA[Strong]]></value>
+      <value><![CDATA[Style]]></value>
+      <value><![CDATA[Table]]></value>
+      <value><![CDATA[Table Body]]></value>
+      <value><![CDATA[Table Data]]></value>
+      <value><![CDATA[Table Head]]></value>
+      <value><![CDATA[Table Header]]></value>
+      <value><![CDATA[Table Row]]></value>
+      <value><![CDATA[Text Area]]></value>
+      <value><![CDATA[Title]]></value>
+      <value><![CDATA[Unordered List]]></value>
+    </List>
+    <List name="commands">
+      <value><![CDATA[CloseFileExplorer\Close Explorer]]></value>
+    </List>
+    <List name="programminglanguage">
+      <value><![CDATA[C sharp]]></value>
+      <value><![CDATA[C#]]></value>
+      <value><![CDATA[CSS]]></value>
+      <value><![CDATA[HTML]]></value>
+      <value><![CDATA[IntelliSense]]></value>
+      <value><![CDATA[JavaScript]]></value>
+      <value><![CDATA[Not Applicable]]></value>
+      <value><![CDATA[Transact SQL]]></value>
+      <value><![CDATA[Visual Basic]]></value>
+      <value><![CDATA[Razor]]></value>
+      <value><![CDATA[Bootstrap]]></value>
+      <value><![CDATA[jQuery]]></value>
+      <value><![CDATA[Language Integrated Query]]></value>
+      <value><![CDATA[Entity]]></value>
+      <value><![CDATA[Blazor]]></value>
+    </List>
+    <List name="Scrollbar">
+      <value><![CDATA[Right Scrollbar]]></value>
+      <value><![CDATA[Scrollbar]]></value>
+      <value><![CDATA[Scrollbar Left]]></value>
+      <value><![CDATA[Scrollbar Right]]></value>
+      <value><![CDATA[Scrollbar Screen Two]]></value>
     </List>
   </Lists>
   <Commands scope="application" module="outlook" company="Microsoft Corporation" moduleDescription="Microsoft Outlook">
@@ -25385,6 +25507,67 @@ SendKeys "%hfs"
 End Sub
 ]]></content>
     </Command>
+    <Command name="Replace &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^h"
+Wait 0.1
+SendKeys ListVar1
+Wait 0.1
+SendKeys "{Tab}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Find Previous &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%H"
+Wait 0.1
+SendKeys "FD"
+Wait 0.1
+SendKeys "A"
+Wait 0.1
+SendKeys ListVar1
+Wait 0.1
+SendKeys "%+:"
+Wait 0.1
+SendKeys "u"
+Wait 0.1
+SendKeys "{Enter}"
+Wait 0.1
+SendKeys "%f"
+Wait 0.1
+SendKeys "{Esc}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Find Following &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%H"
+Wait 0.1
+SendKeys "FD"
+Wait 0.1
+SendKeys "A"
+Wait 0.1
+SendKeys ListVar1
+Wait 0.1
+Wait 0.1
+SendKeys "%+:"
+Wait 0.1
+SendKeys "d"
+Wait 0.1
+SendKeys "{Enter}"
+Wait 0.1
+SendKeys "%f"
+Wait 0.1
+SendKeys "{Esc}"
+
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="application" module="excel" company="Microsoft Corporation" moduleDescription="Microsoft Excel">
     <Command name="&lt;1to9&gt; Sheet" group="KnowBrainer Excel" enabled="true">
@@ -26255,6 +26438,17 @@ End Sub
 SendKeys "%="
 Wait 0.2
 SendKeys "{Enter}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Resize Column" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%H"
+Wait 0.5
+SendKeys "O"
+Wait 0.1
+SendKeys "I"
 End Sub
 ]]></content>
     </Command>
@@ -28653,6 +28847,53 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SetMousePosition 1,108,567
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go For It" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{Down}"
+Wait 0.1
+SendKeys "{Enter}"
+Wait 0.1
+SendKeys "{Enter}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Click Search" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,608,128
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Hide Chat" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1329,106
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="click send a message" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1508,948
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Commit Changes" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,-212,1007
 Wait 0.1
 ButtonClick 1,1
 End Sub
@@ -39212,6 +39453,15 @@ Wait 0.2
 End Sub
 ]]></content>
     </Command>
+    <Command name="Show Chat" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,-1236,99
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="window" module="outlook" company="Microsoft Corporation" moduleDescription="Microsoft Outlook" windowTitle="Untitled - Message (HTML) " windowClass="rctrl_renwnd32">
     <Command name="send it" group="" enabled="true">
@@ -39472,14 +39722,6 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SendKeys "^%n"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Add New Item" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^+a"
-
 End Sub
 ]]></content>
     </Command>
@@ -40167,6 +40409,81 @@ Wait 0.1
 SendKeys "{Tab}"
 Wait 0.1
 SendKeys "{Tab}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Connect" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,158,128
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Hypertext Tag &lt;htmltags&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
+'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+
+Sub Main
+ Dim stringTag As String
+ stringTag=GetHtmlTag(ListVar1 )
+ Select Case LCase (stringTag)
+ Case "input"
+   SendKeys "<" & stringTag  & "  />{Left " & 3 & "}"
+ Case Else
+  SendKeys "<" & stringTag  & "></" & stringTag  & ">{Left " & 4 + Len(stringTag) & "}"
+ End Select
+End Sub
+
+Function GetHtmlTag(strName As String) As String
+    Dim Connection As ADODB.Connection
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString =GetConnectionString()
+    Connection.Open
+
+ Dim strSQLText As String
+ Dim k As Integer
+   strSQLText = "SELECT [ListValue] FROM [dbo].[HtmlTags] WHERE dbo.HtmlTags.SpokenForm='" & strName & "'"
+     Recordset.Open strSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+  GetHtmlTag =Recordset![ListValue]
+ Else
+  MsgBox " cannot find HTML TAG for " & strName
+ End If
+
+ Recordset.Close
+
+
+End Function
+]]></content>
+    </Command>
+    <Command name="Add New Item" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+a"
+Wait 0.1
+SendKeys "^e"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Search Visual Studio" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^q"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Show Output" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%o"
+
 End Sub
 ]]></content>
     </Command>
@@ -42169,16 +42486,6 @@ SendKeys "{F4}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Engineers" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "e"
-SetMousePosition 1,1462,530
-Wait 0.1
-ButtonClick 1,5
-End Sub
-]]></content>
-    </Command>
     <Command name="Future Tank" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -42445,7 +42752,811 @@ ButtonClick 1,1
 End Sub
 ]]></content>
     </Command>
-    <Command name="Ice To" group="" enabled="true">
+    <Command name="Ice Three" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,954,722
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Twin blade" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "u"
+SendKeys "{F1}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mig fighter" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "u"
+SendKeys "{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Airship" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "u"
+SendKeys "{F3}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="War Factory" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Airfield" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F6}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="War Bears" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+Wait 0.1
+SetMousePosition 1,1450,450
+Wait 0.1
+ButtonClick 1,5
+End Sub
+]]></content>
+    </Command>
+    <Command name="Barracks" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Terror drone" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F3}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Sputnik" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Ore collector" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F1}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Sickle" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Bullfrog" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Reaper" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F6}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Hammer Tank" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F7}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Grinder" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F8}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Rocket Launcher" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F9}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Apocalypse tank" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F10}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mobile construction vehicle" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F11}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Naval Yard" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Crusher Crane" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F9}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Conscripts" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SetMousePosition 1,1550,450
+Wait 0.1
+ButtonClick 1,5
+End Sub
+]]></content>
+    </Command>
+    <Command name="Flak Troopers" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SetMousePosition 1,1614,464
+Wait 0.1
+ButtonClick 1,5
+End Sub
+]]></content>
+    </Command>
+    <Command name="Crusher Crane" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F9}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Tesla Trooper" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SendKeys "{F6}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mortar Cycle" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SendKeys "{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Natasha" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SendKeys "{F8}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Desolator" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SendKeys "{F7}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navy Ore Collector" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F1}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navy Sputnik" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Stingray" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F3}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navy Bullfrog" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Submarine" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Dreadnought" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F6}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navy MCV" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F7}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Reactor" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F1}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Super Reactor" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F7}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Orbital Drop 1" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,700,500
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Orbital Drop 2" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,700,600
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Orbital Drop 3" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,700,710
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Sentry Gun" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "r"
+SendKeys "{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Flak Canon" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "r"
+SendKeys "{F3}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Tesla Coil" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "r"
+SendKeys "{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Iron Curtain" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "r"
+SendKeys "{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Vacuum imploder" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "r"
+SendKeys "{F6}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Crusher Crane" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F9}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Set As" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1410,430
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Add To" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1488,428
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Testing" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1624,424
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Second Row" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1414,500
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Advanced Commands" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1460,1000
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;1to20&gt; Set As &lt;1to20&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim leftPosition as long
+Dim down as Long
+leftPosition=1410
+down=430
+Select Case ListVar1
+Case "1"
+  SetMousePosition 1,leftPosition,down
+Case "2"
+LeftPosition=LeftPosition+ 70
+Case "3"
+LeftPosition=LeftPosition+ 140
+Case "4"
+LeftPosition=LeftPosition+ 210
+Case "5"
+down=down+ 70
+Case "6"
+LeftPosition=LeftPosition+ 70
+down=down+ 70
+Case "7"
+LeftPosition=LeftPosition+ 140
+down=down+ 70
+Case "8"
+LeftPosition=LeftPosition+ 210
+down=down+ 70
+End Select
+SetMousePosition 1,leftPosition,down
+Wait 0.1
+ButtonClick 1,2
+Wait 0.1
+SendKeys "^" & ListVar2
+
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;1to20&gt; Add To &lt;1to20&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim leftPosition as long
+Dim down as Long
+leftPosition=1410
+down=430
+Select Case ListVar1
+Case "1"
+  SetMousePosition 1,leftPosition,down
+Case "2"
+LeftPosition=LeftPosition+ 70
+Case "3"
+LeftPosition=LeftPosition+ 140
+Case "4"
+LeftPosition=LeftPosition+ 210
+Case "5"
+down=down+ 70
+Case "6"
+LeftPosition=LeftPosition+ 70
+down=down+ 70
+Case "7"
+LeftPosition=LeftPosition+ 140
+down=down+ 70
+Case "8"
+LeftPosition=LeftPosition+ 210
+down=down+ 70
+End Select
+SetMousePosition 1,leftPosition,down
+Wait 0.1
+ButtonClick 1,2
+Wait 0.1
+SendKeys "+" & ListVar2
+SendKeys "^" & ListVar2
+
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Emperors Rage One" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,830,400
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Emperors Rage To" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,820,500
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Engineers" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+Wait 0.2
+SetMousePosition 1,1462,530
+Wait 0.1
+ButtonClick 1,5
+End Sub
+]]></content>
+    </Command>
+    <Command name="Burst Drones" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+Wait 0.1
+SetMousePosition 1,1450,450
+Wait 0.1
+ButtonClick 1,5
+End Sub
+]]></content>
+    </Command>
+    <Command name="Imperial Warriors" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SetMousePosition 1,1550,450
+Wait 0.1
+ButtonClick 1,5
+End Sub
+]]></content>
+    </Command>
+    <Command name="Tank Busters" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SetMousePosition 1,1614,464
+Wait 0.1
+ButtonClick 1,5
+End Sub
+]]></content>
+    </Command>
+    <Command name="Shinobi" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SendKeys "{F6}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Generator Core" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F1}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Dojo Core" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Rocket Angel" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "t"
+SendKeys "{F7}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mecha Bay Core" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Sudden Transport" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mecha Tengu" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{F3}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mech Bay Upgrade" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{f10}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Tsunami Tank" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{f4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Striker" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{f5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Steel Ronin" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{f6}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Artillery" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{f7}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Advanced Robot" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+SendKeys "{f8}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Dock Core" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Mini Submarine" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F2}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navy Tsunami Tank" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F3}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Dock Upgrade" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F9}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Sea Wing" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F4}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Cruiser" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F5}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Battleship" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F6}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Giga Fortress" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "i"
+SendKeys "{F7}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Main Frame Core" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "e"
+SendKeys "{F6}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Defender Core" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "r"
+SendKeys "{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Nano Swarm" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "r"
+SendKeys "{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Decimator Core" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "r"
+SendKeys "{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Kamikaze One" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,700,500
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Kamikaze Two" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,700,600
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Kamikaze Three" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,700,710
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Balloon Bombs One" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,950,510
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Ice Two" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SetMousePosition 1,950,610
@@ -42454,10 +43565,37 @@ ButtonClick 1,1
 End Sub
 ]]></content>
     </Command>
-    <Command name="Ice Three" group="" enabled="true">
+    <Command name="Balloon Bombs Two" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,950,610
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Balloon Bombs Three" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SetMousePosition 1,954,722
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Quit Application" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,350,860
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Load" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,834,982
 Wait 0.1
 ButtonClick 1,1
 End Sub
