@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <KnowBrainerCommands version="014">
+    <Commands scope="application" module="devenv" company="Microsoft Corporation" moduleDescription="Microsoft Visual Studio 2017">
+      <Command name="Find &lt;NextOrPrevious&gt; &lt;dictation&gt;" group="" enabled="true">
+        <description />
+        <content type="WinWrap Basic">Sub Main
+ SendKeys "^f"
+ Wait 0.1
+ Dim stringValue As String
+ stringValue=ListVar2
+' stringValue=Replace(stringValue," ","")
+ SendKeys  stringValue
+ If ListVar1="Previous"  Then
+  SendKeys "+{F3}"
+ Else
+'  SendKeys "{F3}"
+ End If
+  Wait 0.1
+  SendKeys  "{Esc}"
+
+End Sub
+</content>
+      </Command>
+    </Commands>
+    <Lists>
+      <List name="NextOrPrevious">
+        <value>Back</value>
+        <value>Down</value>
+        <value>Forward</value>
+        <value>Last</value>
+        <value>Left</value>
+        <value>Next</value>
+        <value>Previous</value>
+        <value>Right</value>
+        <value>Up</value>
+        <value>Following</value>
+      </List>
+    </Lists>
+  </KnowBrainerCommands>
+</NewDataSet>
