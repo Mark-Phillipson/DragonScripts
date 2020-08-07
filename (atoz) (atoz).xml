@@ -1,0 +1,321 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <KnowBrainerCommands version="014">
+    <Commands scope="global">
+      <Command name="&lt;atoz&gt; &lt;atoz&gt;" group="" enabled="true">
+        <description />
+        <content type="WinWrap Basic">
+Public Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
+Public Declare Sub mouse_event Lib "user32" Alias "mouse_event" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long)
+Public Const MOUSEEVENTF_LEFTDOWN = &amp;H2 ' left button down
+Public Const MOUSEEVENTF_LEFTUP = &amp;H4 ' left button up
+Public Const MOUSEEVENTF_MIDDLEDOWN = &amp;H20 ' middle button down
+Public Const MOUSEEVENTF_MIDDLEUP = &amp;H40 ' middle button up
+Public Const MOUSEEVENTF_RIGHTDOWN = &amp;H8 ' right button down
+Public Const MOUSEEVENTF_RIGHTUP = &amp;H10 ' right button up
+
+
+ Private Declare Function GetSystemMetrics Lib "user32.dll" (ByVal nIndex As Long) As Long
+Const SM_CXSCREEN = 0
+Const SM_CYSCREEN = 1
+Private Const SM_CMONITORS As Long = 80
+Public Type RectAPI
+    Left As Long
+    Top As Long
+    Right As Long
+    Bottom As Long
+End Type
+
+Type POINTAPI 'Declare types
+ x As Long
+ y As Long
+End Type
+Declare Function GetCursorPos Lib "user32" _
+(lpPoint As POINTAPI) As Long 'Declare API
+
+Private Const SM_XVIRTUALSCREEN As Long = 76
+Private Const SM_YVIRTUALSCREEN As Long = 77
+Private Const SM_CXVIRTUALSCREEN As Long = 78
+Private Const SM_CYVIRTUALSCREEN As Long = 79
+Dim blnDualMonitors As Boolean
+Dim blnFineTune As Boolean
+Sub Main
+' this script is primarily for the second screen and assumes resolutions as follows screen one 1680 by 1050 and screen two 1280 by 1024  (1440 times 900 is what the new screen is)
+' trying to make this script also work for the following screen set up which is what it is at home 1280×1024 1280×800
+
+ Dim intLeft As Integer
+ Dim intTop As Integer
+ Dim myRect As RectAPI
+ Dim x As Long
+ Dim y As Long
+ Dim lngScreen1Width As Long
+ Dim lngScreen1Height As Long
+ Dim lngScreen2Width As Long
+ Dim lngScreen2Height As Long
+' work out if there is a second monitor
+
+ blnDualMonitors=MultiMonitors()
+' get the number of pixels across and down for the main monitor
+    lngScreen1Width  = GetSystemMetrics(SM_CXSCREEN)
+    lngScreen1Height = GetSystemMetrics(SM_CYSCREEN)
+ 'MsgBox "multi screens" &amp; blnDualMonitors
+' get the number of pixels across for the second screen
+  myRect=GetVirtualDisplayRect()
+  lngScreen2Width= myRect.Right -lngScreen1Width
+' work out the height of the second screen based on the width of screens
+ If myRect.Right=2960  Or myRect.Right= 2986 Then
+  lngScreen2Height=1024
+ ElseIf myRect.Right=2560 Then
+  lngScreen2Height=800
+ ElseIf myRect.Right=3120 Then
+  lngScreen2Height=900
+ ElseIf myRect.Right= 3360 Then
+  lngScreen2Height= 1050
+ End If
+ 'MsgBox "screen 2 Height " &amp; lngScreen2Height &amp; " myRect.Riight: " &amp; myRect.Right
+' now need to put the rest into practice from here
+ blnFineTune=False
+ Dim columnLetter as String
+ columnLetter= CStr(ListVar1)
+ Dim rowLetter as String
+ rowLetter=CStr(ListVar2)
+ intLeft=GetScreenCoordinates(columnLetter,1)
+ intTop=GetScreenCoordinates(rowLetter,2)
+   Dim z As POINTAPI 'Declare variable
+   Dim xpos As Long, ypos As Long
+ 'MsgBox " list of variable values are " &amp; ListVar1 &amp; " " &amp; ListVar2 &amp; " " &amp; ListVar3
+ 'MsgBox "fine tune " &amp; blnFineTune
+ If blnFineTune Then
+  SetMousePosition   2,intLeft,intTop
+ Else
+  Dim button as String
+  button="Click"
+  Select Case button
+  Case "Grid Left","Grid"  ,"Arrow Click","Click","Right Click","Double Click","doubleclick","Left"
+   If intLeft&gt; lngScreen1Width Then intLeft=lngScreen1Width-1
+   If intTop&gt; lngScreen1Height Then intTop=lngScreen1Height-1
+     SetCursorPos(CLng(intLeft),CLng(intTop)) ' Where X and Y are in pixel
+  Case "Grid Right" ,"Screen Click" ,"Touch","Double Touch","Right Touch","Right"
+   If intLeft&gt; lngScreen1Width + lngScreen1Width Then intLeft=(lngScreen1Width+lngScreen1Width)-1
+   If intTop&gt; lngScreen2Height Then intTop=lngScreen2Height-1
+   ' MsgBox "intLeft = " &amp; intLeft &amp; " intTop= " &amp; intTop &amp; " lngScreen1Width=" &amp; lngScreen1Width
+   SetCursorPos(CLng(lngScreen1Width+ intLeft),CLng(intTop))
+  Case "Drag","Drag Arrow"
+    GetCursorPos z 'Get Coordinates
+    xpos = CLng(z.x)
+    Wait 0.5
+    ypos = CLng(z.y)
+    mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
+
+    SetCursorPos(CLng(intLeft),CLng(intTop))
+    Wait 0.5
+    mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
+  Case "Drag Screen"
+   GetCursorPos z 'Get Coordinates
+    xpos = CLng(z.x)
+    ypos = CLng(z.y)
+    mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
+    Wait 0.5
+    SetCursorPos(CLng(lngScreen1Width+ intLeft),CLng(intTop))
+    Wait 0.5
+    mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
+  End Select
+ End If
+Wait 0.1
+
+ Select Case button
+ Case "Arrow Click","Click","Screen Click","Touch"
+
+  ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
+ Case "Double Click","Double Touch","doubleclick"
+
+  ButtonClick 1,2
+ Case "Right Click","Right Touch"
+  ButtonClick 2,1
+ End Select
+
+End Sub
+Function GetScreenCoordinates(s As String,arg As Integer) As Integer
+ Dim intLeft As Integer
+ Dim intTop As Integer
+If arg=1 Then
+ Select Case s
+ Case "Zero"
+  intLeft=5
+ Case "Alpha"
+  intLeft= 50
+ Case "Bravo"
+  intLeft= 100
+ Case "Charlie"
+  intLeft= 150
+ Case "Delta"
+  intLeft= 200
+ Case "Echo"
+  intLeft= 250
+ Case "Foxtrot"
+  intLeft= 300
+ Case "Golf"
+  intLeft= 350
+ Case "Hotel"
+  intLeft= 400
+ Case "India"
+  intLeft= 450
+ Case "Juliet"
+  intLeft= 500
+ Case "Kilo"
+  intLeft= 550
+ Case "Lima"
+  intLeft= 600
+ Case "Mike"
+  intLeft= 650
+ Case "November"
+  intLeft= 700
+ Case "Oscar"
+  intLeft= 750
+ Case "Papa"
+  intLeft= 800
+ Case "Qubec"
+  intLeft= 850
+ Case "Romeo"
+  intLeft= 900
+ Case "Sierra"
+  intLeft= 950
+ Case "Tango"
+  intLeft= 1000
+ Case "Uniform"
+  intLeft= 1050
+ Case "Victor"
+  intLeft= 1100
+ Case "Whiskey"
+  intLeft= 1150
+ Case "X-ray"
+  intLeft= 1200
+ Case "Yankee"
+  intLeft= 1250
+ Case "Zulu"
+  intLeft= 1300
+ Case "One","1"
+  intLeft= 1350
+ Case "Two"
+  intLeft= 1400
+ Case "Three"
+  intLeft= 1450
+ Case "Four","For"
+  intLeft= 1500
+ Case "Five"
+  intLeft= 1550
+ Case "Six"
+  intLeft= 1600
+ Case "Seven"
+  intLeft= 1650
+ End Select
+ GetScreenCoordinates=intLeft
+Else
+ Select Case s
+ Case "Zero"
+  intTop=5
+ Case "Alpha"
+  intTop= 50
+ Case "Bravo"
+  intTop= 100
+ Case "Charlie"
+  intTop= 150
+ Case "Delta"
+  intTop= 200
+ Case "Echo"
+  intTop= 250
+ Case "Foxtrot"
+  intTop= 300
+ Case "Golf"
+  intTop= 350
+ Case "Hotel"
+  intTop= 400
+ Case "India"
+  intTop= 450
+ Case "Juliet"
+  intTop= 500
+ Case "Kilo"
+  intTop= 550
+ Case "Lima"
+  intTop= 600
+ Case "Mike"
+  intTop= 650
+ Case "November"
+  intTop= 700
+ Case "Oscar"
+  intTop= 750
+ Case "Papa"
+  intTop= 800
+ Case "Qubec"
+  intTop= 850
+ Case "Romeo"
+  intTop= 900
+ Case "Sierra"
+  intTop= 950
+ Case "Tango"
+  intTop= 1000
+ Case "Uniform"
+  intTop= 1050
+ End Select
+ GetScreenCoordinates=intTop
+End If
+End Function
+
+Private Function MultiMonitors() As Boolean
+ MultiMonitors = (GetSystemMetrics(SM_CMONITORS) &gt; 1)
+End Function
+
+Public Function GetVirtualDisplayRect() As RectAPI
+With GetVirtualDisplayRect
+    .Left = GetSystemMetrics(SM_XVIRTUALSCREEN)
+    .Top = GetSystemMetrics(SM_YVIRTUALSCREEN)
+    .Right = GetSystemMetrics(SM_CXVIRTUALSCREEN) + .Left
+    .Bottom = GetSystemMetrics(SM_CYVIRTUALSCREEN) + .Top
+End With
+End Function
+</content>
+      </Command>
+    </Commands>
+    <Lists>
+      <List name="atoz">
+        <value>Alpha</value>
+        <value>Bravo</value>
+        <value>Charlie</value>
+        <value>Delta</value>
+        <value>Echo</value>
+        <value>Eight</value>
+        <value>Five</value>
+        <value>Four</value>
+        <value>Foxtrot</value>
+        <value>Golf</value>
+        <value>Hotel</value>
+        <value>India</value>
+        <value>Juliet</value>
+        <value>Kilo</value>
+        <value>Lima</value>
+        <value>Mike</value>
+        <value>November</value>
+        <value>One</value>
+        <value>1</value>
+        <value>Oscar</value>
+        <value>Papa</value>
+        <value>Qubec</value>
+        <value>Romeo</value>
+        <value>Seven</value>
+        <value>Sierra</value>
+        <value>Six</value>
+        <value>Tango</value>
+        <value>Three</value>
+        <value>Two</value>
+        <value>Uniform</value>
+        <value>Victor</value>
+        <value>Whiskey</value>
+        <value>X-ray</value>
+        <value>Yankee</value>
+        <value>Zero</value>
+        <value>Zulu</value>
+        <value>For</value>
+      </List>
+    </Lists>
+  </KnowBrainerCommands>
+</NewDataSet>
