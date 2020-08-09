@@ -1933,26 +1933,6 @@ HeardWord "\cap"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Option &lt;1to10&gt;" group="KnowBrainer Global" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^{Down}{Left 2}{End}{Enter 2}"
-Wait 1
-if ListVar1 = "1" then SendKeys "Option #1"
-if ListVar1 = "2" then SendKeys "Option #2"
-if ListVar1 = "3" then SendKeys "Option #3"
-if ListVar1 = "4" then SendKeys "Option #4"
-if ListVar1 = "5" then SendKeys "Option #5"
-if ListVar1 = "6" then SendKeys "Option #6"
-if ListVar1 = "7" then SendKeys "Option #7"
-if ListVar1 = "8" then SendKeys "Option #8"
-if ListVar1 = "9" then SendKeys "Option #9"
-if ListVar1 = "10" then SendKeys "Option #10"
-SendKeys "{Enter}"
-HeardWord "\cap"
-End Sub
-]]></content>
-    </Command>
     <Command name="Page Break Line" group="KnowBrainer Global" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -2837,26 +2817,6 @@ SendKeys "%of%f" + param1 + "%s" + ListVar2 + "~{Right}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Set &lt;FontFace&gt; &lt;FontSize&gt; &lt;FontStyle&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-if ListVar1 = "Times" then param1 = "Times New Roman"
-if ListVar1 = "Courier" then param1 = "Courier New"
-if ListVar1 = "Arial" then param1 = "Arial"
-if ListVar1 = "Comic" then param1 = "Comic Sans MS"
-if ListVar1 = "Impact" then param1 = "Impact"
-if ListVar1 = "Garamond" then param1 = "Garamond"
-if ListVar1 = "Kaufmann" then param1 = "Kaufmann BT"
-if ListVar1 = "Monotype" then param1 = "Monotype Corsiva"
-if ListVar3 = "Plain" then param3 = "Regular"
-if ListVar3 = "Plain text" then param3 = "Regular"
-if ListVar3 = "Underline" then param3 = "%u"
-if ListVar3 = "Italics" then param3 = "Italic"
-if ListVar3 = "Bold" then param3 = "bold"
-SendKeys "%of%f" + param1 + "%s" + ListVar2 + "%y" + ListVar3 + "~{Right}"
-End Sub
-]]></content>
-    </Command>
     <Command name="Set &lt;FontFace&gt; &lt;FontStyle&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -2956,48 +2916,6 @@ End Sub
 SendKeys "%of%s"
 SendKeys ListVar1
 SendKeys "{Enter}{Right}"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Full Screenshot To Printer" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SetMicrophone 0
-Wait 0.1
-SendKeys "{Prtsc}"
-' Using Dragon Pad will print the screen full size
-' if you want to on a page try something like WordPad
-' using ShellExecute"WordPad" as your next line
-EmulateRecognition"Start DragonPad"
-Wait 3
-SendKeys "^v"
-Wait 0.1
-SendKeys "^p"
-Wait 0.2
-SendKeys"~"
-SetMicrophone 1
-End Sub
-]]></content>
-    </Command>
-    <Command name="Full ScreenShot To File" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SetMicrophone 0
-Wait 0.1
-SendKeys "{Prtsc}"
-' Use something like WordPad if you want the screenshot on one page
-' so line below would be ShellExecute "WordPad"
-ShellExecute "mspaint"
-Wait 0.5
-SendKeys "^v"
-Wait 0.1
-SendKeys "%{F4}"
-Wait 0.1
-SendKeys "~"
-TTSPlayString "name"
-Wait 0.5
-HeardWord "\Caps-On"
-SetMicrophone 1
 End Sub
 ]]></content>
     </Command>
@@ -8896,27 +8814,6 @@ SendKeys "^{Pad- "+ListVar1+"}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Insert &lt;Punctuation&gt; After &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^{Home}"
-Wait 0.5
-SendKeys "^h"
-Wait 0.2
-SendKeys ListVar2
-Wait 0.5
-SendKeys "~"
-Wait 0.2
-SendKeys "{Esc}"
-Wait 0.5
-SendKeys "{Right}"
-Wait 0.3
-SendKeys ""+ListVar1+""
-Wait 0.2
-EmulateRecognition "go back"
-End Sub
-]]></content>
-    </Command>
     <Command name="Code Emulate All Caps That" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -10687,40 +10584,6 @@ ButtonClick 1,3
 End Sub
 ]]></content>
     </Command>
-    <Command name="Inject After &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^{Home}"
-Wait 0.5
-SendKeys "^h"
-Wait 0.1
-SendKeys ListVar1
-Wait .5
-SendKeys "~"
-Wait 0.2
-SendKeys "{Esc}"
-Wait 0.5
-SendKeys "{Right}{Space}"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Inject Before &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^{Home}"
-Wait 0.5
-SendKeys "^h"
-Wait 0.1
-SendKeys ListVar1
-Wait .5
-SendKeys "~"
-Wait 0.2
-SendKeys "{Esc}"
-Wait 0.5
-SendKeys "{Left 2}{Space}"
-End Sub
-]]></content>
-    </Command>
     <Command name="Cut Back &lt;dictation&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -11492,28 +11355,6 @@ SendKeys "{Esc}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Next &lt;Character&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^h"
-Wait .5
-SendKeys ""+ListVar1+"{Enter}"
-Wait .5
-SendKeys "{Esc}"
-Wait 0.2
-SendKeys "{Right}"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Insert Back &lt;dictation&gt;" group="" enabled="true">
-      <description>Used to force dictation into any field you can type in and adds a extra space before your dication</description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys ListVar1
-Wait 1
-SendKeys "^{Down}{Left 2}{End}"
-End Sub
-]]></content>
-    </Command>
     <Command name="Close Without Saving &lt;AppList&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -12020,13 +11861,6 @@ End Sub
 SendKeys "^a"
 Wait 0.3
 SendKeys "{Del}"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Insert &lt;dictation&gt;" group="" enabled="true">
-      <description>Used to force dictation into any field you can type into</description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys ListVar1
 End Sub
 ]]></content>
     </Command>
@@ -13889,71 +13723,6 @@ SendKeys "%{F4} "+ListVar1+""
 End Sub
 ]]></content>
     </Command>
-    <Command name="Go To Mouse Position" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
-'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
-Option Explicit
-Private Type cursorinformation
-        x As Integer
-        y As Integer
-End Type
-Dim cursorinformation As cursorinformation
-Private Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
-Function SetMousePositionW(integerLeft As Integer, integerTop As Integer)
-        SetCursorPos CLng(integerLeft), CLng(integerTop)
-
-End Function
-
-
-Sub Main()
-
-  Dim stringSQLText As String
-
-    GetSavedMousePosition
- ' EngineControl.DragonBar.ShowMessage 0, "X: " & cursorinformation.x & " Y: " & cursorinformation.y
-
-
-
-    SetMousePositionW cursorinformation.x, cursorinformation.y
-
-End Sub
-Function FileExists(FileName As String)
-
-
- On Error Resume Next
- FileExists = False
- FileExists = (Dir(FileName) <> "")
-
-
-
-End Function
-
-Function GetSavedMousePosition()
-    Dim Connection As ADODB.Connection
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    Set Connection = New ADODB.Connection
-    Connection.ConnectionString =GetConnectionString()
-    Connection.Open
-    Dim stringSQLText As String
-    Dim k As Integer
-  stringSQLText = "SELECT [Saved Mouse Position].NamedLocation" & vbCrLf
-  stringSQLText = stringSQLText & "           , [Saved Mouse Position].X" & vbCrLf
-  stringSQLText = stringSQLText & "           , [Saved Mouse Position].Y" & vbCrLf
-  stringSQLText = stringSQLText & "        FROM [Saved Mouse Position]" & vbCrLf
-  stringSQLText = stringSQLText & "       WHERE ((([Saved Mouse Position].NamedLocation)='Default'));"
-    Recordset.Open stringSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-        cursorinformation.x = Recordset![x]
-        cursorinformation.y = Recordset![y]
-    End If
-    Recordset.Close
-
-End Function
-]]></content>
-    </Command>
     <Command name="Click Mouse Position &lt;dictation&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
@@ -14128,72 +13897,6 @@ End Sub
  Wait 0.1
  SendKeys "{Enter}"
 End Sub
-]]></content>
-    </Command>
-    <Command name="Go To Mouse Position &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
-'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
-' Option Explicit
-Private Type cursorinformation
-        x As Integer
-        y As Integer
-End Type
-Dim cursorinformation As cursorinformation
-Private Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
-
-Sub Main()
-
-  Dim stringSQLText As String
-
-  Dim namedLocation as String
-  namedLocation=ListVar1
-  GetSavedMousePosition namedLocation
-  SetMousePositionW cursorinformation.x, cursorinformation.y
-
-End Sub
-
-Function SetMousePositionW(integerLeft As Integer, integerTop As Integer)
-        SetCursorPos CLng(integerLeft), CLng(integerTop)
-
-End Function
-
-
-Function FileExists(FileName As String)
-
-
- On Error Resume Next
- FileExists = False
- FileExists = (Dir(FileName) <> "")
-
-
-
-End Function
-
-Function GetSavedMousePosition(namedLocation  as String)
-    Dim Connection As ADODB.Connection
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    Set Connection = New ADODB.Connection
-    Connection.ConnectionString =GetConnectionString()
-    Connection.Open
-    Dim stringSQLText As String
-    Dim k As Integer
-  stringSQLText = "SELECT [Saved Mouse Position].NamedLocation" & vbCrLf
-  stringSQLText = stringSQLText & "           , [Saved Mouse Position].X" & vbCrLf
-  stringSQLText = stringSQLText & "           , [Saved Mouse Position].Y" & vbCrLf
-  stringSQLText = stringSQLText & "        FROM [Saved Mouse Position]" & vbCrLf
-  stringSQLText = stringSQLText & "       WHERE ((([Saved Mouse Position].NamedLocation)='" & namedLocation & "'))"
-  stringSQLText = stringSQLText & "       ORDER BY [Saved Mouse Position].Created Desc"
-    Recordset.Open stringSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-        cursorinformation.x = Recordset![x]
-        cursorinformation.y = Recordset![y]
-    End If
-    Recordset.Close
-
-End Function
 ]]></content>
     </Command>
     <Command name="Show Clipboard Manager" group="" enabled="true">
@@ -14970,19 +14673,6 @@ Heardword "Mouse","Up"
 End Sub
 ]]></content>
     </Command>
-    <Command name="&lt;myalphabet&gt; &lt;myalphabet&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-t1 = Mid$(ListVar1,1,InStr(ListVar1, "\")-1)
-t2 = Mid$(ListVar2,1,InStr(ListVar2, "\")-1)
-if t1 = "backslash" Then t1 = "\"
-if t2 = "backslash" Then t2 = "\"
-if t1 = "space" Then t1 = " "
-if t2 = "space" Then t2 = " "
- SendKeys UCase(t1+t2)
-End Sub
-]]></content>
-    </Command>
     <Command name="&lt;var&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -15055,21 +14745,6 @@ newCommandsFile = "Win10 " & Format (Now, "mm-dd-yyyy") & ".dat"
 
 FileCopy commandsFileLocation, "D:\AdvancedScriptingBackup\" + newCommandsFile
 
-End Sub
-]]></content>
-    </Command>
-    <Command name="Arrow &lt;MouseControl&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
- Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & ListVar1,vbHide
-
-End Sub
-]]></content>
-    </Command>
-    <Command name="Halt" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
- Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & "Stop",vbHide
 End Sub
 ]]></content>
     </Command>
@@ -15243,13 +14918,6 @@ SendKeys "{Down}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Browse Scripts" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-    Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\BrowseScripts.exe",vbNormalFocus
-End Sub
-]]></content>
-    </Command>
     <Command name="Multiple Launcher" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
@@ -15394,14 +15062,6 @@ End Select
 End Function
 ]]></content>
     </Command>
-    <Command name="Browse Scripts &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-    Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\BrowseScripts.exe" _
- & " /""" & ListVar1 & """",vbNormalFocus
-End Sub
-]]></content>
-    </Command>
     <Command name="&lt;NextOrPrevious&gt; &lt;1to20&gt; Words" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -15478,15 +15138,6 @@ if ListVar1 = "Up" or ListVar1="Raise"     then SetMousePosition 2, 0, -offset
 if ListVar1 = "Down"   then SetMousePosition 2, 0, offset
 if ListVar1 = "Left"   then SetMousePosition 2, -offset, 0
 if ListVar1 = "Right"  then SetMousePosition 2, offset, 0
-End Sub
-]]></content>
-    </Command>
-    <Command name="Arrow &lt;0to500&gt; Depreciated" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
- Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" _
- & " /" & ListVar1,vbHide
-
 End Sub
 ]]></content>
     </Command>
@@ -15757,272 +15408,6 @@ End Function
 End Sub
 ]]></content>
     </Command>
-    <Command name="&lt;screen&gt; &lt;atoz&gt; &lt;atoz&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[
-Public Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
-Public Declare Sub mouse_event Lib "user32" Alias "mouse_event" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long)
-Public Const MOUSEEVENTF_LEFTDOWN = &H2 ' left button down
-Public Const MOUSEEVENTF_LEFTUP = &H4 ' left button up
-Public Const MOUSEEVENTF_MIDDLEDOWN = &H20 ' middle button down
-Public Const MOUSEEVENTF_MIDDLEUP = &H40 ' middle button up
-Public Const MOUSEEVENTF_RIGHTDOWN = &H8 ' right button down
-Public Const MOUSEEVENTF_RIGHTUP = &H10 ' right button up
-
-
- Private Declare Function GetSystemMetrics Lib "user32.dll" (ByVal nIndex As Long) As Long
-Const SM_CXSCREEN = 0
-Const SM_CYSCREEN = 1
-Private Const SM_CMONITORS As Long = 80
-Public Type RectAPI
-    Left As Long
-    Top As Long
-    Right As Long
-    Bottom As Long
-End Type
-
-Type POINTAPI 'Declare types
- x As Long
- y As Long
-End Type
-Declare Function GetCursorPos Lib "user32" _
-(lpPoint As POINTAPI) As Long 'Declare API
-
-Private Const SM_XVIRTUALSCREEN As Long = 76
-Private Const SM_YVIRTUALSCREEN As Long = 77
-Private Const SM_CXVIRTUALSCREEN As Long = 78
-Private Const SM_CYVIRTUALSCREEN As Long = 79
-Dim blnDualMonitors As Boolean
-Dim blnFineTune As Boolean
-Sub Main
-' this script is primarily for the second screen and assumes resolutions as follows screen one 1680 by 1050 and screen two 1280 by 1024  (1440 times 900 is what the new screen is)
-' trying to make this script also work for the following screen set up which is what it is at home 1280×1024 1280×800
-
- Dim intLeft As Integer
- Dim intTop As Integer
- Dim myRect As RectAPI
- Dim x As Long
- Dim y As Long
- Dim lngScreen1Width As Long
- Dim lngScreen1Height As Long
- Dim lngScreen2Width As Long
- Dim lngScreen2Height As Long
-' work out if there is a second monitor
-
- blnDualMonitors=MultiMonitors()
-' get the number of pixels across and down for the main monitor
-    lngScreen1Width  = GetSystemMetrics(SM_CXSCREEN)
-    lngScreen1Height = GetSystemMetrics(SM_CYSCREEN)
- 'MsgBox "multi screens" & blnDualMonitors
-' get the number of pixels across for the second screen
-  myRect=GetVirtualDisplayRect()
-  lngScreen2Width= myRect.Right -lngScreen1Width
-' work out the height of the second screen based on the width of screens
- If myRect.Right=2960  Or myRect.Right= 2986 Then
-  lngScreen2Height=1024
- ElseIf myRect.Right=2560 Then
-  lngScreen2Height=800
- ElseIf myRect.Right=3120 Then
-  lngScreen2Height=900
- ElseIf myRect.Right= 3360 Then
-  lngScreen2Height= 1050
- End If
- 'MsgBox "screen 2 Height " & lngScreen2Height & " myRect.Riight: " & myRect.Right
-' now need to put the rest into practice from here
- blnFineTune=False
- Dim columnLetter as String
- columnLetter= CStr(ListVar2)
- Dim rowLetter as String
- rowLetter=CStr(ListVar3)
- intLeft=GetScreenCoordinates(columnLetter,1)
- intTop=GetScreenCoordinates(rowLetter,2)
-   Dim z As POINTAPI 'Declare variable
-   Dim xpos As Long, ypos As Long
- 'MsgBox " list of variable values are " & ListVar1 & " " & ListVar2 & " " & ListVar3
- 'MsgBox "fine tune " & blnFineTune
- If blnFineTune Then
-  SetMousePosition   2,intLeft,intTop
- Else
-  Select Case ListVar1
-  Case "Grid Left","Grid"  ,"Arrow Click","Click","Right Click","Double Click","doubleclick","Left"
-   If intLeft> lngScreen1Width Then intLeft=lngScreen1Width-1
-   If intTop> lngScreen1Height Then intTop=lngScreen1Height-1
-     SetCursorPos(CLng(intLeft),CLng(intTop)) ' Where X and Y are in pixel
-  Case "Grid Right" ,"Screen Click" ,"Touch","Double Touch","Right Touch","Right"
-   If intLeft> lngScreen1Width + lngScreen1Width Then intLeft=(lngScreen1Width+lngScreen1Width)-1
-   If intTop> lngScreen2Height Then intTop=lngScreen2Height-1
-   ' MsgBox "intLeft = " & intLeft & " intTop= " & intTop & " lngScreen1Width=" & lngScreen1Width
-   SetCursorPos(CLng(lngScreen1Width+ intLeft),CLng(intTop))
-  Case "Drag","Drag Arrow"
-    GetCursorPos z 'Get Coordinates
-    xpos = CLng(z.x)
-    ypos = CLng(z.y)
-    mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
-    Wait 0.5
-    SetCursorPos(CLng(intLeft),CLng(intTop))
-    Wait 0.5
-    mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
-  Case "Drag Screen"
-   GetCursorPos z 'Get Coordinates
-    xpos = CLng(z.x)
-    ypos = CLng(z.y)
-    mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
-    Wait 0.5
-    SetCursorPos(CLng(lngScreen1Width+ intLeft),CLng(intTop))
-    Wait 0.5
-    mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
-  End Select
- End If
- Select Case ListVar1
- Case "Arrow Click","Click","Screen Click","Touch"
-  ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
- Case "Double Click","Double Touch","doubleclick"
-  ButtonClick 1,2
- Case "Right Click","Right Touch"
-  ButtonClick 2,1
- End Select
-
-End Sub
-Function GetScreenCoordinates(s As String,arg As Integer) As Integer
- Dim intLeft As Integer
- Dim intTop As Integer
-If arg=1 Then
- Select Case s
- Case "Zero"
-  intLeft=5
- Case "Alpha"
-  intLeft= 50
- Case "Bravo"
-  intLeft= 100
- Case "Charlie"
-  intLeft= 150
- Case "Delta"
-  intLeft= 200
- Case "Echo"
-  intLeft= 250
- Case "Foxtrot"
-  intLeft= 300
- Case "Golf"
-  intLeft= 350
- Case "Hotel"
-  intLeft= 400
- Case "India"
-  intLeft= 450
- Case "Juliet"
-  intLeft= 500
- Case "Kilo"
-  intLeft= 550
- Case "Lima"
-  intLeft= 600
- Case "Mike"
-  intLeft= 650
- Case "November"
-  intLeft= 700
- Case "Oscar"
-  intLeft= 750
- Case "Papa"
-  intLeft= 800
- Case "Qubec"
-  intLeft= 850
- Case "Romeo"
-  intLeft= 900
- Case "Sierra"
-  intLeft= 950
- Case "Tango"
-  intLeft= 1000
- Case "Uniform"
-  intLeft= 1050
- Case "Victor"
-  intLeft= 1100
- Case "Whiskey"
-  intLeft= 1150
- Case "X-ray"
-  intLeft= 1200
- Case "Yankee"
-  intLeft= 1250
- Case "Zulu"
-  intLeft= 1300
- Case "One","1"
-  intLeft= 1350
- Case "Two"
-  intLeft= 1400
- Case "Three"
-  intLeft= 1450
- Case "Four","For"
-  intLeft= 1500
- Case "Five"
-  intLeft= 1550
- Case "Six"
-  intLeft= 1600
- Case "Seven"
-  intLeft= 1650
- End Select
- GetScreenCoordinates=intLeft
-Else
- Select Case s
- Case "Zero"
-  intTop=5
- Case "Alpha"
-  intTop= 50
- Case "Bravo"
-  intTop= 100
- Case "Charlie"
-  intTop= 150
- Case "Delta"
-  intTop= 200
- Case "Echo"
-  intTop= 250
- Case "Foxtrot"
-  intTop= 300
- Case "Golf"
-  intTop= 350
- Case "Hotel"
-  intTop= 400
- Case "India"
-  intTop= 450
- Case "Juliet"
-  intTop= 500
- Case "Kilo"
-  intTop= 550
- Case "Lima"
-  intTop= 600
- Case "Mike"
-  intTop= 650
- Case "November"
-  intTop= 700
- Case "Oscar"
-  intTop= 750
- Case "Papa"
-  intTop= 800
- Case "Qubec"
-  intTop= 850
- Case "Romeo"
-  intTop= 900
- Case "Sierra"
-  intTop= 950
- Case "Tango"
-  intTop= 1000
- Case "Uniform"
-  intTop= 1050
- End Select
- GetScreenCoordinates=intTop
-End If
-End Function
-
-Private Function MultiMonitors() As Boolean
- MultiMonitors = (GetSystemMetrics(SM_CMONITORS) > 1)
-End Function
-
-Public Function GetVirtualDisplayRect() As RectAPI
-With GetVirtualDisplayRect
-    .Left = GetSystemMetrics(SM_XVIRTUALSCREEN)
-    .Top = GetSystemMetrics(SM_YVIRTUALSCREEN)
-    .Right = GetSystemMetrics(SM_CXVIRTUALSCREEN) + .Left
-    .Bottom = GetSystemMetrics(SM_CYVIRTUALSCREEN) + .Top
-End With
-End Function
-]]></content>
-    </Command>
     <Command name="&lt;logins&gt; Login" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
@@ -16152,37 +15537,6 @@ End Function
  SendKeys ListVar1
  SendKeys """
  SendKeys "{Space}"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Arrow &lt;MouseControlSpeed&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-Dim argument as String
-if ListVar1="Slowest" Then
- argument="500"
-elseif ListVar1="Slow" Then
- argument="400"
-elseif ListVar1="Average" Then
- argument="70"
-elseif ListVar1="Fast" Then
- argument="10"
-elseif ListVar1="Fastest" Then
- argument="1"
-End if
-Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\MouseControl.exe" & " /" & argument,vbHide
-
-End Sub
-]]></content>
-    </Command>
-    <Command name="Arches" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "t"
-Wait 0.2
-SetMousePosition 1,1562,530
-Wait 0.1
-ButtonClick 1,5
 End Sub
 ]]></content>
     </Command>
@@ -16653,253 +16007,6 @@ End Sub
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SendKeys "^%e"
 End Sub
-]]></content>
-    </Command>
-    <Command name="Launcher &lt;launcher_categories&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Reference {57D58F7A-9EB7-40AC-98FC-8E14FA414452}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dgnmycmds.dll#DgnMyCommands#DgnMyCommands
-'#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
-'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
-'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
-Dim catList(100) As String
-Dim appList(100) As String
-Sub Main
- Dim strApp As String
- Dim listnames() As String
- Dim result As String
- Dim strCommandLine As String
- Dim intMenuNumber As Integer
- Dim strCategory As String
- On Error GoTo ErrorHandler
-
- strCategory=ListVar1
- If strCategory="Categories" Then
-  result="Back to Categories"
- End If
- Dim longCounter As Long
- Do
-  longCounter=longCounter + 1
-  If result="Back to Categories" Then
-   GetArrayOfCategory
-                                            Dim EngineControl As New DgnEngineControl
-   strCategory = EngineControl.PromptValue(catList(), "choose your category " & longCounter, 1400, 700)
-  End If
-  GetlApplicationNameArray(strCategory)
-  result = EngineControl.PromptValue(appList(), "choose " & strCategory  & " " & longCounter, 1400, 700)
-                       If result="Edit List" Then
-   strCommandLine="C:\Msoffice\Access\DragonScripts.accdb"
-            strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
-            & Chr(34)  & strCommandLine & Chr(34)  & " /cmd " &  Chr(34)  &  "Launcher|" & strCategory  & Chr(34)
-            Shell(strCommandLine,vbMaximizedFocus)
-   Exit Sub
-  End If
-
-  If result="Quit Menu" Then
-   Exit Sub
-  End If
-
-  ' If Not result="Back to Categories" Then Exit Do
-  Dim integerCounter As Integer
-  If  Not result="Back to Categories" Then
-   For integerCounter = 0 To UBound(appList) -1
-    If result=appList(integerCounter) Then
-'     TTSPlayString  result
-     Exit Do
-    End If
-   Next
-  End If
-  If longCounter> 5 Then
-   result=""
-   Exit Do
-  End If
- Loop
-
- If result="" Then Exit Sub
- strCommandLine=GetCommandLine(result)
- Dim stringFolder as String
-stringFolder="C:\Program Files\Microsoft Office\root\Office16\"
- strCommandLine= Replace(strCommandLine,Chr(34),"")
-   Select Case Right(strCommandLine,3)
-   Case "mdb", "mda", "mdw"
-                strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
-                & Chr(34)  & strCommandLine & Chr(34)
-             Shell(strCommandLine,vbMaximizedFocus)
-   Case "cdb","cda","cdw"
-                strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
-                & Chr(34)  & strCommandLine & Chr(34)
-             Shell(strCommandLine,vbMaximizedFocus)
-   Case "rtf", "doc", "dot"
-                strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\winword.EXE"" " _
-                & Chr(34) & strCommandLine & Chr(34)
-             Shell(strCommandLine)
-   Case Else
-          If strCommandLine="C:\Program Files\Microsoft Office\root\Office16\ONENOTE.EXE" Then
-           Shell strCommandLine,vbMaximizedFocus
-          ElseIf strCommandLine="C:\Users\MPhil\source\repos\Cognitive-Speech-STT-Windows\samples\SpeechRecognitionServiceExample\bin\x64\Debug\SpeechToText-WPF-Sample.exe" Then
-           Shell strCommandLine,vbNormalNoFocus
-          ElseIf InStr(strCommandLine,"http")>0 Or InStr(strCommandLine,"www")>0  Or InStr(strCommandLine,"//")>0 Then
-                ShellExecute strCommandLine
-          Else
-             AppBringUp  strCommandLine
-          End If
-
-    End Select
-
- 'EngineControl.DragonBar.ShowMessage 0, "Opening: " & strCommandLine
-
-ExitHere:
- Exit Sub
-
-
-ErrorHandler:
- MsgBox Err.Description,," An Error Has Occurred " & Err.Number
- Resume ExitHere
-
-
-
-End Sub
-
-Function GetlApplicationNameArray(strCategory As String)
-    Dim Connection As ADODB.Connection
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    Set Connection = New ADODB.Connection
-    Connection.ConnectionString =GetConnectionString()
-    Connection.Open
-    Dim stringSQLText As String
-    stringSQLText = "SELECT Launcher.Name" & vbCrLf
-    stringSQLText = stringSQLText & "        FROM (Categories " & vbCrLf
-    stringSQLText = stringSQLText & "  INNER JOIN Launcher " & vbCrLf
-    stringSQLText = stringSQLText & "          ON Categories.ID = Launcher.CategoryID) " & vbCrLf
-    stringSQLText = stringSQLText & "  LEFT JOIN Computers " & vbCrLf
-    stringSQLText = stringSQLText & "          ON Launcher.ComputerID = Computers.ID" & vbCrLf
-    stringSQLText = stringSQLText & "       WHERE (((Categories.Category)='" & strCategory & "') " & vbCrLf
-    stringSQLText = stringSQLText & "         AND ((Computers.ComputerName)='" & atCNames(0) & "')) " & vbCrLf
-    stringSQLText = stringSQLText & "          OR (((Categories.Category)='" & strCategory & "') " & vbCrLf
-    stringSQLText = stringSQLText & "         AND ((Computers.ComputerName) Is Null))" & vbCrLf
-    stringSQLText = stringSQLText & "    ORDER BY Launcher.Name;"
-
-    Recordset.Open stringSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-    End If
-
- Dim k As Integer
-
- Erase appList()
- Do Until Recordset.EOF
-  k=k+1
-  appList(k)= Recordset.Fields("Name")
-  If Mid(appList(k),2,1)="." Then
-   appList(k)= Trim(Mid(appList(k),3))
-  End If
-
-     'rs![Menu] = 0
-
-  Recordset.MoveNext
- Loop
- Recordset.Close
- k=k +1
- appList(k)="Edit List"
- k=k+1
- appList(k)="Back to Categories"
-  k=k+1
- appList(k)="Quit Menu"
-
-End Function
-
-Function GetArrayOfCategory()
-    Dim Connection As ADODB.Connection
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    Set Connection = New ADODB.Connection
-    Connection.ConnectionString =GetConnectionString()
-    Connection.Open
- Dim k As Integer
- Dim strSQLText As String
-
-  strSQLText = "SELECT Categories.ID" & vbCrLf
-  strSQLText = strSQLText & "           , Categories.Category" & vbCrLf
-  strSQLText = strSQLText & "        FROM Categories where Categories.Category_type='Launch Applications';"
-     Recordset.Open strSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-    End If
-
-
-
- Do Until Recordset.EOF
-  k=k+1
-  catList(k)=    Recordset.Fields("Category")
-     Recordset.MoveNext
- Loop
- Recordset.Close
- k= k +1
-catList(k)="Quit Menu"
-End Function
-
-Function GetCategoryfromNumber(intMenuNumber As Integer)As String
- Dim Connection As ADODB.Connection
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    Set Connection = New ADODB.Connection
-    Connection.ConnectionString =GetConnectionString()
-    Connection.Open
-
-    Dim strSQLText As String
- Dim k As Integer
-
-   strSQLText = "SELECT TOP 1 Categories.Category" & vbCrLf
-   strSQLText = strSQLText & "        FROM Categories" & vbCrLf
-   strSQLText = strSQLText & "       WHERE (((Categories.ID) = " & intMenuNumber & "));"
-    Recordset.Open strSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-        GetCategoryfromNumber= (Recordset![Category])
- Else
-  MsgBox " cannot find Category for " & intMenuNumber
- End If
-
- Recordset.Close
-
-End Function
-
-Function GetCommandLine(strName As String) As String
-    Dim Connection As ADODB.Connection
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    Set Connection = New ADODB.Connection
-    Connection.ConnectionString =GetConnectionString()
-    Connection.Open
-
- Dim strSQLText As String
- Dim k As Integer
-   strSQLText = "SELECT TOP 1 Launcher.CommandLine" & vbCrLf
-   strSQLText = strSQLText & "        FROM Launcher" & vbCrLf
-   ' strSQLText = strSQLText & "       WHERE (((Launcher.Name) Like '*" & strName & "'));"
-  strSQLText = strSQLText & "       WHERE (((Launcher.Name) = '" & strName & "'));"
-     Recordset.Open strSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-  GetCommandLine= Recordset![CommandLine]
- Else
-  MsgBox " cannot find command line for " & strName
- End If
-
- Recordset.Close
-
-
-End Function
-Function FileExists(FileName As String)
-
-
- On Error Resume Next
- FileExists = False
- FileExists = (Dir(FileName) <> "")
-
-
-
-End Function
 ]]></content>
     </Command>
     <Command name="Refinery" group="" enabled="true">
@@ -17553,6 +16660,1068 @@ ButtonClick 1,1
 End Sub
 ]]></content>
     </Command>
+    <Command name="&lt;programminglanguage&gt; &lt;categories&gt; &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
+'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
+'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+Dim catList(100) As String
+Dim IntelliSenseList(100) As String
+Dim Remarks As Variant
+Sub Main
+ Dim strLanguage As String
+ Dim strApp As String
+ Dim listnames() As String
+ Dim result As String
+ Dim strCommandLine As String
+ On Error GoTo ErrorHandler
+' MsgBox atCNames(0), vbOkOnly, "Computer Name?"
+'    If UtilityProvider.IsDebugMode Then
+'           UtilityProvider.SetContextValue(0,"IntelliSense")
+'           UtilityProvider.SetContextValue(1,"Text Blocks")
+'    End If
+    Dim Connection As ADODB.Connection
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString = GetConnectionString()' "Provider=SQLOLEDB;Data Source=USER-HP;Initial Catalog=MyDatabase;Integrated Security=SSPI;"
+    Connection.Open
+
+ strLanguage= ListVar1
+ Dim stringCategory As String
+ stringCategory=ListVar2
+ If strLanguage="IntelliSense" Then strLanguage="Not Applicable"
+ If strLanguage="C#" Then strLanguage="C Sharp"
+'  result = EngineControl.PromptValue(IntelliSenseList(), "choose your item", 1400, 700)
+  result=ListVar3
+  If LCase (result) ="edit list" Then
+   strCommandLine="C:\Msoffice\Access\DragonScripts.accdb"
+            strCommandLine = """C:\Program Files (x86)\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
+            & Chr(34)  & strCommandLine & Chr(34)  & " /cmd " &  Chr(34)  & strLanguage & "|" & stringCategory  & Chr(34)
+            Shell(strCommandLine,vbMaximizedFocus)
+   Connection.Close
+   Set Connection= Nothing
+   Exit Sub
+  End If
+  If result="Quit Menu" Then Exit Sub
+ Dim strSendKeysValue As String
+ Dim stringDeliveryType As String
+ strSendKeysValue=GetSendKeys_Value(result, strLanguage, stringCategory, stringDeliveryType, Connection)
+ Dim stringClipboardBackup As String
+ stringClipboardBackup= Clipboard
+ Connection.Close
+ Set Connection= Nothing
+
+' MsgBox strSendKeysValue
+ If Len(Remarks & "")>0 Then
+  'SendDragonKeys "'" & Remarks  & vbCr  & strSendKeysValue
+  ' DragonMsg Remarks
+'  EngineControl.DragonBar.ShowMessage 0, Remarks
+ End If
+' EngineControl.DragonBar.ShowMessage showmessageNone, "Starting Send Keys Process"
+ Select Case stringDeliveryType
+ Case "Copy and Paste"
+   Clipboard strSendKeysValue
+   Wait 0.1
+   SendKeys "^v"
+   Wait 0.1
+  Clipboard stringClipboardBackup
+ Case "Send Keys","Send Dragon Keys","Send System Keys"
+    strSendKeysValue=Replace(strSendKeysValue,"(","{(}")
+    strSendKeysValue=Replace(strSendKeysValue,")","{)}")
+
+  If InStr(strSendKeysValue,Chr(13)) = 0 Then
+    If Len(strSendKeysValue)> 100 Then
+     SendKeys Left (strSendKeysValue, 100), True
+     Wait 0.1
+     SendKeys Mid(strSendKeysValue, 101), True
+    Else
+     SendKeys strSendKeysValue, True
+    End If
+  Else
+   SendKeysWithCRLF strSendKeysValue
+  End If
+ Case "Execute as Script"
+  'VoiceCommand.ExecuteScript strSendKeysValue,0
+ Case "Clipboard Only"
+  Clipboard strSendKeysValue
+ End Select
+' EngineControl.DragonBar.ShowMessage showmessageNoBeep , "Finished Send Keys Process"
+ExitHere:
+ Exit Sub
+
+
+ErrorHandler:
+ If Err.Number= 521 Or Err.Number= 10140 Then ' I believe this is can't access the clipboard
+  Resume Next
+ End If
+ MsgBox Err.Number  & " " & Err.Description,,"IntelliSense script; An Error Has Occurred "
+ Resume ExitHere
+End Sub
+
+Function GetIntelliSenseArray(strCategory As String, strLanguage As String, Connection As ADODB.Connection)
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+ Dim stringSQLText As String
+ Dim k As Integer
+    stringSQLText = "SELECT CustomIntelliSense.Display_Value" & vbCrLf
+    stringSQLText = stringSQLText & "           , Languages.Language" & vbCrLf
+    stringSQLText = stringSQLText & "           , CustomIntelliSense.LanguageID" & vbCrLf
+    stringSQLText = stringSQLText & "           , Computers.ComputerName" & vbCrLf
+    stringSQLText = stringSQLText & "        FROM (Languages " & vbCrLf
+    stringSQLText = stringSQLText & "  INNER JOIN (Categories " & vbCrLf
+    stringSQLText = stringSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
+    stringSQLText = stringSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
+    stringSQLText = stringSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID) " & vbCrLf
+    stringSQLText = stringSQLText & "   LEFT JOIN Computers " & vbCrLf
+    stringSQLText = stringSQLText & "          ON CustomIntelliSense.ComputerID = Computers.ID" & vbCrLf
+    stringSQLText = stringSQLText & "       WHERE (((Languages.Language)='" & strLanguage & "') " & vbCrLf
+    stringSQLText = stringSQLText & "         AND ((Categories.Category)='" & strCategory & "') " & vbCrLf
+    stringSQLText = stringSQLText & "         AND ((Computers.ComputerName)='" & atCNames(0) & "' Or (Computers.ComputerName) Is Null))" & vbCrLf
+    stringSQLText = stringSQLText & "    ORDER BY CustomIntelliSense.Display_Value;"
+
+    Recordset.Open stringSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+        Erase IntelliSenseList()
+    End If
+ Do Until Recordset.EOF
+  k=k+1
+  IntelliSenseList(k)=   Recordset.Fields("Display_Value")
+     Recordset.MoveNext
+ Loop
+ Recordset.Close
+ Set Recordset= Nothing
+  IntelliSenseList(k+1)="Edit List"
+ IntelliSenseList(k+2)="Quit Menu"
+End Function
+
+Function GetArrayOfCategory(strLanguage As String, Connection As ADODB.Connection)
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    On Error GoTo GetArrayOfCategory_Error
+ Dim k As Integer
+ Dim strSQLText As String
+    strSQLText = "SELECT DISTINCT Categories.*" & vbCrLf
+    strSQLText = strSQLText & "           , Languages.Language" & vbCrLf
+    strSQLText = strSQLText & "        FROM Languages " & vbCrLf
+    strSQLText = strSQLText & "  INNER JOIN (Categories " & vbCrLf
+    strSQLText = strSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
+    strSQLText = strSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
+    strSQLText = strSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID" & vbCrLf
+    strSQLText = strSQLText & "       WHERE (((Categories.Category_Type)='IntelliSense Command') " & vbCrLf
+    strSQLText = strSQLText & "         AND ((Languages.Language)='" & strLanguage  & "'))"
+ strSQLText = strSQLText & "    ORDER BY Categories.Category;"
+    Recordset.Open strSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+    End If
+
+ Do Until Recordset.EOF
+  k=k+1
+  catList(k)= Recordset.Fields("Category")
+
+
+  Recordset.MoveNext
+ Loop
+ Recordset.Close
+ Set Recordset= Nothing
+ k= k +1
+catList(k)="Quit Menu"
+ExitHere:
+   Exit Function
+
+GetArrayOfCategory_Error:
+    Select Case Err.Number
+    '1
+    Case Else
+        MsgBox "Unexpected Error:" _
+            & vbCrLf & "Error " & Err.Number & " " & Err.Description _
+            & " in procedure GetArrayOfCategory of VBA Document Form_test some code" _
+            , vbCritical, "Please Investigate"
+        Resume ExitHere
+        ' Resume 'For Debug Only
+    End Select
+
+End Function
+
+
+Function GetSendKeys_Value(strName As String, strLanguage As String, stringCategory As String, stringDeliveryType As String, Connection As ADODB.Connection) As String
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Dim StringSQLText As String
+    Dim k As Integer
+    StringSQLText = "SELECT Top 1 CustomIntelliSense.SendKeys_Value" & vbCrLf
+    StringSQLText = StringSQLText & "           , CustomIntelliSense.Remarks" & vbCrLf
+    StringSQLText = StringSQLText & "           , Languages.Language" & vbCrLf
+    StringSQLText = StringSQLText & "           , CustomIntelliSense.Display_Value" & vbCrLf
+ StringSQLText = StringSQLText & "           , CustomIntelliSense.DeliveryType" & vbCrLf
+    StringSQLText = StringSQLText & "           , Categories.Category" & vbCrLf
+    StringSQLText = StringSQLText & "        FROM Languages " & vbCrLf
+    StringSQLText = StringSQLText & "  INNER JOIN (Categories " & vbCrLf
+    StringSQLText = StringSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
+    StringSQLText = StringSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
+    StringSQLText = StringSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID" & vbCrLf
+    StringSQLText = StringSQLText & "       WHERE (((Languages.Language)='" & strLanguage & "') " & vbCrLf
+    StringSQLText = StringSQLText & "         AND ((CustomIntelliSense.Display_Value)='" & strName & "') " & vbCrLf
+    StringSQLText = StringSQLText & "         AND ((Categories.Category)='" & stringCategory & "'))" & vbCrLf
+    StringSQLText = StringSQLText & "    ORDER BY CustomIntelliSense.Display_Value;"
+    Recordset.Open StringSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+        ' GetSendKeys_Value = Replace(Recordset![SendKeys_Value], Chr(10), "")
+        GetSendKeys_Value= Recordset![SendKeys_Value]
+        Remarks = Recordset![Remarks]
+        stringDeliveryType= Recordset![DeliveryType]
+    Else
+        MsgBox " cannot find command line for " & strName
+    End If
+
+    Recordset.Close
+ Set Recordset= Nothing
+
+
+End Function
+
+Function FileExists(FileName As String)
+
+
+ On Error Resume Next
+ FileExists = False
+ FileExists = (Dir(FileName) <> "")
+
+
+
+End Function
+
+
+Public Sub SendKeysWithCRLF(stringValue As String)
+    Dim stringTemporary As String
+    Dim integerPosition As Integer
+    'integerPosition = InStr(stringValue, Chr(13) & Chr(10))
+    integerPosition = InStr(stringValue, Chr(13))
+    'integerPosition = InStr(stringValue,  Chr(10))
+    If integerPosition > 0 Then
+        stringTemporary = Left(stringValue, integerPosition - 1)
+        Do
+
+            'Debug.Print stringTemporary
+            SendKeys stringTemporary, True
+            SendKeys "{Enter}"
+
+            stringValue = Mid(stringValue, integerPosition + 2)
+            integerPosition = InStr(stringValue, Chr(13) )
+            If integerPosition = 0 Then Exit Do
+            stringTemporary = Left(stringValue, integerPosition - 1)
+        Loop
+    End If
+    SendKeys stringValue
+    'Debug.Print stringValue
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navigate To URL" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim backup as String
+backup=Clipboard
+SendKeys "^c"
+Wait 0.2
+Dim address as String
+address=Clipboard
+ShellExecute address
+
+Wait 0.1
+SendKeys "{Enter}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Window Monitor Switch Left" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[SendSystemKeys "{Win+Shift+Left}"]]></content>
+    </Command>
+    <Command name="Enter &lt;1to20&gt; Random Numbers" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+
+ Dim LRandomNumber As Integer
+    Randomize
+    Dim Word As String
+    Dim integerCounter As Integer
+    For integerCounter = 1 To CInt(ListVar1)
+        LRandomNumber = Int((1 - 100 + 1) * Rnd + 100)
+        SendKeys  LRandomNumber  & vbTab
+        Wait 0.1
+    Next
+End Sub
+]]></content>
+    </Command>
+    <Command name="Generate Password &lt;1to20&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+
+ Dim LRandomNumber As Integer
+    Randomize
+    Dim Word As String
+    Dim integerCounter As Integer
+
+        Dim integerCounter2 as Integer
+        For integerCounter2 = 1 to ListVar1
+            LRandomNumber = Int((62 - 122 + 1) * Rnd + 122)
+            SendKeys  chr$(LRandomNumber),True
+        next
+        Wait 0.1
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;DiagonalDirection&gt; &lt;1to100&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+offset = Val( ListVar2)
+if ListVar1 = "Right Up" then SetMousePosition 2, offset, -offset
+if ListVar1 = "Right Down"   then SetMousePosition 2, offset, offset
+if ListVar1 = "Left Down"   then SetMousePosition 2, -offset, offset
+if ListVar1 = "Left Up"  then SetMousePosition 2, -offset, -offset
+if ListVar1 = "Up Right" then SetMousePosition 2, offset, -offset
+if ListVar1 = "Down Right"   then SetMousePosition 2, offset, offset
+if ListVar1 = "Down Left"   then SetMousePosition 2, -offset, offset
+if ListVar1 = "Up Left"  then SetMousePosition 2, -offset, -offset
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;scrollbar_2&gt; &lt;atoz_2&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+Type RECT
+ Left As Long
+ Top As Long
+ Right As Long
+ Bottom As Long
+End Type
+Type POINTAPI
+ x As Long
+ y As Long
+End Type
+' declare Win32 API functions
+Declare Function GetWindowRect Lib "user32" Alias "GetWindowRect" (ByVal hwnd As Long, lpRect As RECT) As Long
+Declare Function GetForegroundWindow& Lib "user32" ()
+Private Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
+
+Sub Main
+ Dim intTop As Long
+ Dim LongLeft As Long
+
+ Select Case ListVar2
+ Case "Zero"
+  intTop=5
+ Case "Alpha"
+  intTop= 50
+ Case "Bravo"
+  intTop= 100
+ Case "Charlie"
+  intTop= 150
+ Case "Delta"
+  intTop= 200
+ Case "Echo"
+  intTop= 250
+ Case "Foxtrot"
+  intTop= 300
+ Case "Golf"
+  intTop= 350
+ Case "Hotel"
+  intTop= 400
+ Case "India"
+  intTop= 450
+ Case "Juliet"
+  intTop= 500
+ Case "Kilo"
+  intTop= 550
+ Case "Lima"
+  intTop= 600
+ Case "Mike"
+  intTop= 650
+ Case "November"
+  intTop= 700
+ Case "Oscar"
+  intTop= 750
+ Case "Papa"
+  intTop= 800
+ Case "Qubec"
+  intTop= 850
+ Case "Romeo"
+  intTop= 900
+ Case "Sierra"
+  intTop= 950
+ Case "Tango"
+  intTop= 1000
+ Case "Uniform"
+  intTop= 1050
+ End Select
+ Select Case ListVar1
+ Case "Scrollbar","Scrollbar Left"
+  LongLeft = 1665
+ Case "Collapse","Collapse Left"
+  'SetMousePosition 1,148,362
+  LongLeft=362
+ Case "Collapse Right"
+  LongLeft=362+1665
+ Case Else
+  LongLeft = 3350
+ End Select
+ SetMousePositionWinAPI False,LongLeft, intTop
+ ButtonClick 1,1
+End Sub
+
+Function  SetMousePositionWinAPI(BooleanRelative As Boolean ,integerLeft As Integer, integerTop As Integer)
+ Dim hwnd As Long
+ Dim offset As POINTAPI
+ Dim result As POINTAPI
+ If BooleanRelative Then
+  hwnd = GetForegroundWindow
+  offset.x= integerLeft
+  offset.y= integerTop
+  result = GetWinCurPos(hwnd,offset)
+ Else
+  result.x=integerLeft
+  result.y=integerTop
+ End If
+ SetCursorPos(result.x, result.y)
+End Function
+Function GetWinCurPos(hwnd As Long,pt As POINTAPI) As POINTAPI
+ Dim wRect As RECT
+ Dim result As POINTAPI
+ GetWindowRect hwnd, wRect
+ result.x = pt.x + wRect.Left
+ result.y = pt.y + wRect.Top
+ GetWinCurPos = result
+End Function
+]]></content>
+    </Command>
+    <Command name="&lt;screen&gt; &lt;atoz&gt; &lt;atoz&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[
+Public Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
+Public Declare Sub mouse_event Lib "user32" Alias "mouse_event" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long)
+Public Const MOUSEEVENTF_LEFTDOWN = &H2 ' left button down
+Public Const MOUSEEVENTF_LEFTUP = &H4 ' left button up
+Public Const MOUSEEVENTF_MIDDLEDOWN = &H20 ' middle button down
+Public Const MOUSEEVENTF_MIDDLEUP = &H40 ' middle button up
+Public Const MOUSEEVENTF_RIGHTDOWN = &H8 ' right button down
+Public Const MOUSEEVENTF_RIGHTUP = &H10 ' right button up
+
+
+ Private Declare Function GetSystemMetrics Lib "user32.dll" (ByVal nIndex As Long) As Long
+Const SM_CXSCREEN = 0
+Const SM_CYSCREEN = 1
+Private Const SM_CMONITORS As Long = 80
+Public Type RectAPI
+    Left As Long
+    Top As Long
+    Right As Long
+    Bottom As Long
+End Type
+
+Type POINTAPI 'Declare types
+ x As Long
+ y As Long
+End Type
+Declare Function GetCursorPos Lib "user32" _
+(lpPoint As POINTAPI) As Long 'Declare API
+
+Private Const SM_XVIRTUALSCREEN As Long = 76
+Private Const SM_YVIRTUALSCREEN As Long = 77
+Private Const SM_CXVIRTUALSCREEN As Long = 78
+Private Const SM_CYVIRTUALSCREEN As Long = 79
+Dim blnDualMonitors As Boolean
+Dim blnFineTune As Boolean
+Sub Main
+' this script is primarily for the second screen and assumes resolutions as follows screen one 1680 by 1050 and screen two 1280 by 1024  (1440 times 900 is what the new screen is)
+' trying to make this script also work for the following screen set up which is what it is at home 1280×1024 1280×800
+
+ Dim intLeft As Integer
+ Dim intTop As Integer
+ Dim myRect As RectAPI
+ Dim x As Long
+ Dim y As Long
+ Dim lngScreen1Width As Long
+ Dim lngScreen1Height As Long
+ Dim lngScreen2Width As Long
+ Dim lngScreen2Height As Long
+' work out if there is a second monitor
+
+ blnDualMonitors=MultiMonitors()
+' get the number of pixels across and down for the main monitor
+    lngScreen1Width  = GetSystemMetrics(SM_CXSCREEN)
+    lngScreen1Height = GetSystemMetrics(SM_CYSCREEN)
+ 'MsgBox "multi screens" & blnDualMonitors
+' get the number of pixels across for the second screen
+  myRect=GetVirtualDisplayRect()
+  lngScreen2Width= myRect.Right -lngScreen1Width
+' work out the height of the second screen based on the width of screens
+ If myRect.Right=2960  Or myRect.Right= 2986 Then
+  lngScreen2Height=1024
+ ElseIf myRect.Right=2560 Then
+  lngScreen2Height=800
+ ElseIf myRect.Right=3120 Then
+  lngScreen2Height=900
+ ElseIf myRect.Right= 3360 Then
+  lngScreen2Height= 1050
+ End If
+ 'MsgBox "screen 2 Height " & lngScreen2Height & " myRect.Riight: " & myRect.Right
+' now need to put the rest into practice from here
+ blnFineTune=False
+ Dim columnLetter as String
+ columnLetter= CStr(ListVar2)
+ Dim rowLetter as String
+ rowLetter=CStr(ListVar3)
+ intLeft=GetScreenCoordinates(columnLetter,1)
+ intTop=GetScreenCoordinates(rowLetter,2)
+   Dim z As POINTAPI 'Declare variable
+   Dim xpos As Long, ypos As Long
+ 'MsgBox " list of variable values are " & ListVar1 & " " & ListVar2 & " " & ListVar3
+ 'MsgBox "fine tune " & blnFineTune
+ If blnFineTune Then
+  SetMousePosition   2,intLeft,intTop
+ Else
+  Select Case ListVar1
+  Case "Grid Left","Grid"  ,"Arrow Click","Click","Right Click","Double Click","doubleclick","Left"
+   If intLeft> lngScreen1Width Then intLeft=lngScreen1Width-1
+   If intTop> lngScreen1Height Then intTop=lngScreen1Height-1
+     SetCursorPos(CLng(intLeft),CLng(intTop)) ' Where X and Y are in pixel
+  Case "Grid Right" ,"Screen Click" ,"Touch","Double Touch","Right Touch","Right"
+   If intLeft> lngScreen1Width + lngScreen1Width Then intLeft=(lngScreen1Width+lngScreen1Width)-1
+   If intTop> lngScreen2Height Then intTop=lngScreen2Height-1
+   ' MsgBox "intLeft = " & intLeft & " intTop= " & intTop & " lngScreen1Width=" & lngScreen1Width
+   SetCursorPos(CLng(lngScreen1Width+ intLeft),CLng(intTop))
+  Case "Drag","Drag Arrow"
+    GetCursorPos z 'Get Coordinates
+    xpos = CLng(z.x)
+    Wait 0.5
+    ypos = CLng(z.y)
+    mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
+
+    SetCursorPos(CLng(intLeft),CLng(intTop))
+    Wait 0.5
+    mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
+  Case "Drag Screen"
+   GetCursorPos z 'Get Coordinates
+    xpos = CLng(z.x)
+    ypos = CLng(z.y)
+    mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
+    Wait 0.5
+    SetCursorPos(CLng(lngScreen1Width+ intLeft),CLng(intTop))
+    Wait 0.5
+    mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
+  End Select
+ End If
+Wait 0.1
+
+ Select Case ListVar1
+ Case "Arrow Click","Click","Screen Click","Touch"
+
+  ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
+ Case "Double Click","Double Touch","doubleclick"
+
+  ButtonClick 1,2
+ Case "Right Click","Right Touch"
+  ButtonClick 2,1
+ End Select
+
+End Sub
+Function GetScreenCoordinates(s As String,arg As Integer) As Integer
+ Dim intLeft As Integer
+ Dim intTop As Integer
+If arg=1 Then
+ Select Case s
+ Case "Zero"
+  intLeft=5
+ Case "Alpha"
+  intLeft= 50
+ Case "Bravo"
+  intLeft= 100
+ Case "Charlie"
+  intLeft= 150
+ Case "Delta"
+  intLeft= 200
+ Case "Echo"
+  intLeft= 250
+ Case "Foxtrot"
+  intLeft= 300
+ Case "Golf"
+  intLeft= 350
+ Case "Hotel"
+  intLeft= 400
+ Case "India"
+  intLeft= 450
+ Case "Juliet"
+  intLeft= 500
+ Case "Kilo"
+  intLeft= 550
+ Case "Lima"
+  intLeft= 600
+ Case "Mike"
+  intLeft= 650
+ Case "November"
+  intLeft= 700
+ Case "Oscar"
+  intLeft= 750
+ Case "Papa"
+  intLeft= 800
+ Case "Qubec"
+  intLeft= 850
+ Case "Romeo"
+  intLeft= 900
+ Case "Sierra"
+  intLeft= 950
+ Case "Tango"
+  intLeft= 1000
+ Case "Uniform"
+  intLeft= 1050
+ Case "Victor"
+  intLeft= 1100
+ Case "Whiskey"
+  intLeft= 1150
+ Case "X-ray"
+  intLeft= 1200
+ Case "Yankee"
+  intLeft= 1250
+ Case "Zulu"
+  intLeft= 1300
+ Case "One","1"
+  intLeft= 1350
+ Case "Two"
+  intLeft= 1400
+ Case "Three"
+  intLeft= 1450
+ Case "Four","For"
+  intLeft= 1500
+ Case "Five"
+  intLeft= 1550
+ Case "Six"
+  intLeft= 1600
+ Case "Seven"
+  intLeft= 1650
+ End Select
+ GetScreenCoordinates=intLeft
+Else
+ Select Case s
+ Case "Zero"
+  intTop=5
+ Case "Alpha"
+  intTop= 50
+ Case "Bravo"
+  intTop= 100
+ Case "Charlie"
+  intTop= 150
+ Case "Delta"
+  intTop= 200
+ Case "Echo"
+  intTop= 250
+ Case "Foxtrot"
+  intTop= 300
+ Case "Golf"
+  intTop= 350
+ Case "Hotel"
+  intTop= 400
+ Case "India"
+  intTop= 450
+ Case "Juliet"
+  intTop= 500
+ Case "Kilo"
+  intTop= 550
+ Case "Lima"
+  intTop= 600
+ Case "Mike"
+  intTop= 650
+ Case "November"
+  intTop= 700
+ Case "Oscar"
+  intTop= 750
+ Case "Papa"
+  intTop= 800
+ Case "Qubec"
+  intTop= 850
+ Case "Romeo"
+  intTop= 900
+ Case "Sierra"
+  intTop= 950
+ Case "Tango"
+  intTop= 1000
+ Case "Uniform"
+  intTop= 1050
+ End Select
+ GetScreenCoordinates=intTop
+End If
+End Function
+
+Private Function MultiMonitors() As Boolean
+ MultiMonitors = (GetSystemMetrics(SM_CMONITORS) > 1)
+End Function
+
+Public Function GetVirtualDisplayRect() As RectAPI
+With GetVirtualDisplayRect
+    .Left = GetSystemMetrics(SM_XVIRTUALSCREEN)
+    .Top = GetSystemMetrics(SM_YVIRTUALSCREEN)
+    .Right = GetSystemMetrics(SM_CXVIRTUALSCREEN) + .Left
+    .Bottom = GetSystemMetrics(SM_CYVIRTUALSCREEN) + .Top
+End With
+End Function
+]]></content>
+    </Command>
+    <Command name="&lt;Direction&gt; Select &lt;1to31&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[
+Sub Main
+
+
+if ListVar2="One" Then
+ numberOfWords=1
+else
+ numberOfWords=ListVar2
+End If
+   SendKeys "^+{" & ListVar1 & " " & numberOfWords & "}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Launcher &lt;launcher_categories&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Reference {57D58F7A-9EB7-40AC-98FC-8E14FA414452}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dgnmycmds.dll#DgnMyCommands#DgnMyCommands
+'#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
+'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
+'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+Dim catList(100) As String
+Dim appList(100) As String
+Sub Main
+ Dim strApp As String
+ Dim listnames() As String
+ Dim result As String
+ Dim strCommandLine As String
+ Dim intMenuNumber As Integer
+ Dim strCategory As String
+ On Error GoTo ErrorHandler
+
+ strCategory=ListVar1
+ If strCategory="Categories" Then
+  result="Back to Categories"
+ End If
+ Dim longCounter As Long
+ Do
+  longCounter=longCounter + 1
+  If result="Back to Categories" Then
+   GetArrayOfCategory
+                                            Dim EngineControl As New DgnEngineControl
+   strCategory = EngineControl.PromptValue(catList(), "choose your category " & longCounter, 1400, 700)
+  End If
+  GetlApplicationNameArray(strCategory)
+  result = EngineControl.PromptValue(appList(), "choose " & strCategory  & " " & longCounter, 1400, 700)
+  If result="Edit List" Then
+   strCommandLine="C:\Users\MPhil\source\repos\DictationBoxMSP\VoiceLauncher\bin\Release\VoiceLauncher.exe"
+            strCommandLine =    strCommandLine & " "  & Chr(34)  & "/ " &  "Launcher" & CHR(34)  & " " & Chr(34) &   " / " &  ListVar1  & Chr(34) & " " & Chr(34) &   " / " &  "Unknown"  & Chr(34)
+            Shell(strCommandLine,vbNormalFocus)
+   Exit Sub
+  End If
+
+
+  If result="Quit Menu" Then
+   Exit Sub
+  End If
+
+  ' If Not result="Back to Categories" Then Exit Do
+  Dim integerCounter As Integer
+  If  Not result="Back to Categories" Then
+   For integerCounter = 0 To UBound(appList) -1
+    If result=appList(integerCounter) Then
+'     TTSPlayString  result
+     Exit Do
+    End If
+   Next
+  End If
+  If longCounter> 5 Then
+   result=""
+   Exit Do
+  End If
+ Loop
+
+ If result="" Then Exit Sub
+ strCommandLine=GetCommandLine(result)
+ Dim stringFolder as String
+stringFolder="C:\Program Files\Microsoft Office\root\Office16\"
+ strCommandLine= Replace(strCommandLine,Chr(34),"")
+   Select Case Right(strCommandLine,3)
+   Case "mdb", "mda", "mdw"
+                strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
+                & Chr(34)  & strCommandLine & Chr(34)
+             Shell(strCommandLine,vbMaximizedFocus)
+   Case "cdb","cda","cdw"
+                strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
+                & Chr(34)  & strCommandLine & Chr(34)
+             Shell(strCommandLine,vbMaximizedFocus)
+   Case "rtf", "doc", "dot"
+                strCommandLine = """C:\Program Files\Microsoft Office\root\Office16\winword.EXE"" " _
+                & Chr(34) & strCommandLine & Chr(34)
+             Shell(strCommandLine)
+   Case Else
+          If strCommandLine="C:\Program Files\Microsoft Office\root\Office16\ONENOTE.EXE" Then
+           Shell strCommandLine,vbMaximizedFocus
+          ElseIf strCommandLine="C:\Users\MPhil\source\repos\Cognitive-Speech-STT-Windows\samples\SpeechRecognitionServiceExample\bin\x64\Debug\SpeechToText-WPF-Sample.exe" Then
+           Shell strCommandLine,vbNormalNoFocus
+          ElseIf InStr(strCommandLine,"http")>0 Or InStr(strCommandLine,"www")>0  Or InStr(strCommandLine,"//")>0 Then
+                ShellExecute strCommandLine
+          Else
+             AppBringUp  strCommandLine
+          End If
+
+    End Select
+
+ 'EngineControl.DragonBar.ShowMessage 0, "Opening: " & strCommandLine
+
+ExitHere:
+ Exit Sub
+
+
+ErrorHandler:
+ MsgBox Err.Description,," An Error Has Occurred " & Err.Number
+ Resume ExitHere
+
+
+
+End Sub
+
+Function GetlApplicationNameArray(strCategory As String)
+    Dim Connection As ADODB.Connection
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString =GetConnectionString()
+    Connection.Open
+    Dim stringSQLText As String
+    stringSQLText = "SELECT Launcher.Name" & vbCrLf
+    stringSQLText = stringSQLText & "        FROM (Categories " & vbCrLf
+    stringSQLText = stringSQLText & "  INNER JOIN Launcher " & vbCrLf
+    stringSQLText = stringSQLText & "          ON Categories.ID = Launcher.CategoryID) " & vbCrLf
+    stringSQLText = stringSQLText & "  LEFT JOIN Computers " & vbCrLf
+    stringSQLText = stringSQLText & "          ON Launcher.ComputerID = Computers.ID" & vbCrLf
+    stringSQLText = stringSQLText & "       WHERE (((Categories.Category)='" & strCategory & "') " & vbCrLf
+    stringSQLText = stringSQLText & "         AND ((Computers.ComputerName)='" & atCNames(0) & "')) " & vbCrLf
+    stringSQLText = stringSQLText & "          OR (((Categories.Category)='" & strCategory & "') " & vbCrLf
+    stringSQLText = stringSQLText & "         AND ((Computers.ComputerName) Is Null))" & vbCrLf
+    stringSQLText = stringSQLText & "    ORDER BY Launcher.Name;"
+
+    Recordset.Open stringSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+    End If
+
+ Dim k As Integer
+
+ Erase appList()
+ Do Until Recordset.EOF
+  k=k+1
+  appList(k)= Recordset.Fields("Name")
+  If Mid(appList(k),2,1)="." Then
+   appList(k)= Trim(Mid(appList(k),3))
+  End If
+
+     'rs![Menu] = 0
+
+  Recordset.MoveNext
+ Loop
+ Recordset.Close
+ k=k +1
+ appList(k)="Edit List"
+ k=k+1
+ appList(k)="Back to Categories"
+  k=k+1
+ appList(k)="Quit Menu"
+
+End Function
+
+Function GetArrayOfCategory()
+    Dim Connection As ADODB.Connection
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString =GetConnectionString()
+    Connection.Open
+ Dim k As Integer
+ Dim strSQLText As String
+
+  strSQLText = "SELECT Categories.ID" & vbCrLf
+  strSQLText = strSQLText & "           , Categories.Category" & vbCrLf
+  strSQLText = strSQLText & "        FROM Categories where Categories.Category_type='Launch Applications';"
+     Recordset.Open strSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+    End If
+
+
+
+ Do Until Recordset.EOF
+  k=k+1
+  catList(k)=    Recordset.Fields("Category")
+     Recordset.MoveNext
+ Loop
+ Recordset.Close
+ k= k +1
+catList(k)="Quit Menu"
+End Function
+
+Function GetCategoryfromNumber(intMenuNumber As Integer)As String
+ Dim Connection As ADODB.Connection
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString =GetConnectionString()
+    Connection.Open
+
+    Dim strSQLText As String
+ Dim k As Integer
+
+   strSQLText = "SELECT TOP 1 Categories.Category" & vbCrLf
+   strSQLText = strSQLText & "        FROM Categories" & vbCrLf
+   strSQLText = strSQLText & "       WHERE (((Categories.ID) = " & intMenuNumber & "));"
+    Recordset.Open strSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+        GetCategoryfromNumber= (Recordset![Category])
+ Else
+  MsgBox " cannot find Category for " & intMenuNumber
+ End If
+
+ Recordset.Close
+
+End Function
+
+Function GetCommandLine(strName As String) As String
+    Dim Connection As ADODB.Connection
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString =GetConnectionString()
+    Connection.Open
+
+ Dim strSQLText As String
+ Dim k As Integer
+   strSQLText = "SELECT TOP 1 Launcher.CommandLine" & vbCrLf
+   strSQLText = strSQLText & "        FROM Launcher" & vbCrLf
+   ' strSQLText = strSQLText & "       WHERE (((Launcher.Name) Like '*" & strName & "'));"
+  strSQLText = strSQLText & "       WHERE (((Launcher.Name) = '" & strName & "'));"
+     Recordset.Open strSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+  GetCommandLine= Recordset![CommandLine]
+ Else
+  MsgBox " cannot find command line for " & strName
+ End If
+
+ Recordset.Close
+
+
+End Function
+Function FileExists(FileName As String)
+
+
+ On Error Resume Next
+ FileExists = False
+ FileExists = (Dir(FileName) <> "")
+
+
+
+End Function
+]]></content>
+    </Command>
+    <Command name="Microsoft Edge" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+    AppBringUp "msedge"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Capture Video" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+%{F10}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Set &lt;FontFace_2&gt; &lt;FontSize_2&gt; &lt;FontStyle_2&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+if ListVar1 = "Times" then param1 = "Times New Roman"
+if ListVar1 = "Courier" then param1 = "Courier New"
+if ListVar1 = "Arial" then param1 = "Arial"
+if ListVar1 = "Comic" then param1 = "Comic Sans MS"
+if ListVar1 = "Impact" then param1 = "Impact"
+if ListVar1 = "Garamond" then param1 = "Garamond"
+if ListVar1 = "Kaufmann" then param1 = "Kaufmann BT"
+if ListVar1 = "Monotype" then param1 = "Monotype Corsiva"
+if ListVar3 = "Plain" then param3 = "Regular"
+if ListVar3 = "Plain text" then param3 = "Regular"
+if ListVar3 = "Underline" then param3 = "%u"
+if ListVar3 = "Italics" then param3 = "Italic"
+if ListVar3 = "Bold" then param3 = "bold"
+SendKeys "%of%f" + param1 + "%s" + ListVar2 + "%y" + ListVar3 + "~{Right}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="View Last Capture" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%l"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Hypertext Custom Tag &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+
+Sub Main
+ Dim stringTag As String
+ stringTag=ListVar1
+  SendKeys "<" & stringTag  & "></" & stringTag  & ">{Left " & 3 + Len(stringTag) & "}"
+
+End Sub
+
+]]></content>
+    </Command>
+    <Command name="Next &lt;characters&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^h"
+Wait .2
+Dim character as String
+character=Mid$(ListVar1,1,InStr(ListVar1, "\")-1)
+SendKeys character
+Wait .1
+SendKeys "{Esc}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Browse Scripts" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+    Shell "C:\Users\MPhil\source\repos\DictationBoxMSP\BrowseScripts\bin\Release\BrowseScripts.exe",vbNormalFocus
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;1to31&gt; Items Up" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+   SendKeys "+{Up " & ListVar1 & "}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Edit To Do &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+
+
+   strCommandLine="C:\Users\MPhil\source\repos\DictationBoxMSP\VoiceLauncher\bin\Release\VoiceLauncher.exe"
+            strCommandLine =    strCommandLine & " "  & Chr(34)  & "/ " &  "Todos" & CHR(34)  & " " & Chr(34) &   " / " &  ListVar1  & Chr(34)
+            Shell(strCommandLine,vbNormalFocus)
+
+
+End Sub
+]]></content>
+    </Command>
     <Command name="&lt;programminglanguage&gt; &lt;categories&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
@@ -17832,284 +18001,6 @@ Public Sub SendKeysWithCRLF(stringValue As String)
 End Sub
 ]]></content>
     </Command>
-    <Command name="&lt;programminglanguage&gt; &lt;categories&gt; &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
-'#Reference {5C486340-2F92-11D1-A47C-00A024A3A678}#1.0#0#C:\Program Files (x86)\Nuance\NaturallySpeaking15\Program\dnstk10.dll#Dragon NaturallySpeaking ActiveX Controls#DNSTools
-'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
-Dim catList(100) As String
-Dim IntelliSenseList(100) As String
-Dim Remarks As Variant
-Sub Main
- Dim strLanguage As String
- Dim strApp As String
- Dim listnames() As String
- Dim result As String
- Dim strCommandLine As String
- On Error GoTo ErrorHandler
-' MsgBox atCNames(0), vbOkOnly, "Computer Name?"
-'    If UtilityProvider.IsDebugMode Then
-'           UtilityProvider.SetContextValue(0,"IntelliSense")
-'           UtilityProvider.SetContextValue(1,"Text Blocks")
-'    End If
-    Dim Connection As ADODB.Connection
-    Set Connection = New ADODB.Connection
-    Connection.ConnectionString = GetConnectionString()' "Provider=SQLOLEDB;Data Source=USER-HP;Initial Catalog=MyDatabase;Integrated Security=SSPI;"
-    Connection.Open
-
- strLanguage= ListVar1
- Dim stringCategory As String
- stringCategory=ListVar2
- If strLanguage="IntelliSense" Then strLanguage="Not Applicable"
- If strLanguage="C#" Then strLanguage="C Sharp"
-'  result = EngineControl.PromptValue(IntelliSenseList(), "choose your item", 1400, 700)
-  result=ListVar3
-  If LCase (result) ="edit list" Then
-   strCommandLine="C:\Msoffice\Access\DragonScripts.accdb"
-            strCommandLine = """C:\Program Files (x86)\Microsoft Office\root\Office16\MSACCESS.EXE"" " _
-            & Chr(34)  & strCommandLine & Chr(34)  & " /cmd " &  Chr(34)  & strLanguage & "|" & stringCategory  & Chr(34)
-            Shell(strCommandLine,vbMaximizedFocus)
-   Connection.Close
-   Set Connection= Nothing
-   Exit Sub
-  End If
-  If result="Quit Menu" Then Exit Sub
- Dim strSendKeysValue As String
- Dim stringDeliveryType As String
- strSendKeysValue=GetSendKeys_Value(result, strLanguage, stringCategory, stringDeliveryType, Connection)
- Dim stringClipboardBackup As String
- stringClipboardBackup= Clipboard
- Connection.Close
- Set Connection= Nothing
-
-' MsgBox strSendKeysValue
- If Len(Remarks & "")>0 Then
-  'SendDragonKeys "'" & Remarks  & vbCr  & strSendKeysValue
-  ' DragonMsg Remarks
-'  EngineControl.DragonBar.ShowMessage 0, Remarks
- End If
-' EngineControl.DragonBar.ShowMessage showmessageNone, "Starting Send Keys Process"
- Select Case stringDeliveryType
- Case "Copy and Paste"
-   Clipboard strSendKeysValue
-   Wait 0.1
-   SendKeys "^v"
-   Wait 0.1
-  Clipboard stringClipboardBackup
- Case "Send Keys","Send Dragon Keys","Send System Keys"
-    strSendKeysValue=Replace(strSendKeysValue,"(","{(}")
-    strSendKeysValue=Replace(strSendKeysValue,")","{)}")
-
-  If InStr(strSendKeysValue,Chr(13)) = 0 Then
-    If Len(strSendKeysValue)> 100 Then
-     SendKeys Left (strSendKeysValue, 100), True
-     Wait 0.1
-     SendKeys Mid(strSendKeysValue, 101), True
-    Else
-     SendKeys strSendKeysValue, True
-    End If
-  Else
-   SendKeysWithCRLF strSendKeysValue
-  End If
- Case "Execute as Script"
-  'VoiceCommand.ExecuteScript strSendKeysValue,0
- Case "Clipboard Only"
-  Clipboard strSendKeysValue
- End Select
-' EngineControl.DragonBar.ShowMessage showmessageNoBeep , "Finished Send Keys Process"
-ExitHere:
- Exit Sub
-
-
-ErrorHandler:
- If Err.Number= 521 Or Err.Number= 10140 Then ' I believe this is can't access the clipboard
-  Resume Next
- End If
- MsgBox Err.Number  & " " & Err.Description,,"IntelliSense script; An Error Has Occurred "
- Resume ExitHere
-End Sub
-
-Function GetIntelliSenseArray(strCategory As String, strLanguage As String, Connection As ADODB.Connection)
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
- Dim stringSQLText As String
- Dim k As Integer
-    stringSQLText = "SELECT CustomIntelliSense.Display_Value" & vbCrLf
-    stringSQLText = stringSQLText & "           , Languages.Language" & vbCrLf
-    stringSQLText = stringSQLText & "           , CustomIntelliSense.LanguageID" & vbCrLf
-    stringSQLText = stringSQLText & "           , Computers.ComputerName" & vbCrLf
-    stringSQLText = stringSQLText & "        FROM (Languages " & vbCrLf
-    stringSQLText = stringSQLText & "  INNER JOIN (Categories " & vbCrLf
-    stringSQLText = stringSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
-    stringSQLText = stringSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
-    stringSQLText = stringSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID) " & vbCrLf
-    stringSQLText = stringSQLText & "   LEFT JOIN Computers " & vbCrLf
-    stringSQLText = stringSQLText & "          ON CustomIntelliSense.ComputerID = Computers.ID" & vbCrLf
-    stringSQLText = stringSQLText & "       WHERE (((Languages.Language)='" & strLanguage & "') " & vbCrLf
-    stringSQLText = stringSQLText & "         AND ((Categories.Category)='" & strCategory & "') " & vbCrLf
-    stringSQLText = stringSQLText & "         AND ((Computers.ComputerName)='" & atCNames(0) & "' Or (Computers.ComputerName) Is Null))" & vbCrLf
-    stringSQLText = stringSQLText & "    ORDER BY CustomIntelliSense.Display_Value;"
-
-    Recordset.Open stringSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-        Erase IntelliSenseList()
-    End If
- Do Until Recordset.EOF
-  k=k+1
-  IntelliSenseList(k)=   Recordset.Fields("Display_Value")
-     Recordset.MoveNext
- Loop
- Recordset.Close
- Set Recordset= Nothing
-  IntelliSenseList(k+1)="Edit List"
- IntelliSenseList(k+2)="Quit Menu"
-End Function
-
-Function GetArrayOfCategory(strLanguage As String, Connection As ADODB.Connection)
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    On Error GoTo GetArrayOfCategory_Error
- Dim k As Integer
- Dim strSQLText As String
-    strSQLText = "SELECT DISTINCT Categories.*" & vbCrLf
-    strSQLText = strSQLText & "           , Languages.Language" & vbCrLf
-    strSQLText = strSQLText & "        FROM Languages " & vbCrLf
-    strSQLText = strSQLText & "  INNER JOIN (Categories " & vbCrLf
-    strSQLText = strSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
-    strSQLText = strSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
-    strSQLText = strSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID" & vbCrLf
-    strSQLText = strSQLText & "       WHERE (((Categories.Category_Type)='IntelliSense Command') " & vbCrLf
-    strSQLText = strSQLText & "         AND ((Languages.Language)='" & strLanguage  & "'))"
- strSQLText = strSQLText & "    ORDER BY Categories.Category;"
-    Recordset.Open strSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-    End If
-
- Do Until Recordset.EOF
-  k=k+1
-  catList(k)= Recordset.Fields("Category")
-
-
-  Recordset.MoveNext
- Loop
- Recordset.Close
- Set Recordset= Nothing
- k= k +1
-catList(k)="Quit Menu"
-ExitHere:
-   Exit Function
-
-GetArrayOfCategory_Error:
-    Select Case Err.Number
-    '1
-    Case Else
-        MsgBox "Unexpected Error:" _
-            & vbCrLf & "Error " & Err.Number & " " & Err.Description _
-            & " in procedure GetArrayOfCategory of VBA Document Form_test some code" _
-            , vbCritical, "Please Investigate"
-        Resume ExitHere
-        ' Resume 'For Debug Only
-    End Select
-
-End Function
-
-
-Function GetSendKeys_Value(strName As String, strLanguage As String, stringCategory As String, stringDeliveryType As String, Connection As ADODB.Connection) As String
-    Dim Recordset As New ADODB.Recordset
-    Dim stringConnectionString As String
-    Dim StringSQLText As String
-    Dim k As Integer
-    StringSQLText = "SELECT Top 1 CustomIntelliSense.SendKeys_Value" & vbCrLf
-    StringSQLText = StringSQLText & "           , CustomIntelliSense.Remarks" & vbCrLf
-    StringSQLText = StringSQLText & "           , Languages.Language" & vbCrLf
-    StringSQLText = StringSQLText & "           , CustomIntelliSense.Display_Value" & vbCrLf
- StringSQLText = StringSQLText & "           , CustomIntelliSense.DeliveryType" & vbCrLf
-    StringSQLText = StringSQLText & "           , Categories.Category" & vbCrLf
-    StringSQLText = StringSQLText & "        FROM Languages " & vbCrLf
-    StringSQLText = StringSQLText & "  INNER JOIN (Categories " & vbCrLf
-    StringSQLText = StringSQLText & "  INNER JOIN CustomIntelliSense " & vbCrLf
-    StringSQLText = StringSQLText & "          ON Categories.ID = CustomIntelliSense.CategoryID) " & vbCrLf
-    StringSQLText = StringSQLText & "          ON Languages.ID = CustomIntelliSense.LanguageID" & vbCrLf
-    StringSQLText = StringSQLText & "       WHERE (((Languages.Language)='" & strLanguage & "') " & vbCrLf
-    StringSQLText = StringSQLText & "         AND ((CustomIntelliSense.Display_Value)='" & strName & "') " & vbCrLf
-    StringSQLText = StringSQLText & "         AND ((Categories.Category)='" & stringCategory & "'))" & vbCrLf
-    StringSQLText = StringSQLText & "    ORDER BY CustomIntelliSense.Display_Value;"
-    Recordset.Open StringSQLText, Connection
-    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
-        Recordset.MoveFirst
-        ' GetSendKeys_Value = Replace(Recordset![SendKeys_Value], Chr(10), "")
-        GetSendKeys_Value= Recordset![SendKeys_Value]
-        Remarks = Recordset![Remarks]
-        stringDeliveryType= Recordset![DeliveryType]
-    Else
-        MsgBox " cannot find command line for " & strName
-    End If
-
-    Recordset.Close
- Set Recordset= Nothing
-
-
-End Function
-
-Function FileExists(FileName As String)
-
-
- On Error Resume Next
- FileExists = False
- FileExists = (Dir(FileName) <> "")
-
-
-
-End Function
-
-
-Public Sub SendKeysWithCRLF(stringValue As String)
-    Dim stringTemporary As String
-    Dim integerPosition As Integer
-    'integerPosition = InStr(stringValue, Chr(13) & Chr(10))
-    integerPosition = InStr(stringValue, Chr(13))
-    'integerPosition = InStr(stringValue,  Chr(10))
-    If integerPosition > 0 Then
-        stringTemporary = Left(stringValue, integerPosition - 1)
-        Do
-
-            'Debug.Print stringTemporary
-            SendKeys stringTemporary, True
-            SendKeys "{Enter}"
-
-            stringValue = Mid(stringValue, integerPosition + 2)
-            integerPosition = InStr(stringValue, Chr(13) )
-            If integerPosition = 0 Then Exit Do
-            stringTemporary = Left(stringValue, integerPosition - 1)
-        Loop
-    End If
-    SendKeys stringValue
-    'Debug.Print stringValue
-End Sub
-]]></content>
-    </Command>
-    <Command name="Navigate To URL" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-Dim backup as String
-backup=Clipboard
-SendKeys "^c"
-Wait 0.2
-Dim address as String
-address=Clipboard
-ShellExecute address
-
-Wait 0.1
-SendKeys "{Enter}"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Window Monitor Switch Left" group="" enabled="true">
-      <description></description>
-      <content type="DVC (Dragon Voice Commands)"><![CDATA[SendSystemKeys "{Win+Shift+Left}"]]></content>
-    </Command>
     <Command name="Command &lt;commands&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -18126,29 +18017,424 @@ Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\ExecuteComm
 End Sub
 ]]></content>
     </Command>
-    <Command name="&lt;scrollbar&gt; &lt;atoz&gt;" group="" enabled="true">
+    <Command name="Insert Blank Line Above" group="" enabled="true">
       <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
-Type RECT
- Left As Long
- Top As Long
- Right As Long
- Bottom As Long
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{Up}"
+Wait 0.1
+SendKeys "{End}"
+Wait 0.1
+SendKeys "{Enter}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Remove Numbers" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+n"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Play And Sleep" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ HeardWord "go","to","sleep"
+SetMousePosition 1,158,158
+Wait 0.1
+ButtonClick 1,1
+
+ SendKeys "{Space}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go To Mouse Position" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
+'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+Option Explicit
+Private Type cursorinformation
+        x As Integer
+        y As Integer
 End Type
-Type POINTAPI
+Dim cursorinformation As cursorinformation
+Private Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
+Function SetMousePositionW(integerLeft As Integer, integerTop As Integer)
+        SetCursorPos CLng(integerLeft), CLng(integerTop)
+
+End Function
+
+
+Sub Main()
+
+  Dim stringSQLText As String
+
+    GetSavedMousePosition
+ ' EngineControl.DragonBar.ShowMessage 0, "X: " & cursorinformation.x & " Y: " & cursorinformation.y
+
+
+
+    SetMousePositionW cursorinformation.x, cursorinformation.y
+
+End Sub
+Function FileExists(FileName As String)
+
+
+ On Error Resume Next
+ FileExists = False
+ FileExists = (Dir(FileName) <> "")
+
+
+
+End Function
+
+Function GetSavedMousePosition()
+    Dim Connection As ADODB.Connection
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString =GetConnectionString()
+    Connection.Open
+    Dim stringSQLText As String
+    Dim k As Integer
+  stringSQLText = "SELECT [SavedMousePosition].NamedLocation" & vbCrLf
+  stringSQLText = stringSQLText & "           , [SavedMousePosition].X" & vbCrLf
+  stringSQLText = stringSQLText & "           , [SavedMousePosition].Y" & vbCrLf
+  stringSQLText = stringSQLText & "        FROM [SavedMousePosition]" & vbCrLf
+  stringSQLText = stringSQLText & "       WHERE ((([SavedMousePosition].NamedLocation)='Default'));"
+    Recordset.Open stringSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+        cursorinformation.x = Recordset![x]
+        cursorinformation.y = Recordset![y]
+    End If
+    Recordset.Close
+
+End Function
+]]></content>
+    </Command>
+    <Command name="Go To Mouse Position &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
+'#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+' Option Explicit
+Private Type cursorinformation
+        x As Integer
+        y As Integer
+End Type
+Dim cursorinformation As cursorinformation
+Private Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
+
+Sub Main()
+
+  Dim stringSQLText As String
+
+  Dim namedLocation as String
+  namedLocation=ListVar1
+  GetSavedMousePosition namedLocation
+  SetMousePositionW cursorinformation.x, cursorinformation.y
+
+End Sub
+
+Function SetMousePositionW(integerLeft As Integer, integerTop As Integer)
+        SetCursorPos CLng(integerLeft), CLng(integerTop)
+
+End Function
+
+
+Function FileExists(FileName As String)
+
+
+ On Error Resume Next
+ FileExists = False
+ FileExists = (Dir(FileName) <> "")
+
+
+
+End Function
+
+Function GetSavedMousePosition(namedLocation  as String)
+    Dim Connection As ADODB.Connection
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString =GetConnectionString()
+    Connection.Open
+    Dim stringSQLText As String
+    Dim k As Integer
+  stringSQLText = "SELECT [SavedMousePosition].NamedLocation" & vbCrLf
+  stringSQLText = stringSQLText & "           , [SavedMousePosition].X" & vbCrLf
+  stringSQLText = stringSQLText & "           , [SavedMousePosition].Y" & vbCrLf
+  stringSQLText = stringSQLText & "        FROM [SavedMousePosition]" & vbCrLf
+  stringSQLText = stringSQLText & "       WHERE ((([SavedMousePosition].NamedLocation)='" & namedLocation & "'))"
+  stringSQLText = stringSQLText & "       ORDER BY [SavedMousePosition].Created Desc"
+    Recordset.Open stringSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+        cursorinformation.x = Recordset![x]
+        cursorinformation.y = Recordset![y]
+    End If
+    Recordset.Close
+
+End Function
+]]></content>
+    </Command>
+    <Command name="Dragon Script &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim dictation as String
+dictation=ListVar1
+'dictation=InputBox("Please confirm the search term","Confirm Search",dictation)
+    Shell "C:\Users\MPhil\source\repos\SaveClipboardShowCommands\bin\ShowCommands.exe" _
+ & " /""" & dictation & """",vbNormalFocus
+End Sub
+]]></content>
+    </Command>
+    <Command name="Browse Scripts &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+    Shell "C:\Users\MPhil\source\repos\DictationBoxMSP\BrowseScripts\bin\Release\BrowseScripts.exe" _
+ & " /""" & ListVar1 & """",vbNormalFocus
+End Sub
+]]></content>
+    </Command>
+    <Command name="Search Union &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim dictation as String
+dictation=ListVar1
+'dictation=InputBox("Please Confirm the search term:","Confirm Search",dictation)
+   strCommandLine="C:\Users\MPhil\source\repos\DictationBoxMSP\VoiceLauncher\bin\Release\VoiceLauncher.exe"
+            strCommandLine =    strCommandLine & " "  & Chr(34)  & "/ " &  "Union" & CHR(34)  & " " & Chr(34) &   " / " &  dictation  & Chr(34)
+            Shell(strCommandLine,vbNormalFocus)
+
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Upper &lt;myalphabet&gt; &lt;myalphabet&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+t1 = Mid$(ListVar1,1,InStr(ListVar1, "\")-1)
+t2 = Mid$(ListVar2,1,InStr(ListVar2, "\")-1)
+if t1 = "backslash" Then t1 = "\"
+if t2 = "backslash" Then t2 = "\"
+if t1 = "space" Then t1 = " "
+if t2 = "space" Then t2 = " "
+ SendKeys UCase(t1+t2)
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;atoz&gt; &lt;atoz&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[
+Public Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
+Public Declare Sub mouse_event Lib "user32" Alias "mouse_event" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long)
+Public Const MOUSEEVENTF_LEFTDOWN = &H2 ' left button down
+Public Const MOUSEEVENTF_LEFTUP = &H4 ' left button up
+Public Const MOUSEEVENTF_MIDDLEDOWN = &H20 ' middle button down
+Public Const MOUSEEVENTF_MIDDLEUP = &H40 ' middle button up
+Public Const MOUSEEVENTF_RIGHTDOWN = &H8 ' right button down
+Public Const MOUSEEVENTF_RIGHTUP = &H10 ' right button up
+
+
+ Private Declare Function GetSystemMetrics Lib "user32.dll" (ByVal nIndex As Long) As Long
+Const SM_CXSCREEN = 0
+Const SM_CYSCREEN = 1
+Private Const SM_CMONITORS As Long = 80
+Public Type RectAPI
+    Left As Long
+    Top As Long
+    Right As Long
+    Bottom As Long
+End Type
+
+Type POINTAPI 'Declare types
  x As Long
  y As Long
 End Type
-' declare Win32 API functions
-Declare Function GetWindowRect Lib "user32" Alias "GetWindowRect" (ByVal hwnd As Long, lpRect As RECT) As Long
-Declare Function GetForegroundWindow& Lib "user32" ()
-Private Declare Function SetCursorPos Lib "User32.dll" (ByVal x As Integer, ByVal y As Integer) As Long
+Declare Function GetCursorPos Lib "user32" _
+(lpPoint As POINTAPI) As Long 'Declare API
 
+Private Const SM_XVIRTUALSCREEN As Long = 76
+Private Const SM_YVIRTUALSCREEN As Long = 77
+Private Const SM_CXVIRTUALSCREEN As Long = 78
+Private Const SM_CYVIRTUALSCREEN As Long = 79
+Dim blnDualMonitors As Boolean
+Dim blnFineTune As Boolean
 Sub Main
- Dim intTop As Long
- Dim LongLeft As Long
+' this script is primarily for the second screen and assumes resolutions as follows screen one 1680 by 1050 and screen two 1280 by 1024  (1440 times 900 is what the new screen is)
+' trying to make this script also work for the following screen set up which is what it is at home 1280×1024 1280×800
 
- Select Case ListVar2
+ Dim intLeft As Integer
+ Dim intTop As Integer
+ Dim myRect As RectAPI
+ Dim x As Long
+ Dim y As Long
+ Dim lngScreen1Width As Long
+ Dim lngScreen1Height As Long
+ Dim lngScreen2Width As Long
+ Dim lngScreen2Height As Long
+' work out if there is a second monitor
+
+ blnDualMonitors=MultiMonitors()
+' get the number of pixels across and down for the main monitor
+    lngScreen1Width  = GetSystemMetrics(SM_CXSCREEN)
+    lngScreen1Height = GetSystemMetrics(SM_CYSCREEN)
+ 'MsgBox "multi screens" & blnDualMonitors
+' get the number of pixels across for the second screen
+  myRect=GetVirtualDisplayRect()
+  lngScreen2Width= myRect.Right -lngScreen1Width
+' work out the height of the second screen based on the width of screens
+ If myRect.Right=2960  Or myRect.Right= 2986 Then
+  lngScreen2Height=1024
+ ElseIf myRect.Right=2560 Then
+  lngScreen2Height=800
+ ElseIf myRect.Right=3120 Then
+  lngScreen2Height=900
+ ElseIf myRect.Right= 3360 Then
+  lngScreen2Height= 1050
+ End If
+ 'MsgBox "screen 2 Height " & lngScreen2Height & " myRect.Riight: " & myRect.Right
+' now need to put the rest into practice from here
+ blnFineTune=False
+ Dim columnLetter as String
+ columnLetter= CStr(ListVar1)
+ Dim rowLetter as String
+ rowLetter=CStr(ListVar2)
+ intLeft=GetScreenCoordinates(columnLetter,1)
+ intTop=GetScreenCoordinates(rowLetter,2)
+   Dim z As POINTAPI 'Declare variable
+   Dim xpos As Long, ypos As Long
+ 'MsgBox " list of variable values are " & ListVar1 & " " & ListVar2 & " " & ListVar3
+ 'MsgBox "fine tune " & blnFineTune
+ If blnFineTune Then
+  SetMousePosition   2,intLeft,intTop
+ Else
+  Dim button as String
+  button="Click"
+  Select Case button
+  Case "Grid Left","Grid"  ,"Arrow Click","Click","Right Click","Double Click","doubleclick","Left"
+   If intLeft> lngScreen1Width Then intLeft=lngScreen1Width-1
+   If intTop> lngScreen1Height Then intTop=lngScreen1Height-1
+     SetCursorPos(CLng(intLeft),CLng(intTop)) ' Where X and Y are in pixel
+  Case "Grid Right" ,"Screen Click" ,"Touch","Double Touch","Right Touch","Right"
+   If intLeft> lngScreen1Width + lngScreen1Width Then intLeft=(lngScreen1Width+lngScreen1Width)-1
+   If intTop> lngScreen2Height Then intTop=lngScreen2Height-1
+   ' MsgBox "intLeft = " & intLeft & " intTop= " & intTop & " lngScreen1Width=" & lngScreen1Width
+   SetCursorPos(CLng(lngScreen1Width+ intLeft),CLng(intTop))
+  Case "Drag","Drag Arrow"
+    GetCursorPos z 'Get Coordinates
+    xpos = CLng(z.x)
+    Wait 0.5
+    ypos = CLng(z.y)
+    mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
+
+    SetCursorPos(CLng(intLeft),CLng(intTop))
+    Wait 0.5
+    mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
+  Case "Drag Screen"
+   GetCursorPos z 'Get Coordinates
+    xpos = CLng(z.x)
+    ypos = CLng(z.y)
+    mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
+    Wait 0.5
+    SetCursorPos(CLng(lngScreen1Width+ intLeft),CLng(intTop))
+    Wait 0.5
+    mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
+  End Select
+ End If
+Wait 0.1
+
+ Select Case button
+ Case "Arrow Click","Click","Screen Click","Touch"
+
+  ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
+ Case "Double Click","Double Touch","doubleclick"
+
+  ButtonClick 1,2
+ Case "Right Click","Right Touch"
+  ButtonClick 2,1
+ End Select
+
+End Sub
+Function GetScreenCoordinates(s As String,arg As Integer) As Integer
+ Dim intLeft As Integer
+ Dim intTop As Integer
+If arg=1 Then
+ Select Case s
+ Case "Zero"
+  intLeft=5
+ Case "Alpha"
+  intLeft= 50
+ Case "Bravo"
+  intLeft= 100
+ Case "Charlie"
+  intLeft= 150
+ Case "Delta"
+  intLeft= 200
+ Case "Echo"
+  intLeft= 250
+ Case "Foxtrot"
+  intLeft= 300
+ Case "Golf"
+  intLeft= 350
+ Case "Hotel"
+  intLeft= 400
+ Case "India"
+  intLeft= 450
+ Case "Juliet"
+  intLeft= 500
+ Case "Kilo"
+  intLeft= 550
+ Case "Lima"
+  intLeft= 600
+ Case "Mike"
+  intLeft= 650
+ Case "November"
+  intLeft= 700
+ Case "Oscar"
+  intLeft= 750
+ Case "Papa"
+  intLeft= 800
+ Case "Qubec"
+  intLeft= 850
+ Case "Romeo"
+  intLeft= 900
+ Case "Sierra"
+  intLeft= 950
+ Case "Tango"
+  intLeft= 1000
+ Case "Uniform"
+  intLeft= 1050
+ Case "Victor"
+  intLeft= 1100
+ Case "Whiskey"
+  intLeft= 1150
+ Case "X-ray"
+  intLeft= 1200
+ Case "Yankee"
+  intLeft= 1250
+ Case "Zulu"
+  intLeft= 1300
+ Case "One","1"
+  intLeft= 1350
+ Case "Two"
+  intLeft= 1400
+ Case "Three"
+  intLeft= 1450
+ Case "Four","For"
+  intLeft= 1500
+ Case "Five"
+  intLeft= 1550
+ Case "Six"
+  intLeft= 1600
+ Case "Seven"
+  intLeft= 1650
+ End Select
+ GetScreenCoordinates=intLeft
+Else
+ Select Case s
  Case "Zero"
   intTop=5
  Case "Alpha"
@@ -18194,100 +18480,46 @@ Sub Main
  Case "Uniform"
   intTop= 1050
  End Select
- Select Case ListVar1
- Case "Scrollbar","Scrollbar Left"
-  LongLeft = 1665
- Case "Collapse","Collapse Left"
-  'SetMousePosition 1,148,362
-  LongLeft=362
- Case "Collapse Right"
-  LongLeft=362+1665
- Case Else
-  LongLeft = 3350
- End Select
- SetMousePositionWinAPI False,LongLeft, intTop
- ButtonClick 1,1
-End Sub
-
-Function  SetMousePositionWinAPI(BooleanRelative As Boolean ,integerLeft As Integer, integerTop As Integer)
- Dim hwnd As Long
- Dim offset As POINTAPI
- Dim result As POINTAPI
- If BooleanRelative Then
-  hwnd = GetForegroundWindow
-  offset.x= integerLeft
-  offset.y= integerTop
-  result = GetWinCurPos(hwnd,offset)
- Else
-  result.x=integerLeft
-  result.y=integerTop
- End If
- SetCursorPos(result.x, result.y)
+ GetScreenCoordinates=intTop
+End If
 End Function
-Function GetWinCurPos(hwnd As Long,pt As POINTAPI) As POINTAPI
- Dim wRect As RECT
- Dim result As POINTAPI
- GetWindowRect hwnd, wRect
- result.x = pt.x + wRect.Left
- result.y = pt.y + wRect.Top
- GetWinCurPos = result
+
+Private Function MultiMonitors() As Boolean
+ MultiMonitors = (GetSystemMetrics(SM_CMONITORS) > 1)
+End Function
+
+Public Function GetVirtualDisplayRect() As RectAPI
+With GetVirtualDisplayRect
+    .Left = GetSystemMetrics(SM_XVIRTUALSCREEN)
+    .Top = GetSystemMetrics(SM_YVIRTUALSCREEN)
+    .Right = GetSystemMetrics(SM_CXVIRTUALSCREEN) + .Left
+    .Bottom = GetSystemMetrics(SM_CYVIRTUALSCREEN) + .Top
+End With
 End Function
 ]]></content>
     </Command>
-    <Command name="Enter &lt;1to20&gt; Random Numbers" group="" enabled="true">
+    <Command name="Browse &lt;AppName&gt; Scripts &lt;dictation&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
-
- Dim LRandomNumber As Integer
-    Randomize
-    Dim Word As String
-    Dim integerCounter As Integer
-    For integerCounter = 1 To CInt(ListVar1)
-        LRandomNumber = Int((1 - 100 + 1) * Rnd + 100)
-        SendKeys  LRandomNumber  & vbTab
-        Wait 0.1
-    Next
-End Sub
-]]></content>
-    </Command>
-    <Command name="Generate Password &lt;1to20&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-
- Dim LRandomNumber As Integer
-    Randomize
-    Dim Word As String
-    Dim integerCounter As Integer
-
-        Dim integerCounter2 as Integer
-        For integerCounter2 = 1 to ListVar1
-            LRandomNumber = Int((62 - 122 + 1) * Rnd + 122)
-            SendKeys  chr$(LRandomNumber),True
-        next
-        Wait 0.1
-End Sub
-]]></content>
-    </Command>
-    <Command name="&lt;DiagonalDirection&gt; &lt;1to100&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-offset = Val( ListVar2)
-if ListVar1 = "Right Up" then SetMousePosition 2, offset, -offset
-if ListVar1 = "Right Down"   then SetMousePosition 2, offset, offset
-if ListVar1 = "Left Down"   then SetMousePosition 2, -offset, offset
-if ListVar1 = "Left Up"  then SetMousePosition 2, -offset, -offset
-if ListVar1 = "Up Right" then SetMousePosition 2, offset, -offset
-if ListVar1 = "Down Right"   then SetMousePosition 2, offset, offset
-if ListVar1 = "Down Left"   then SetMousePosition 2, -offset, offset
-if ListVar1 = "Up Left"  then SetMousePosition 2, -offset, -offset
-End Sub
-]]></content>
-    </Command>
-    <Command name="Browse &lt;AppName&gt; Script &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-    Shell "C:\Program Files (x86)\MSP Systems\Speech Recognition Helpers\BrowseScripts.exe" _
+    Shell "C:\Users\MPhil\source\repos\DictationBoxMSP\BrowseScripts\bin\Release\BrowseScripts.exe" _
  & " /""" & ListVar1 & """" &  " /""" & ListVar2 & """",vbNormalFocus
+End Sub
+]]></content>
+    </Command>
+    <Command name="Hashtag &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+ Dim words() As String
+ Dim dictation As String
+ dictation=ListVar1
+ words=Split(dictation," ")
+ Dim k As Integer
+ Dim result As String
+ For k = 0 To UBound(words)
+  result=result & UCase(Left(words(k),1)) & Mid(words(k),2)
+ Next
+ SendKeys "#" & result
+
 End Sub
 ]]></content>
     </Command>
@@ -18803,36 +19035,6 @@ End Sub
       <value><![CDATA[AM]]></value>
       <value><![CDATA[PM]]></value>
     </List>
-    <List name="AppName">
-      <value><![CDATA[Global]]></value>
-      <value><![CDATA[NatSpeak]]></value>
-      <value><![CDATA[NaturallySpeaking]]></value>
-      <value><![CDATA[DragonPad]]></value>
-      <value><![CDATA[Word]]></value>
-      <value><![CDATA[Microsoft Word]]></value>
-      <value><![CDATA[AOL]]></value>
-      <value><![CDATA[Corel Presentation]]></value>
-      <value><![CDATA[Corel Central]]></value>
-      <value><![CDATA[Internet Explorer]]></value>
-      <value><![CDATA[IE]]></value>
-      <value><![CDATA[Microsoft Access]]></value>
-      <value><![CDATA[Microsoft Excel]]></value>
-      <value><![CDATA[Microsoft FrontPage]]></value>
-      <value><![CDATA[Microsoft Outlook]]></value>
-      <value><![CDATA[Microsoft PowerPoint]]></value>
-      <value><![CDATA[Access]]></value>
-      <value><![CDATA[Excel]]></value>
-      <value><![CDATA[FrontPage]]></value>
-      <value><![CDATA[PowerPoint]]></value>
-      <value><![CDATA[Outlook]]></value>
-      <value><![CDATA[Netscape]]></value>
-      <value><![CDATA[Notepad]]></value>
-      <value><![CDATA[Outlook Express]]></value>
-      <value><![CDATA[QuatroPro]]></value>
-      <value><![CDATA[Windows Explorer]]></value>
-      <value><![CDATA[Explorer]]></value>
-      <value><![CDATA[WordPerfect]]></value>
-    </List>
     <List name="Artist">
       <value><![CDATA[Billy Idol]]></value>
       <value><![CDATA[Bruce Springsteen]]></value>
@@ -18874,40 +19076,6 @@ End Sub
       <value><![CDATA[Firefox]]></value>
     </List>
     <List name="chapter" />
-    <List name="Character">
-      <value><![CDATA[!]]></value>
-      <value><![CDATA[@]]></value>
-      <value><![CDATA[#]]></value>
-      <value><![CDATA[$]]></value>
-      <value><![CDATA[%]]></value>
-      <value><![CDATA[^]]></value>
-      <value><![CDATA[&]]></value>
-      <value><![CDATA[*]]></value>
-      <value><![CDATA[(]]></value>
-      <value><![CDATA[)]]></value>
-      <value><![CDATA[`]]></value>
-      <value><![CDATA[~]]></value>
-      <value><![CDATA[-]]></value>
-      <value><![CDATA[_]]></value>
-      <value><![CDATA[=]]></value>
-      <value><![CDATA[+]]></value>
-      <value><![CDATA[\\]]></value>
-      <value><![CDATA[|]]></value>
-      <value><![CDATA[[]]></value>
-      <value><![CDATA[{]]></value>
-      <value><![CDATA[]]]></value>
-      <value><![CDATA[}]]></value>
-      <value><![CDATA[;]]></value>
-      <value><![CDATA[:]]></value>
-      <value><![CDATA[']]></value>
-      <value><![CDATA[\"]]></value>
-      <value><![CDATA[,]]></value>
-      <value><![CDATA[<]]></value>
-      <value><![CDATA[.]]></value>
-      <value><![CDATA[>]]></value>
-      <value><![CDATA[/]]></value>
-      <value><![CDATA[?]]></value>
-    </List>
     <List name="ChooseOrselect">
       <value><![CDATA[Choose]]></value>
       <value><![CDATA[select]]></value>
@@ -21170,21 +21338,6 @@ End Sub
       <value><![CDATA[Go To Line]]></value>
       <value><![CDATA[Line]]></value>
     </List>
-    <List name="swear">
-      <value><![CDATA[Bitch]]></value>
-      <value><![CDATA[Bloody Hell]]></value>
-      <value><![CDATA[Bollocks]]></value>
-      <value><![CDATA[Close]]></value>
-      <value><![CDATA[Cunt]]></value>
-      <value><![CDATA[Fuck]]></value>
-      <value><![CDATA[Fuck Off]]></value>
-      <value><![CDATA[Fuck Sake]]></value>
-      <value><![CDATA[Fucker]]></value>
-      <value><![CDATA[Fucking Hell]]></value>
-      <value><![CDATA[Shit]]></value>
-      <value><![CDATA[Tosser]]></value>
-      <value><![CDATA[Wanker]]></value>
-    </List>
     <List name="dropdown">
       <value><![CDATA[Drop Down]]></value>
       <value><![CDATA[Drop-Down]]></value>
@@ -22153,30 +22306,6 @@ End Sub
       <value><![CDATA[Title]]></value>
       <value><![CDATA[Unordered List]]></value>
     </List>
-    <List name="programminglanguage">
-      <value><![CDATA[C sharp]]></value>
-      <value><![CDATA[C#]]></value>
-      <value><![CDATA[CSS]]></value>
-      <value><![CDATA[HTML]]></value>
-      <value><![CDATA[IntelliSense]]></value>
-      <value><![CDATA[JavaScript]]></value>
-      <value><![CDATA[Not Applicable]]></value>
-      <value><![CDATA[Transact SQL]]></value>
-      <value><![CDATA[Visual Basic]]></value>
-      <value><![CDATA[Razor]]></value>
-      <value><![CDATA[Bootstrap]]></value>
-      <value><![CDATA[jQuery]]></value>
-      <value><![CDATA[Language Integrated Query]]></value>
-      <value><![CDATA[Entity]]></value>
-      <value><![CDATA[Blazor]]></value>
-    </List>
-    <List name="Scrollbar">
-      <value><![CDATA[Right Scrollbar]]></value>
-      <value><![CDATA[Scrollbar]]></value>
-      <value><![CDATA[Scrollbar Left]]></value>
-      <value><![CDATA[Scrollbar Right]]></value>
-      <value><![CDATA[Scrollbar Screen Two]]></value>
-    </List>
     <List name="1to31">
       <value><![CDATA[1]]></value>
       <value><![CDATA[2]]></value>
@@ -22565,7 +22694,93 @@ End Sub
       <value><![CDATA[value]]></value>
       <value><![CDATA[width]]></value>
     </List>
-    <List name="categories">
+    <List name="scrollbar">
+      <value><![CDATA[Right Scrollbar]]></value>
+      <value><![CDATA[Scrollbar]]></value>
+      <value><![CDATA[Scrollbar Left]]></value>
+      <value><![CDATA[Scrollbar Right]]></value>
+      <value><![CDATA[Scrollbar Screen Two]]></value>
+      <value><![CDATA[Collapse ]]></value>
+      <value><![CDATA[Collapse Right]]></value>
+      <value><![CDATA[Collapse Left]]></value>
+    </List>
+    <List name="DiagonalDirection">
+      <value><![CDATA[Right Down]]></value>
+      <value><![CDATA[Left Down]]></value>
+      <value><![CDATA[Right Up]]></value>
+      <value><![CDATA[Left Up]]></value>
+      <value><![CDATA[Down Right]]></value>
+      <value><![CDATA[Down Left]]></value>
+      <value><![CDATA[Up Right]]></value>
+      <value><![CDATA[Up Left]]></value>
+    </List>
+    <List name="scrollbar_2">
+      <value><![CDATA[Right Scrollbar]]></value>
+      <value><![CDATA[Scrollbar]]></value>
+      <value><![CDATA[Scrollbar Left]]></value>
+      <value><![CDATA[Scrollbar Right]]></value>
+      <value><![CDATA[Scrollbar Screen Two]]></value>
+      <value><![CDATA[Collapse ]]></value>
+      <value><![CDATA[Collapse Right]]></value>
+      <value><![CDATA[Collapse Left]]></value>
+    </List>
+    <List name="atoz_2">
+      <value><![CDATA[Alpha]]></value>
+      <value><![CDATA[Bravo]]></value>
+      <value><![CDATA[Charlie]]></value>
+      <value><![CDATA[Delta]]></value>
+      <value><![CDATA[Echo]]></value>
+      <value><![CDATA[Eight]]></value>
+      <value><![CDATA[Five]]></value>
+      <value><![CDATA[Four]]></value>
+      <value><![CDATA[Foxtrot]]></value>
+      <value><![CDATA[Golf]]></value>
+      <value><![CDATA[Hotel]]></value>
+      <value><![CDATA[India]]></value>
+      <value><![CDATA[Juliet]]></value>
+      <value><![CDATA[Kilo]]></value>
+      <value><![CDATA[Lima]]></value>
+      <value><![CDATA[Mike]]></value>
+      <value><![CDATA[November]]></value>
+      <value><![CDATA[One]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[Oscar]]></value>
+      <value><![CDATA[Papa]]></value>
+      <value><![CDATA[Qubec]]></value>
+      <value><![CDATA[Romeo]]></value>
+      <value><![CDATA[Seven]]></value>
+      <value><![CDATA[Sierra]]></value>
+      <value><![CDATA[Six]]></value>
+      <value><![CDATA[Tango]]></value>
+      <value><![CDATA[Three]]></value>
+      <value><![CDATA[Two]]></value>
+      <value><![CDATA[Uniform]]></value>
+      <value><![CDATA[Victor]]></value>
+      <value><![CDATA[Whiskey]]></value>
+      <value><![CDATA[X-ray]]></value>
+      <value><![CDATA[Yankee]]></value>
+      <value><![CDATA[Zero]]></value>
+      <value><![CDATA[Zulu]]></value>
+      <value><![CDATA[For]]></value>
+    </List>
+    <List name="programminglanguage_2">
+      <value><![CDATA[C sharp]]></value>
+      <value><![CDATA[C#]]></value>
+      <value><![CDATA[CSS]]></value>
+      <value><![CDATA[HTML]]></value>
+      <value><![CDATA[IntelliSense]]></value>
+      <value><![CDATA[JavaScript]]></value>
+      <value><![CDATA[Not Applicable]]></value>
+      <value><![CDATA[Transact SQL]]></value>
+      <value><![CDATA[Visual Basic]]></value>
+      <value><![CDATA[Razor]]></value>
+      <value><![CDATA[Bootstrap]]></value>
+      <value><![CDATA[jQuery]]></value>
+      <value><![CDATA[Language Integrated Query]]></value>
+      <value><![CDATA[Entity]]></value>
+      <value><![CDATA[Blazor]]></value>
+    </List>
+    <List name="categories_2">
       <value><![CDATA[Access]]></value>
       <value><![CDATA[Action Filters]]></value>
       <value><![CDATA[ActiveX Data Objects]]></value>
@@ -22621,30 +22836,460 @@ End Sub
       <value><![CDATA[Fluent API]]></value>
       <value><![CDATA[Attributes]]></value>
     </List>
+    <List name="FontFace_2">
+      <value><![CDATA[Times]]></value>
+      <value><![CDATA[Times New Roman]]></value>
+      <value><![CDATA[Courier]]></value>
+      <value><![CDATA[Courier New]]></value>
+      <value><![CDATA[Arial]]></value>
+      <value><![CDATA[Comic]]></value>
+      <value><![CDATA[Impact]]></value>
+      <value><![CDATA[Garamond]]></value>
+      <value><![CDATA[Kaufmann]]></value>
+      <value><![CDATA[Century Gothic]]></value>
+      <value><![CDATA[Monotype]]></value>
+    </List>
+    <List name="FontSize_2">
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[7]]></value>
+      <value><![CDATA[8]]></value>
+      <value><![CDATA[9]]></value>
+      <value><![CDATA[10]]></value>
+      <value><![CDATA[11]]></value>
+      <value><![CDATA[12]]></value>
+      <value><![CDATA[13]]></value>
+      <value><![CDATA[14]]></value>
+      <value><![CDATA[15]]></value>
+      <value><![CDATA[16]]></value>
+      <value><![CDATA[17]]></value>
+      <value><![CDATA[18]]></value>
+      <value><![CDATA[19]]></value>
+      <value><![CDATA[20]]></value>
+      <value><![CDATA[21]]></value>
+      <value><![CDATA[22]]></value>
+      <value><![CDATA[23]]></value>
+      <value><![CDATA[24]]></value>
+      <value><![CDATA[25]]></value>
+      <value><![CDATA[26]]></value>
+      <value><![CDATA[27]]></value>
+      <value><![CDATA[28]]></value>
+      <value><![CDATA[29]]></value>
+      <value><![CDATA[30]]></value>
+      <value><![CDATA[31]]></value>
+      <value><![CDATA[32]]></value>
+      <value><![CDATA[33]]></value>
+      <value><![CDATA[34]]></value>
+      <value><![CDATA[35]]></value>
+      <value><![CDATA[36]]></value>
+      <value><![CDATA[37]]></value>
+      <value><![CDATA[38]]></value>
+      <value><![CDATA[39]]></value>
+      <value><![CDATA[40]]></value>
+      <value><![CDATA[41]]></value>
+      <value><![CDATA[42]]></value>
+      <value><![CDATA[43]]></value>
+      <value><![CDATA[44]]></value>
+      <value><![CDATA[45]]></value>
+      <value><![CDATA[46]]></value>
+      <value><![CDATA[47]]></value>
+      <value><![CDATA[48]]></value>
+      <value><![CDATA[49]]></value>
+      <value><![CDATA[50]]></value>
+      <value><![CDATA[51]]></value>
+      <value><![CDATA[52]]></value>
+      <value><![CDATA[53]]></value>
+      <value><![CDATA[54]]></value>
+      <value><![CDATA[55]]></value>
+      <value><![CDATA[56]]></value>
+      <value><![CDATA[57]]></value>
+      <value><![CDATA[58]]></value>
+      <value><![CDATA[59]]></value>
+      <value><![CDATA[60]]></value>
+      <value><![CDATA[61]]></value>
+      <value><![CDATA[62]]></value>
+      <value><![CDATA[63]]></value>
+      <value><![CDATA[64]]></value>
+      <value><![CDATA[65]]></value>
+      <value><![CDATA[66]]></value>
+      <value><![CDATA[67]]></value>
+      <value><![CDATA[68]]></value>
+      <value><![CDATA[69]]></value>
+      <value><![CDATA[70]]></value>
+      <value><![CDATA[71]]></value>
+      <value><![CDATA[72]]></value>
+      <value><![CDATA[73]]></value>
+      <value><![CDATA[74]]></value>
+      <value><![CDATA[75]]></value>
+      <value><![CDATA[76]]></value>
+      <value><![CDATA[77]]></value>
+      <value><![CDATA[78]]></value>
+      <value><![CDATA[79]]></value>
+      <value><![CDATA[80]]></value>
+      <value><![CDATA[81]]></value>
+      <value><![CDATA[82]]></value>
+      <value><![CDATA[83]]></value>
+      <value><![CDATA[84]]></value>
+      <value><![CDATA[85]]></value>
+      <value><![CDATA[86]]></value>
+      <value><![CDATA[87]]></value>
+      <value><![CDATA[88]]></value>
+      <value><![CDATA[89]]></value>
+      <value><![CDATA[90]]></value>
+      <value><![CDATA[91]]></value>
+      <value><![CDATA[92]]></value>
+      <value><![CDATA[93]]></value>
+      <value><![CDATA[94]]></value>
+      <value><![CDATA[95]]></value>
+      <value><![CDATA[96]]></value>
+      <value><![CDATA[97]]></value>
+      <value><![CDATA[98]]></value>
+      <value><![CDATA[99]]></value>
+      <value><![CDATA[100]]></value>
+      <value><![CDATA[120]]></value>
+    </List>
+    <List name="FontStyle_2">
+      <value><![CDATA[Bold]]></value>
+      <value><![CDATA[Underline]]></value>
+      <value><![CDATA[Strikeout]]></value>
+      <value><![CDATA[Italic]]></value>
+      <value><![CDATA[Normal]]></value>
+      <value><![CDATA[Plain]]></value>
+      <value><![CDATA[Plain Text]]></value>
+      <value><![CDATA[Regular]]></value>
+      <value><![CDATA[Bold Italic]]></value>
+    </List>
+    <List name="programminglanguage_3">
+      <value><![CDATA[C sharp]]></value>
+      <value><![CDATA[C#]]></value>
+      <value><![CDATA[CSS]]></value>
+      <value><![CDATA[HTML]]></value>
+      <value><![CDATA[IntelliSense]]></value>
+      <value><![CDATA[JavaScript]]></value>
+      <value><![CDATA[Not Applicable]]></value>
+      <value><![CDATA[Transact SQL]]></value>
+      <value><![CDATA[Visual Basic]]></value>
+      <value><![CDATA[Razor]]></value>
+      <value><![CDATA[Bootstrap]]></value>
+      <value><![CDATA[jQuery]]></value>
+      <value><![CDATA[Language Integrated Query]]></value>
+      <value><![CDATA[Entity]]></value>
+      <value><![CDATA[Blazor]]></value>
+    </List>
+    <List name="categories_3">
+      <value><![CDATA[Access]]></value>
+      <value><![CDATA[Action Filters]]></value>
+      <value><![CDATA[ActiveX Data Objects]]></value>
+      <value><![CDATA[Blocks]]></value>
+      <value><![CDATA[Categories]]></value>
+      <value><![CDATA[Code]]></value>
+      <value><![CDATA[Colour]]></value>
+      <value><![CDATA[Commands]]></value>
+      <value><![CDATA[Computer Names]]></value>
+      <value><![CDATA[Connection Strings]]></value>
+      <value><![CDATA[Data Access Objects]]></value>
+      <value><![CDATA[DB Contexts]]></value>
+      <value><![CDATA[DSN Files]]></value>
+      <value><![CDATA[Database Names]]></value>
+      <value><![CDATA[Date Functions]]></value>
+      <value><![CDATA[Domain Functions]]></value>
+      <value><![CDATA[Dragon]]></value>
+      <value><![CDATA[File Extensions]]></value>
+      <value><![CDATA[Files]]></value>
+      <value><![CDATA[Folders]]></value>
+      <value><![CDATA[Functions]]></value>
+      <value><![CDATA[Language Integrated Query]]></value>
+      <value><![CDATA[Logical Functions]]></value>
+      <value><![CDATA[Migration Commands]]></value>
+      <value><![CDATA[Open Forms]]></value>
+      <value><![CDATA[Open Objects]]></value>
+      <value><![CDATA[Operators]]></value>
+      <value><![CDATA[Passwords]]></value>
+      <value><![CDATA[Razor]]></value>
+      <value><![CDATA[Return]]></value>
+      <value><![CDATA[Sample Data]]></value>
+      <value><![CDATA[Server Names]]></value>
+      <value><![CDATA[Snippet]]></value>
+      <value><![CDATA[Statements]]></value>
+      <value><![CDATA[String Functions]]></value>
+      <value><![CDATA[System Command]]></value>
+      <value><![CDATA[Tag Helper]]></value>
+      <value><![CDATA[Tags]]></value>
+      <value><![CDATA[Transitions and Transformation]]></value>
+      <value><![CDATA[URLs]]></value>
+      <value><![CDATA[Useful Functions]]></value>
+      <value><![CDATA[Usernames]]></value>
+      <value><![CDATA[VBA]]></value>
+      <value><![CDATA[Variables]]></value>
+      <value><![CDATA[Words]]></value>
+      <value><![CDATA[jQuery]]></value>
+      <value><![CDATA[Tags Secondary]]></value>
+      <value><![CDATA[Select]]></value>
+      <value><![CDATA[NPM Commands]]></value>
+      <value><![CDATA[Data Definition Language]]></value>
+      <value><![CDATA[Structured Query Language]]></value>
+      <value><![CDATA[Hypertext Helper]]></value>
+      <value><![CDATA[Fluent API]]></value>
+      <value><![CDATA[Attributes]]></value>
+    </List>
+    <List name="swear">
+      <value><![CDATA[Bitch]]></value>
+      <value><![CDATA[Bloody Hell]]></value>
+      <value><![CDATA[Bollocks]]></value>
+      <value><![CDATA[Close]]></value>
+      <value><![CDATA[Cunt]]></value>
+      <value><![CDATA[Fuck]]></value>
+      <value><![CDATA[Fuck Off]]></value>
+      <value><![CDATA[Fuck Sake]]></value>
+      <value><![CDATA[Fucker]]></value>
+      <value><![CDATA[Fucking Hell]]></value>
+      <value><![CDATA[Shit]]></value>
+      <value><![CDATA[Tosser]]></value>
+      <value><![CDATA[Wanker]]></value>
+      <value><![CDATA[this]]></value>
+    </List>
+    <List name="AppName">
+      <value><![CDATA[Global]]></value>
+      <value><![CDATA[NatSpeak]]></value>
+      <value><![CDATA[NaturallySpeaking]]></value>
+      <value><![CDATA[DragonPad]]></value>
+      <value><![CDATA[Word]]></value>
+      <value><![CDATA[Microsoft Word]]></value>
+      <value><![CDATA[Microsoft Access]]></value>
+      <value><![CDATA[Microsoft Excel]]></value>
+      <value><![CDATA[Microsoft Outlook]]></value>
+      <value><![CDATA[Microsoft PowerPoint]]></value>
+      <value><![CDATA[Access]]></value>
+      <value><![CDATA[Excel]]></value>
+      <value><![CDATA[PowerPoint]]></value>
+      <value><![CDATA[Outlook]]></value>
+      <value><![CDATA[Notepad]]></value>
+      <value><![CDATA[File Explorer]]></value>
+      <value><![CDATA[Explorer]]></value>
+      <value><![CDATA[Visual Studio]]></value>
+      <value><![CDATA[Visual Studio Code]]></value>
+      <value><![CDATA[Remote Desktop]]></value>
+      <value><![CDATA[SQL Server Management Studio]]></value>
+      <value><![CDATA[Microsoft Edge]]></value>
+    </List>
+    <List name="programminglanguage">
+      <value><![CDATA[C sharp]]></value>
+      <value><![CDATA[C#]]></value>
+      <value><![CDATA[CSS]]></value>
+      <value><![CDATA[HTML]]></value>
+      <value><![CDATA[IntelliSense]]></value>
+      <value><![CDATA[JavaScript]]></value>
+      <value><![CDATA[Not Applicable]]></value>
+      <value><![CDATA[Transact SQL]]></value>
+      <value><![CDATA[Visual Basic]]></value>
+      <value><![CDATA[Razor]]></value>
+      <value><![CDATA[Bootstrap]]></value>
+      <value><![CDATA[jQuery]]></value>
+      <value><![CDATA[Language Integrated Query]]></value>
+      <value><![CDATA[Entity]]></value>
+      <value><![CDATA[Blazor]]></value>
+      <value><![CDATA[Twitch]]></value>
+    </List>
+    <List name="Character">
+      <value><![CDATA[!\!]]></value>
+      <value><![CDATA[@\@]]></value>
+      <value><![CDATA[#\hash]]></value>
+      <value><![CDATA[$\dollar]]></value>
+      <value><![CDATA[%\percent]]></value>
+      <value><![CDATA[^\accent]]></value>
+      <value><![CDATA[&\&]]></value>
+      <value><![CDATA[*\Asterix]]></value>
+      <value><![CDATA[(\(]]></value>
+      <value><![CDATA[)\(]]></value>
+      <value><![CDATA[`\tick]]></value>
+      <value><![CDATA[~\tilde]]></value>
+      <value><![CDATA[-\-]]></value>
+      <value><![CDATA[_\_]]></value>
+      <value><![CDATA[=\equal]]></value>
+      <value><![CDATA[+\plus]]></value>
+      <value><![CDATA[|\pipe]]></value>
+      <value><![CDATA[[\[]]></value>
+      <value><![CDATA[{\{]]></value>
+      <value><![CDATA[]\]]]></value>
+      <value><![CDATA[}\}]]></value>
+      <value><![CDATA[;\;]]></value>
+      <value><![CDATA[:\:]]></value>
+      <value><![CDATA['\']]></value>
+      <value><![CDATA[,\,]]></value>
+      <value><![CDATA[<\less than]]></value>
+      <value><![CDATA[.\.]]></value>
+      <value><![CDATA[>\Greater than]]></value>
+      <value><![CDATA[/\/]]></value>
+      <value><![CDATA[?\?]]></value>
+    </List>
+    <List name="characters">
+      <value><![CDATA[!\!]]></value>
+      <value><![CDATA[@\@]]></value>
+      <value><![CDATA[#\hash]]></value>
+      <value><![CDATA[$\dollar]]></value>
+      <value><![CDATA[%\percent]]></value>
+      <value><![CDATA[&\&]]></value>
+      <value><![CDATA[*\Asterix]]></value>
+      <value><![CDATA[(\(]]></value>
+      <value><![CDATA[)\)]]></value>
+      <value><![CDATA[~\tilde]]></value>
+      <value><![CDATA[-\-]]></value>
+      <value><![CDATA[_\_]]></value>
+      <value><![CDATA[=\equal]]></value>
+      <value><![CDATA[+\plus]]></value>
+      <value><![CDATA[|\pipe]]></value>
+      <value><![CDATA[[\[]]></value>
+      <value><![CDATA[]\]]]></value>
+      <value><![CDATA[{\{]]></value>
+      <value><![CDATA[}\}]]></value>
+      <value><![CDATA[;\;]]></value>
+      <value><![CDATA[:\:]]></value>
+      <value><![CDATA['\']]></value>
+      <value><![CDATA[\\\]]></value>
+      <value><![CDATA[,\,]]></value>
+      <value><![CDATA[/\/]]></value>
+      <value><![CDATA[>\greater than]]></value>
+      <value><![CDATA[<\less than]]></value>
+      <value><![CDATA[.\.]]></value>
+      <value><![CDATA[?\?]]></value>
+    </List>
+    <List name="show_code">
+      <value><![CDATA[Show Code]]></value>
+      <value><![CDATA[Code]]></value>
+      <value><![CDATA[Show]]></value>
+    </List>
+    <List name="Direction_2">
+      <value><![CDATA[Left]]></value>
+      <value><![CDATA[Right]]></value>
+      <value><![CDATA[Up]]></value>
+      <value><![CDATA[Down]]></value>
+      <value><![CDATA[Next]]></value>
+      <value><![CDATA[Previous]]></value>
+      <value><![CDATA[Tab]]></value>
+      <value><![CDATA[Shift Tab]]></value>
+      <value><![CDATA[Raise]]></value>
+    </List>
+    <List name="1to50_2">
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[7]]></value>
+      <value><![CDATA[8]]></value>
+      <value><![CDATA[9]]></value>
+      <value><![CDATA[10]]></value>
+      <value><![CDATA[11]]></value>
+      <value><![CDATA[12]]></value>
+      <value><![CDATA[13]]></value>
+      <value><![CDATA[14]]></value>
+      <value><![CDATA[15]]></value>
+      <value><![CDATA[16]]></value>
+      <value><![CDATA[17]]></value>
+      <value><![CDATA[18]]></value>
+      <value><![CDATA[19]]></value>
+      <value><![CDATA[20]]></value>
+      <value><![CDATA[21]]></value>
+      <value><![CDATA[22]]></value>
+      <value><![CDATA[23]]></value>
+      <value><![CDATA[24]]></value>
+      <value><![CDATA[25]]></value>
+      <value><![CDATA[26]]></value>
+      <value><![CDATA[27]]></value>
+      <value><![CDATA[28]]></value>
+      <value><![CDATA[29]]></value>
+      <value><![CDATA[30]]></value>
+      <value><![CDATA[31]]></value>
+      <value><![CDATA[32]]></value>
+      <value><![CDATA[33]]></value>
+      <value><![CDATA[34]]></value>
+      <value><![CDATA[35]]></value>
+      <value><![CDATA[36]]></value>
+      <value><![CDATA[37]]></value>
+      <value><![CDATA[38]]></value>
+      <value><![CDATA[39]]></value>
+      <value><![CDATA[40]]></value>
+      <value><![CDATA[41]]></value>
+      <value><![CDATA[42]]></value>
+      <value><![CDATA[43]]></value>
+      <value><![CDATA[44]]></value>
+      <value><![CDATA[45]]></value>
+      <value><![CDATA[46]]></value>
+      <value><![CDATA[47]]></value>
+      <value><![CDATA[48]]></value>
+      <value><![CDATA[49]]></value>
+      <value><![CDATA[50]]></value>
+    </List>
+    <List name="categories">
+      <value><![CDATA[Access]]></value>
+      <value><![CDATA[Action Filters]]></value>
+      <value><![CDATA[ActiveX Data Objects]]></value>
+      <value><![CDATA[Blocks]]></value>
+      <value><![CDATA[Categories]]></value>
+      <value><![CDATA[Code]]></value>
+      <value><![CDATA[Colour]]></value>
+      <value><![CDATA[Commands]]></value>
+      <value><![CDATA[Computer Names]]></value>
+      <value><![CDATA[Connection Strings]]></value>
+      <value><![CDATA[Data Access Objects]]></value>
+      <value><![CDATA[DB Contexts]]></value>
+      <value><![CDATA[DSN Files]]></value>
+      <value><![CDATA[Database Names]]></value>
+      <value><![CDATA[Date Functions]]></value>
+      <value><![CDATA[Domain Functions]]></value>
+      <value><![CDATA[Dragon]]></value>
+      <value><![CDATA[File Extensions]]></value>
+      <value><![CDATA[Files]]></value>
+      <value><![CDATA[Folders]]></value>
+      <value><![CDATA[Functions]]></value>
+      <value><![CDATA[Language Integrated Query]]></value>
+      <value><![CDATA[Logical Functions]]></value>
+      <value><![CDATA[Migration Commands]]></value>
+      <value><![CDATA[Open Forms]]></value>
+      <value><![CDATA[Open Objects]]></value>
+      <value><![CDATA[Operators]]></value>
+      <value><![CDATA[Passwords]]></value>
+      <value><![CDATA[Razor]]></value>
+      <value><![CDATA[Return]]></value>
+      <value><![CDATA[Sample Data]]></value>
+      <value><![CDATA[Server Names]]></value>
+      <value><![CDATA[Snippet]]></value>
+      <value><![CDATA[Statements]]></value>
+      <value><![CDATA[String Functions]]></value>
+      <value><![CDATA[System Command]]></value>
+      <value><![CDATA[Tag Helper]]></value>
+      <value><![CDATA[Tags]]></value>
+      <value><![CDATA[Transitions and Transformation]]></value>
+      <value><![CDATA[URLs]]></value>
+      <value><![CDATA[Useful Functions]]></value>
+      <value><![CDATA[Usernames]]></value>
+      <value><![CDATA[VBA]]></value>
+      <value><![CDATA[Variables]]></value>
+      <value><![CDATA[Words]]></value>
+      <value><![CDATA[jQuery]]></value>
+      <value><![CDATA[Tags Secondary]]></value>
+      <value><![CDATA[Select]]></value>
+      <value><![CDATA[NPM Commands]]></value>
+      <value><![CDATA[Data Definition Language]]></value>
+      <value><![CDATA[Structured Query Language]]></value>
+      <value><![CDATA[Hypertext Helper]]></value>
+      <value><![CDATA[Fluent API]]></value>
+      <value><![CDATA[Attributes]]></value>
+      <value><![CDATA[Text]]></value>
+      <value><![CDATA[Bald]]></value>
+      <value><![CDATA[Fritz]]></value>
+      <value><![CDATA[Create]]></value>
+    </List>
     <List name="commands">
       <value><![CDATA[excel\Close Excel]]></value>
       <value><![CDATA[winword\Close Word]]></value>
       <value><![CDATA[explorer\Close Explorer]]></value>
-    </List>
-    <List name="scrollbar">
-      <value><![CDATA[Right Scrollbar]]></value>
-      <value><![CDATA[Scrollbar]]></value>
-      <value><![CDATA[Scrollbar Left]]></value>
-      <value><![CDATA[Scrollbar Right]]></value>
-      <value><![CDATA[Scrollbar Screen Two]]></value>
-      <value><![CDATA[Collapse ]]></value>
-      <value><![CDATA[Collapse Right]]></value>
-      <value><![CDATA[Collapse Left]]></value>
-    </List>
-    <List name="DiagonalDirection">
-      <value><![CDATA[Right Down]]></value>
-      <value><![CDATA[Left Down]]></value>
-      <value><![CDATA[Right Up]]></value>
-      <value><![CDATA[Left Up]]></value>
-      <value><![CDATA[Down Right]]></value>
-      <value><![CDATA[Down Left]]></value>
-      <value><![CDATA[Up Right]]></value>
-      <value><![CDATA[Up Left]]></value>
+      <value><![CDATA[msaccess\Close Access]]></value>
     </List>
   </Lists>
   <Commands scope="application" module="outlook" company="Microsoft Corporation" moduleDescription="Microsoft Outlook">
@@ -25336,6 +25981,72 @@ Wait 0.1
 SendKeys "%d"
 Wait 0.1
 SendKeys "%n"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Delete Page" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^g"
+Wait 0.1
+SendKeys "\page"
+Wait 0.1
+SendKeys "{Enter}"
+Wait 0.1
+SendKeys "{Esc}"
+Wait 0.1
+SendKeys "{Del}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go To Page &lt;1to100&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^g"
+Wait 0.1
+SendKeys "%o"
+Wait 0.1
+SendKeys "p"
+Wait 0.1
+SendKeys "%e"
+Wait 0.1
+SendKeys ListVar1
+Wait 0.1
+SendKeys "{Enter}"
+SendKeys "{Esc}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go To Table &lt;1to31&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^g"
+Wait 0.1
+SendKeys "%o"
+Wait 0.1
+SendKeys "t"
+Wait 0.1
+SendKeys "%e"
+Wait 0.1
+SendKeys ListVar1
+Wait 0.1
+SendKeys "{Enter}"
+Wait 0.1
+SendKeys "{Esc}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Dictate" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Heardword "go to sleep"
+SendKeys "%h"
+Wait 0.1
+SendKeys "dd"
+Wait 0.1
+SendKeys "{Enter}"
 End Sub
 ]]></content>
     </Command>
@@ -36405,6 +37116,112 @@ Next
 End Sub
 ]]></content>
     </Command>
+    <Command name="Pack" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,890,526
+Wait 0.1
+ButtonClick 1,1
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Pile" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1090,526
+Wait 0.1
+ButtonClick 1,1
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Discard" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1308,908
+Wait 0.1
+ButtonClick 1,1
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Knock" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1468,648
+Wait 0.1
+ButtonClick 1,1
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Continue" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1158,908
+Wait 0.1
+ButtonClick 1,1
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Pass" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1468,648
+Wait 0.1
+ButtonClick 1,1
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Click" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Gin" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1488,638
+Wait 0.1
+ButtonClick 1,1
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="New Game" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1188,918
+Wait 0.1
+ButtonClick 1,1
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Main Menu" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,508,913
+Wait 0.1
+
+Heardword "mouse left click"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Click to continue" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1225,945
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="window" module="KBPro" company="KnowBrainer" moduleDescription="KnowBrainer Professional 2016" windowTitle="KnowBrainer Command Editor" windowClass="WindowsForms10.Window.8.app.0.13f2da9_r11_ad1">
     <Command name="Make Copy" group="" enabled="true">
@@ -37739,6 +38556,19 @@ Wait 0.2
 SendKeys "^c"
 Wait 0.2
 SendKeys "%{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Upload To Screen Cast" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%s"
+Wait 0.2
+SendKeys "{Down 10}"
+Wait 0.1
+SendKeys "{Right}"
+SendKeys "{Enter}"
+
 End Sub
 ]]></content>
     </Command>
@@ -39091,6 +39921,18 @@ SendKeys "{Del}"
 End Sub
 ]]></content>
     </Command>
+    <Command name="Dictate" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Heardword "go to sleep"
+
+SendKeys "%y"
+SetMousePosition 1,104,89
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="window" module="explorer" company="Microsoft Corporation" moduleDescription="Windows Explorer" windowTitle="Control Panel" windowClass="CabinetWClass">
     <Command name="Open &lt;dictation&gt;" group="" enabled="true">
@@ -39361,6 +40203,15 @@ ButtonClick 1,1
 End Sub
 ]]></content>
     </Command>
+    <Command name="Pile" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,-1787,500
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="window" module="outlook" company="Microsoft Corporation" moduleDescription="Microsoft Outlook" windowTitle="Untitled - Message (HTML) " windowClass="rctrl_renwnd32">
     <Command name="send it" group="" enabled="true">
@@ -39516,6 +40367,26 @@ SendKeys "^,"
 Wait 0.1
 SendKeys "tViewModel{Home}{Right}{Space}"
 
+End Sub
+]]></content>
+    </Command>
+    <Command name="Toggle Expand" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+'SendDragonKeys "{Ctrl+m}{Ctrl+m}"
+SendKeys "^m"
+Wait 0.1
+SendKeys "^m"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Move Into Blank Line" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{Down 4}{Home}{Tab}"
+Wait 0.1
+HeardWord "Move","the","Line","Up"
+HeardWord "Move","the","Line","Up"
 End Sub
 ]]></content>
     </Command>
@@ -39689,13 +40560,6 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SendKeys "+%a"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Add New Folder" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^%n"
 End Sub
 ]]></content>
     </Command>
@@ -40030,58 +40894,6 @@ SendKeys "+{F3}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="&lt;GoTo&gt; &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA['#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
-Sub Main
-Dim integerLine As Integer
-' MsgBox ListVar1 , vbInformation, "Testing"
- If Val(Trim(ListVar2) ) >0 Then
-  on error resume next
-  integerLine=CInt(Trim(ListVar2 ))
-  on error goto 0
- Else
-  If Trim(LCase(ListVar2)) ="for" Then
-   integerLine=4
-  ElseIf Trim(LCase(ListVar2) ) ="to" Then
-   integerLine=2
-  ElseIf Trim(LCase(ListVar2) ) ="one" Then
-   integerLine=1
-  ElseIf Trim(LCase(ListVar2) ) ="two" Then
-   integerLine=2
-  ElseIf Trim(LCase(ListVar2) ) ="three" Then
-   integerLine=3
-  ElseIf Trim(LCase(ListVar2) ) ="four" Then
-   integerLine=4
-  ElseIf Trim(LCase(ListVar2) ) ="five" Then
-   integerLine=5
-  ElseIf Trim(LCase(ListVar2) ) ="six" Then
-   integerLine=6
-  ElseIf Trim(LCase(ListVar2) ) ="seven" Then
-   integerLine=7
-  ElseIf Trim(LCase(ListVar2) ) ="eight" Then
-   integerLine=8
-  ElseIf Trim(LCase(ListVar2) ) ="nine" Then
-   integerLine=9
-  ElseIf TRIM(LCase(ListVar2))="2 to 2" Then
-   integerLine=222
-  ElseIf TRIM(LCase(ListVar2))="two to two" Then
-   integerLine=222
-  end if
- End If
- if integerLine>0 Then
-
- SendKeys "^g"
-  Wait 0.1
-  SendKeys CStr(integerLine)
-  Wait 0.1
-  SendKeys "{Enter}"
-end if
-
-
-End Sub
-]]></content>
-    </Command>
     <Command name="Following Issue" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -40273,25 +41085,6 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SendKeys "+%["
-End Sub
-]]></content>
-    </Command>
-    <Command name="Navigate To Member" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^,"
-Wait 0.1
-SendKeys "m "
-End Sub
-]]></content>
-    </Command>
-    <Command name="Navigate To Type" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^,"
-Wait 0.1
-SendKeys "t "
-
 End Sub
 ]]></content>
     </Command>
@@ -40581,16 +41374,6 @@ SendKeys "%{Ins}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Show Code Places" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^+%h"
-Wait 0.1
-SendKeys "^+%z"
-
-End Sub
-]]></content>
-    </Command>
     <Command name="Show Undo List" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -40630,19 +41413,6 @@ SendKeys "+{Esc}"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Scroll &lt;Direction&gt; &lt;1to50&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-if ListVar1="Down"  Or ListVar1="Up" Then
- Dim integerCounter as Integer
- For integerCounter = 1 to VAL (ListVar2)
-    SendKeys "^{" & ListVar1 & "}"
- Next
-end if 
-
-End Sub
-]]></content>
-    </Command>
     <Command name="Run Code Clean Up" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -40664,29 +41434,6 @@ End Sub
       <content type="WinWrap Basic"><![CDATA[Sub Main
 
 SendKeys "{F2}"
-
-End Sub
-]]></content>
-    </Command>
-    <Command name="Resize Modal" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "%{Space}"
-Wait 0.1
-SendKeys "m"
-Wait 0.1
-SendKeys "{Up 20}"
-Wait 0.1
-SendKeys "{Enter}"
-Wait 0.1
-SendKeys "%{Space}"
-Wait 0.1
-SendKeys "s"
-Wait 0.1
-SendKeys "{Down 40}"
-Wait 0.1
-' SendKeys "{Enter}"
-
 
 End Sub
 ]]></content>
@@ -40896,39 +41643,6 @@ SendKeys "^m"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Navigate Command &lt;dictation&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^,"
-
- Wait 0.1
- Dim stringValue As String
- stringValue=ListVar1
- stringValue=Replace(stringValue," ","")
- SendKeys stringValue
-End Sub
-]]></content>
-    </Command>
-    <Command name="Navigate To Controller" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^,"
-Wait 0.1
-SendKeys "tController{Home}{Right}{Space}"
-
-End Sub
-]]></content>
-    </Command>
-    <Command name="Navigate To Blazor Component" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "^,"
-Wait 0.1
-SendKeys "f.blazor{Home}{Right}{Space}"
-
-End Sub
-]]></content>
-    </Command>
     <Command name="Collapse to Definitions" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -40982,7 +41696,24 @@ SendKeys "^d"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Navigate Command Depreciated &lt;dictation&gt;" group="" enabled="true">
+    <Command name="Reset Code" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Toggle Expand" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+'SendDragonKeys "{Ctrl+m}{Ctrl+m}"
+SendKeys "^m"
+Wait 0.1
+SendKeys "^m"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navigate To &lt;dictation&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SendKeys "^,"
@@ -40995,13 +41726,368 @@ SendKeys "^,"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Navigate To View Model" group="" enabled="true">
+    <Command name="Navigate Blazor Component" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^,"
+Wait 0.1
+SendKeys "f.blazor{Home}{Right}{Space}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navigate Controller" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^,"
+Wait 0.1
+SendKeys "tController{Home}{Right}{Space}"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navigate Member" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^,"
+Wait 0.1
+SendKeys "m "
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navigate View Model" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SendKeys "^,"
 Wait 0.1
 SendKeys "tView Model{Home}{Right}{Space}"
 
+End Sub
+]]></content>
+    </Command>
+    <Command name="Navigate Type" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^,"
+Wait 0.1
+SendKeys "t "
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;GoTo&gt; &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA['#Uses"C:\Users\Public\Documents\KnowBrainerSharedCode.txt"
+Sub Main
+Dim integerLine As Integer
+' MsgBox ListVar1 , vbInformation, "Testing"
+ If Val(Trim(ListVar2) ) >0 Then
+  on error resume next
+  integerLine=CInt(Trim(ListVar2 ))
+  on error goto 0
+ Else
+  If Trim(LCase(ListVar2)) ="for" Then
+   integerLine=4
+  ElseIf Trim(LCase(ListVar2) ) ="to" Then
+   integerLine=2
+  ElseIf Trim(LCase(ListVar2) ) ="one" Then
+   integerLine=1
+  ElseIf Trim(LCase(ListVar2) ) ="two" Then
+   integerLine=2
+  ElseIf Trim(LCase(ListVar2) ) ="three" Then
+   integerLine=3
+  ElseIf Trim(LCase(ListVar2) ) ="four" Then
+   integerLine=4
+  ElseIf Trim(LCase(ListVar2) ) ="five" Then
+   integerLine=5
+  ElseIf Trim(LCase(ListVar2) ) ="six" Then
+   integerLine=6
+  ElseIf Trim(LCase(ListVar2) ) ="seven" Then
+   integerLine=7
+  ElseIf Trim(LCase(ListVar2) ) ="eight" Then
+   integerLine=8
+  ElseIf Trim(LCase(ListVar2) ) ="nine" Then
+   integerLine=9
+  ElseIf TRIM(LCase(ListVar2))="2 to 2" Then
+   integerLine=222
+  ElseIf TRIM(LCase(ListVar2))="two to two" Then
+   integerLine=222
+  end if
+ End If
+ if integerLine>0 Then
+
+ SendKeys "^g"
+  Wait 0.1
+  SendKeys CStr(integerLine)
+  Wait 0.1
+  SendKeys "{Enter}"
+end if
+
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="View Bookmark Window" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^k"
+Wait 0.1
+SendKeys "^w"
+
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Delete All Breakpoints" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+{F9}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go To Bookmark &lt;1to10&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+" & ListVar1
+Wait 0.1
+SendKeys "^+" & ListVar1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Toggle Bookmark &lt;1to10&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^" & ListVar1
+Wait 0.1
+SendKeys "^" & ListVar1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Drop Anchor" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%{Home}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Edit In Notepad" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%t"
+Wait 0.1
+SendKeys "1"
+End Sub
+]]></content>
+    </Command>
+    <Command name="&lt;show_code&gt; Places" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+%h"
+Wait 0.1
+SendKeys "^+%z"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Move Into Blank Line" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{Down 4}{Home}{Tab}"
+Wait 0.1
+HeardWord "Move","the","Line","Up"
+HeardWord "Move","the","Line","Up"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Add New Folder" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+'SendKeys "^%n"
+SendKeys "^+%d"
+Wait 0.1
+SendKeys "^+%d"
+
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Create Razor Component" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%r"
+Wait 0.1
+SendKeys "^%z"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Create Class" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+c"
+Wait 0.1
+SendKeys "^+s"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Show Structure" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^k"
+Wait 0.1
+SendKeys "^g"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Show Line Annotations" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^k"
+Wait 0.1
+SendKeys "^m"
+End Sub
+]]></content>
+    </Command>
+    <Command name="New Project" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%p"
+Wait 0.1
+SendKeys "^%p"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Smart Duplicate Line" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+{Enter}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Manage NuGet Packages" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+%n"
+Wait 0.1
+SendKeys "+%n"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Refresh" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+%r"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Scroll &lt;Direction&gt; &lt;1to50&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+if ListVar1="Down"  Or ListVar1="Up" Then
+ Dim integerCounter as Integer
+ For integerCounter = 1 to VAL (ListVar2)
+    SendKeys "^%{" & ListVar1 & "}"
+ Next
+end if 
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go To Brace" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^]"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Undo &lt;1to10&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim integerCounter as Integer
+For integerCounter = 1 to ListVar1
+ SendKeys "^z"
+Next
+End Sub
+]]></content>
+    </Command>
+    <Command name="SQL Server Object Explorer" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^\"
+Wait 0.1
+SendKeys "^s"
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="UnComment Block" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^k"
+Wait 0.1
+SendKeys "^u"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Into &lt;1to10&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim integerCounter as Integer
+For integerCounter = 1 to ListVar1
+ SendKeys "{F11}"
+Wait 0.5
+Next
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Over &lt;1to10&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim integerCounter as Integer
+For integerCounter = 1 to ListVar1
+ SendKeys "{F10}"
+ Wait 0.5
+
+Next
+End Sub
+]]></content>
+    </Command>
+    <Command name="Resize Modal" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%{Space}"
+Wait 0.1
+SendKeys "m"
+Wait 0.1
+SendKeys "{Up 20}"
+Wait 0.1
+SendKeys "{Enter}"
+
+SendKeys "%{Space}"
+
+SendKeys "s"
+Wait 0.1
+SendKeys "{Down 40}"
+
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Committee Changes" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%{F7}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Configuration Manager" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%r"
+Wait 0.1
+SendKeys "^%r"
 End Sub
 ]]></content>
     </Command>
@@ -41126,6 +42212,31 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SendKeys "^{F4}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Select Matching" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+{Right}"
+Wait 0.1
+SendKeys "^{F2}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Rename" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^r"
+Wait 0.1
+SendKeys "^r"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Toggle Comment" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^/"
 End Sub
 ]]></content>
     </Command>
@@ -41444,6 +42555,49 @@ ButtonClick 1,1
 End Sub
 ]]></content>
     </Command>
+    <Command name="Step Over" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+{F8}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Out" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+{F8}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Into" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{F8}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Into &lt;1to10&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim integerCounter as Integer
+For integerCounter = 1 to ListVar1
+ SendKeys "{F8}"
+ Wait 0.5
+Next
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Over &lt;1to10&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+Dim integerCounter as Integer
+For integerCounter = 1 to ListVar1
+ SendKeys "+{F8}"
+ Wait 0.5
+Next
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="application" module="MicrosoftEdgeCP" company="Microsoft Corporation" moduleDescription="Microsoft Edge Content Process">
     <Command name="Search &lt;web_2&gt; for &lt;dictation&gt;" group="" enabled="true">
@@ -41567,6 +42721,10 @@ SendSystemKeys "c"]]></content>
       <description></description>
       <content type="DVC (Dragon Voice Commands)"><![CDATA[value$=_arg1
 SendKeys "{Shift+Down " + value$ + "}"]]></content>
+    </Command>
+    <Command name="Execute Remote" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[SendSystemKeys "{f5}"]]></content>
     </Command>
   </Commands>
   <Commands scope="window" module="ApplicationFrameHost" company="Microsoft Corporation" moduleDescription="Application Frame Host" windowTitle="Age of Empires: Definitive Edition" windowClass="ApplicationFrameWindow">
@@ -44551,32 +45709,60 @@ End Select
 End Sub
 ]]></content>
     </Command>
-    <Command name="Cancel &lt;1to10&gt;" group="" enabled="true">
+    <Command name="Cancel &lt;1to12&gt;" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
+longTop=600 : longLeft=1470
+longTop=670 : longLeft=1470
 if ListVar1="1" Then
  SetMousePosition 1,1470,470
 elseif ListVar1="2"  Then
- SetMousePosition 1,1500,470
+ SetMousePosition 1,1550,470
 elseif ListVar1="3" Then
- SetMousePosition 1,1568,470
+ SetMousePosition 1,1614,470
 elseif ListVar1="4" Then
  SetMousePosition 1,1470,550
 elseif ListVar1="5" Then
- SetMousePosition 1,1500,550
+ SetMousePosition 1,1550,550
 elseif ListVar1="6" Then
- SetMousePosition 1,1568,550
+ SetMousePosition 1,1614,550
 elseif ListVar1="7" Then
- SetMousePosition 1,1470,650
+ SetMousePosition 1,1470,600
 elseif ListVar1="8" Then
- SetMousePosition 1,1500,650
+ SetMousePosition 1,1550,600
 elseif ListVar1="9" Then
- SetMousePosition 1,1568,650
-elseif ListVar1=" 10" Then
- SetMousePosition 1,1470,750
+ SetMousePosition 1,1614,600
+elseif ListVar1="10" Then
+ SetMousePosition 1,1470,670
+elseif ListVar1="11" Then
+ SetMousePosition 1,1550, 670
+elseif ListVar1="12" Then
+ SetMousePosition 1,1614, 670
 end if
 Wait 0.1
 ButtonClick 2,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Riptides Navy" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "y"
+Wait 0.1
+Dim integerCounter as Integer
+For integerCounter = 1 to 5
+ SendKeys "{F3}"
+Next
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="The List" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,830,980
+Wait 0.1
+ButtonClick 1,1
 End Sub
 ]]></content>
     </Command>
@@ -46402,21 +47588,6 @@ SendKeys "!ohmy"
 End Sub
 ]]></content>
     </Command>
-    <Command name="Hype" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "!hype"
-End Sub
-]]></content>
-    </Command>
-    <Command name="Send Message" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys ".{Backspace}{Enter}"
-
-End Sub
-]]></content>
-    </Command>
     <Command name="Focus Message" group="" enabled="true">
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
@@ -46441,14 +47612,6 @@ End Sub
 SetMousePosition 1,821,85
 Wait 0.1
 ButtonClick 1,1
-End Sub
-]]></content>
-    </Command>
-    <Command name="Random Dark Theme" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-SendKeys "!theme random dark"
-
 End Sub
 ]]></content>
     </Command>
@@ -46606,29 +47769,6 @@ Wait 1
 SendKeys "{Enter}",True
 
 
-End Sub
-]]></content>
-    </Command>
-    <Command name="Click &lt;0to500&gt;" group="" enabled="true">
-      <description></description>
-      <content type="WinWrap Basic"><![CDATA[Sub Main
-origClip=Clipboard
-Wait 0.1
-Clipboard ListVar1
-Wait 0.1
-' SendKeys "^+{Space}",True
-SendKeys "^+."
-exit Sub
-Wait 0.9
-'SendKeys "^v"
-if ListVar1="One" Then
- SendKeys "1",True
-else
- SendKeys ListVar1,True
-end if
-Wait 0.1
-SendKeys "{Enter}"
-'Clipboard origClip
 End Sub
 ]]></content>
     </Command>
@@ -46836,6 +47976,286 @@ Wait 0.8
 SendKeys "{Enter}",True
 
 
+End Sub
+]]></content>
+    </Command>
+    <Command name="Click &lt;0to500&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+origClip=Clipboard
+Clipboard ListVar1
+' SendKeys "^+{Space}",True
+SendKeys "^+."
+exit Sub
+Wait 0.9
+'SendKeys "^v"
+if ListVar1="One" Then
+ SendKeys "1",True
+else
+ SendKeys ListVar1,True
+end if
+Wait 0.1
+SendKeys "{Enter}"
+'Clipboard origClip
+End Sub
+]]></content>
+    </Command>
+    <Command name="Drone" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "!drone "
+End Sub
+]]></content>
+    </Command>
+    <Command name="Light Bulb" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "!bulb yellow"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Party Hat" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "PartyHat "
+End Sub
+]]></content>
+    </Command>
+    <Command name="Bald Beard Candle" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "baldbeCandle "
+End Sub
+]]></content>
+    </Command>
+    <Command name="Bald Beard Rage" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "baldbeRage"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Set Up Chat" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1608,993
+Wait 0.1
+ButtonClick 1,1
+Wait 0.5
+SetMousePosition 1,1408,946
+Wait 0.2
+ButtonClick 1,1
+Wait 0.2
+HeardWord "Window Monitor Switch"
+Wait 0.9
+HeardWord "WINDOW left"
+
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Manage" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,-1652,963
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Open The Console" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+j"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Open The Elements" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+c"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Focus Next Panel" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^]"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Focus Previous Panel" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^["
+End Sub
+]]></content>
+    </Command>
+    <Command name="Toggle Device Mode" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+m"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Toggle Inspect Element Mode" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+c"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Open Command Menu" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+p"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Search Text" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^f"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Advanced Find" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+f"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Open The File From Sources" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^o"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Redo" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^y"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Pause Script" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+
+SendKeys "{F8}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Over" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{F10}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Into" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{F11}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Step Out" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "+{F11}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go To Line" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^g"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go To Definition" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+o"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Close Active Tab" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "%w"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Delete Word" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^{Del}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Toggle Breakpoint" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^b"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Next Highlight" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^d"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Focus The Console" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^`"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Clear the Console" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^l"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Laugh out Loud" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+
+SendKeys "MaxLOL"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Send Message" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys ".{Backspace}{Enter}",True
+
+End Sub
+]]></content>
+    </Command>
+    <Command name="Close Download Bar" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1668,995
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Skip Add" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1636,928
+Wait 0.1
+ButtonClick 1,1
 End Sub
 ]]></content>
     </Command>
@@ -48090,6 +49510,15 @@ SendKeys "{F2 4}"
 End Sub
 ]]></content>
     </Command>
+    <Command name="Skip" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1278,992
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="application" module="cnc3ep1.dat" company="Electronic Arts Inc." moduleDescription="Command and Conquer™ 3 Kane's Wrath">
     <Command name="Global Conquest" group="" enabled="true">
@@ -49143,6 +50572,15 @@ SendKeys "{F10 3}"
 End Sub
 ]]></content>
     </Command>
+    <Command name="Skip" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,1280,1000
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
   </Commands>
   <Commands scope="application" module="Streamlabs OBS" company="General Workings, Inc." moduleDescription="Streamlabs OBS">
     <Command name="Go Live" group="" enabled="true">
@@ -49158,6 +50596,208 @@ End Sub
       <description></description>
       <content type="WinWrap Basic"><![CDATA[Sub Main
 SetMousePosition 1,1446,996
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Start Recording" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%r"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Stop Recording" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^%s"
+End Sub
+]]></content>
+    </Command>
+  </Commands>
+  <Commands scope="application" module="WindowsInternal.ComposableShell.Experiences.TextInput.InputApp" company="Microsoft Corporation" moduleDescription="WindowsInternal.ComposableShell.Experiences.TextInput.InputApp.exe">
+    <Command name="Close Speech Recognition" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,816,15
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+  </Commands>
+  <Commands scope="window" module="msedge" company="Microsoft Corporation" moduleDescription="Microsoft Edge" windowTitle="Twitch" windowClass="Chrome_WidgetWin_1">
+    <Command name="Benny Hill" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "!BennyHill"
+End Sub
+]]></content>
+    </Command>
+  </Commands>
+  <Commands scope="application" module="Kindle" company="Amazon.com" moduleDescription="Kindle">
+    <Command name="Table Of Contents" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,30,125
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Search" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,30,170
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+  </Commands>
+  <Commands scope="application" module="azuredatastudio" company="Microsoft Corporation" moduleDescription="Azure Data Studio">
+    <Command name="Search" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,33,108
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Explorer" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+e"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Extensions" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+x"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Close Tab" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^w"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Connections" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,28,68
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Next Tab" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^{Tab}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Execute" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "{F5}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Click Search" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,658,298
+Wait 0.1
+ButtonClick 1,1
+End Sub
+]]></content>
+    </Command>
+    <Command name="Find Following &lt;dictation&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^f"
+Wait 0.1
+SendKeys ListVar1
+Wait 0.1
+SendKeys "{Esc}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Go To Line &lt;1to1000&gt;" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^g"
+Wait 0.1
+SendKeys ListVar1
+Wait 0.1
+SendKeys "{Enter}"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Show Servers" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+d"
+End Sub
+]]></content>
+    </Command>
+    <Command name="New SQL File" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^n"
+End Sub
+]]></content>
+    </Command>
+    <Command name="Finding Files" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SendKeys "^+f"
+End Sub
+]]></content>
+    </Command>
+  </Commands>
+  <Commands scope="application" module="TwilioQuest" company="Twilio DevEd" moduleDescription="TwilioQuest">
+    <Command name="Walk &lt;Direction&gt;" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[If _arg1="Right" Then SendSystemKeys "{Right}"
+If _arg1="Left" Then SendSystemKeys "{Left}"
+If _arg1="Up" Then SendSystemKeys "{Up}"
+If _arg1="Down" Then SendSystemKeys "{Down}"]]></content>
+    </Command>
+    <Command name="Run &lt;Direction&gt;" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[If _arg1="Right" Then SendSystemKeys "{Right 5}"
+If _arg1="Left" Then SendSystemKeys "{Left 5}"
+If _arg1="Up" Then SendSystemKeys "{Up 5}"
+If _arg1="Down" Then SendSystemKeys "{Down 5}"]]></content>
+    </Command>
+    <Command name="Fly &lt;Direction&gt;" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[If _arg1="Right" Then SendSystemKeys "{Right 20}"
+If _arg1="Left" Then SendSystemKeys "{Left 20}"
+If _arg1="Up" Then SendSystemKeys "{Up 20}"
+If _arg1="Down" Then SendSystemKeys "{Down 20}"]]></content>
+    </Command>
+    <Command name="Move &lt;Direction&gt; &lt;1to10&gt;" group="" enabled="true">
+      <description></description>
+      <content type="DVC (Dragon Voice Commands)"><![CDATA[If _arg1="Right" Then SendSystemKeys "{Right "  + _arg2  + "}"
+If _arg1="Left" Then SendSystemKeys "{Left " + _arg2  + "}"
+If _arg1="Up" Then SendSystemKeys "{Up " + _arg2  + "}"
+If _arg1="Down" Then SendSystemKeys "{Down " + _arg2  + "}"]]></content>
+    </Command>
+  </Commands>
+  <Commands scope="application" module="LockApp" company="Microsoft Corporation" moduleDescription="LockApp.exe">
+    <Command name="Reactor" group="" enabled="true">
+      <description></description>
+      <content type="WinWrap Basic"><![CDATA[Sub Main
+SetMousePosition 1,510,900
 Wait 0.1
 ButtonClick 1,1
 End Sub
