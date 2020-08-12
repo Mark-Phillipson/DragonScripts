@@ -125,8 +125,11 @@ Wait 0.1
 
  Select Case button
  Case "Arrow Click","Click","Screen Click","Touch"
-
-  ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
+  If ListVar1="Seven" And intTop< 10 Then
+    'no button click here because it will close the current application and that might not be what you want
+  Else 
+    ButtonClick 1,1 'Syntax ButtonClick button, count (number of clicks)
+  End If
  Case "Double Click","Double Touch","doubleclick"
 
   ButtonClick 1,2
