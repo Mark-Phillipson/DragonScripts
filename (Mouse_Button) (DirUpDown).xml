@@ -1,0 +1,75 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <KnowBrainerCommands version="014">
+    <Commands scope="global">
+      <Command name="&lt;Mouse_Button&gt; &lt;DirUpDown&gt;" group="" enabled="true">
+        <description />
+        <content type="WinWrap Basic">Private Declare Sub mouse_event Lib "user32" (ByVal dwFlags As Long, _
+ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, _
+ByVal dwExtraInfo As Long)
+
+Type POINTAPI 'Declare types
+ x As Long
+ y As Long
+End Type
+
+'
+
+Declare Function GetCursorPos Lib "user32" _
+(lpPoint As POINTAPI) As Long 'Declare API
+
+Const MOUSEEVENTF_LEFTDOWN = &amp;H2
+Const MOUSEEVENTF_LEFTUP = &amp;H4
+Const MOUSEEVENTF_MIDDLEDOWN = &amp;H20
+Const MOUSEEVENTF_MIDDLEUP = &amp;H40
+Const MOUSEEVENTF_RIGHTDOWN = &amp;H8
+Const MOUSEEVENTF_RIGHTUP = &amp;H10
+
+Sub Main
+
+Dim z As POINTAPI 'Declare variable
+Dim xpos As Long, ypos As Long
+
+GetCursorPos z 'Get Coordinates
+
+xpos = CLng(z.x)
+ypos = CLng(z.y)
+
+If ListVar2 = "Up" Then
+  if ListVar1="Mouse" Or ListVar1="Left" Then
+   mouse_event MOUSEEVENTF_LEFTUP, xpos, ypos, cButt, dwEI
+  elseIF ListVar1="Right" THEN
+   mouse_event MOUSEEVENTF_RIGHTUP, xpos, ypos, cButt, dwEI
+  else
+   mouse_event MOUSEEVENTF_MIDDLEUP, xpos, ypos, cButt, dwEI
+  End If
+Else
+if ListVar1="Mouse" Or ListVar1="Left" Then
+   mouse_event MOUSEEVENTF_LEFTDOWN, xpos, ypos, cButt, dwEI
+  elseIF ListVar1="Right" THEN
+   mouse_event MOUSEEVENTF_RIGHTDOWN, xpos, ypos, cButt, dwEI
+  else
+   mouse_event MOUSEEVENTF_MIDDLEDOWN, xpos, ypos, cButt, dwEI
+  End If
+End If
+
+End Sub
+</content>
+      </Command>
+    </Commands>
+    <Lists>
+      <List name="DirUpDown">
+        <value>Up</value>
+        <value>Down</value>
+        <value>Back</value>
+        <value>Forward</value>
+      </List>
+      <List name="Mouse_Button">
+        <value>Mouse</value>
+        <value>Right</value>
+        <value>Middle</value>
+        <value>Left</value>
+      </List>
+    </Lists>
+  </KnowBrainerCommands>
+</NewDataSet>
