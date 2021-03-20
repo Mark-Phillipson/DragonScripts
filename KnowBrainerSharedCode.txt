@@ -1,0 +1,333 @@
+Public Declare Function api_GetUserName Lib "advapi32.dll" Alias "GetUserNameA" (ByVal lpBuffer As String, nSize As Long) As Long
+    Public Declare Function api_GetComputerName Lib "kernel32" Alias "GetComputerNameA" (ByVal lpBuffer As String, nSize As Long) As Long
+
+'Advanced Scripting generic functions
+Function str2int (num As String )
+	Select Case num
+		Case "1 hundred"
+			str2int= 100
+		Case "zero"
+			str2int = 0
+		Case "one","1"
+			str2int = 1
+		Case "two"
+			str2int = 2
+		Case "three"
+			str2int = 3
+		Case "four"
+			str2int = 4
+		Case "five"
+			str2int = 5
+		Case "six"
+			str2int = 6
+		Case "seven"
+			str2int = 7
+		Case "eight"
+			str2int = 8
+		Case "nine"
+			str2int = 9
+		Case "ten"
+			str2int = 10
+		Case "eleven"
+			str2int =11
+		Case "twelve"
+			str2int =12
+		Case "thirteen"
+			str2int =13
+		Case "fourteen"
+			str2int =14
+		Case "fifteen"
+			str2int =15
+		Case "sixteen"
+			str2int =16
+		Case "seventeen"
+			str2int =17
+		Case "eighteen"
+			str2int =18
+		Case "nineteen"
+			str2int =19
+		Case "twenty"
+			str2int =20
+		case "twenty-one"
+			str2int = 21
+		Case "twenty-two"
+			str2int = 22
+		Case "twenty-three"
+			str2int = 23
+		Case "twenty-four"
+			str2int = 24
+		Case "twenty-five"
+			str2int = 25
+		Case "twenty-six"
+			str2int = 26
+		Case "twenty-seven"
+			str2int =27
+		Case "twenty-eight"
+			str2int = 28
+		Case "twenty-nine"
+			str2int = 29
+		Case "thirty"
+			str2int = 30
+		Case "forty","40"
+			str2int=40
+		Case "fifty","50"
+			str2int=50
+		Case "sixty","60"
+			str2int=60
+		Case "seventy","70"
+			str2int=70
+		Case "eighty","80"
+			str2int=80
+		Case "ninety","90"
+			str2int=90
+		Case "one hundred","hundred"
+			str2int=100
+		Case "one hundred and fifty"
+			str2int=150
+		Case "two hundred"
+			str2int=200
+		Case "three hundred"
+			str2int= 300
+		Case "four hundred"
+			str2int= 400
+		Case "five hundred"
+			str2int= 500
+		Case "six hundred"
+			str2int= 600
+		Case "seven hundred"
+			str2int= 700
+		Case "eight hundred"
+			str2int= 800
+		Case "nine hundred"
+			str2int= 900
+		Case "one thousand"
+			str2int= 1000
+		Case "one hundred and ten"
+			str2int= 110
+		Case "one hundred and twenty"
+			str2int= 120
+		Case "one hundred and thirty"
+			str2int= 130
+		Case "one hundred and forty"
+			str2int= 140
+		Case "one hundred and fifty"
+			str2int= 150
+		Case "one hundred sixty"
+			str2int= 160
+		Case "one hundred and seventy"
+			str2int= 170
+		Case "one hundred and eighty"
+			str2int= 180
+		Case "one hundred and ninety"
+			str2int= 190
+
+	End Select
+End Function
+Function GetSpecialKey(strKey As String) As String
+	Select Case strKey
+	Case "Page Down"
+		GetSpecialKey="{PgDn}"
+	Case "Page Up"
+		GetSpecialKey="{PgUp}"
+	Case "Delete"
+		GetSpecialKey="{Del}"
+	Case "Backspace"
+		GetSpecialKey="{Backspace}"
+	Case "Tab","Tab Key"
+		GetSpecialKey="{Tab}"
+	Case "Shift Tab", "Tab Backwards"
+		GetSpecialKey="{Shift+Tab}"
+	Case "Space"
+		GetSpecialKey="{Space}"
+	Case "Enter","Enter Key"
+		GetSpecialKey="{Enter}"
+	End Select
+End Function
+
+Function GetNumber (s As String) As Integer
+	Select Case s
+	Case "one" ,"1"
+		GetNumber=1
+	Case "two"
+		GetNumber=2
+	Case "three"
+		GetNumber=3
+	Case "four"
+		GetNumber=4
+	Case "five",5
+		GetNumber=5
+	Case "six"
+		GetNumber=6
+	Case "seven"
+		GetNumber=7
+	Case "eight"
+		GetNumber=8
+	Case "nine"
+		GetNumber=9
+	Case "ten","10"
+		GetNumber=10
+	Case "twenty","20"
+		GetNumber=20
+	Case "thirty","30"
+		GetNumber=30
+	Case "forty","40"
+		GetNumber=40
+	Case "fifty","50"
+		GetNumber=50
+	Case "sixty","60"
+		GetNumber=60
+	Case "seventy","70"
+		GetNumber=70
+	Case "eighty","80"
+		GetNumber=80
+	Case "ninety","90"
+		GetNumber=90
+	Case "one hundred"
+		GetNumber=100
+	Case "one hundred and fifty"
+		GetNumber=150
+	Case "two hundred"
+		GetNumber=200
+	End Select
+End Function
+
+Function Strip(varFld As Variant, StrCharToRemove As String) As String
+  'removes all occurences of StrCharToRemove from VarFld
+    Dim a As String
+    Dim ReturnVal As String
+    Dim l As Integer
+    Dim N As Integer
+
+    If IsNull(varFld) Or Len(Trim(varFld)) = 0 Then
+        Strip = ""
+        Exit Function
+    End If
+    If StrCharToRemove = "" Or IsNull(StrCharToRemove) Then StrCharToRemove = "'"
+    
+    l = Len(Trim(varFld)) 'Set size of array
+    ReturnVal = ""
+ 
+    For N = 1 To l
+        a = Mid$(varFld, N, 1)
+        If a <> StrCharToRemove Then
+            ReturnVal = ReturnVal + a
+        End If
+    Next N%
+    
+    Strip = ReturnVal
+
+
+End Function
+
+Function GetConnectionString() As String
+GetConnectionString="Provider=SQLOLEDB;Data Source=DESKTOP-UROO8T1;Initial Catalog=VoiceLauncher;Integrated Security=SSPI;"
+'		GetConnectionString="Provider=SQLOLEDB;Data Source=SURFACEPRO;Initial Catalog=MyDatabase;Integrated Security=SSPI;"
+
+'		GetConnectionString="Provider=SQLOLEDB;Data ' Source=mspsystems.database.windows.net,1433;Initial ' Catalog=DevelopmentProjects;UID=Mark;PWD=uygfuiHqduf40;"
+End Function
+
+
+Public Function atCNames(UOrC As Integer) As String
+'**************************************************
+'Purpose:  Returns the User LogOn Name or ComputerName
+'Accepts:  UorC; 1=User, anything else = computer
+'Returns:  The Windows Networking name of the user or computer
+'**************************************************
+On Error Resume Next
+Dim NBuffer As String
+Dim Buffsize As Long
+Dim Wok As Long
+    
+Buffsize = 256
+NBuffer = Space$(Buffsize)
+    If UOrC = 1 Then
+        Wok = api_GetUserName(NBuffer, Buffsize)
+        atCNames = Left$(NBuffer, InStr(NBuffer, Chr(0)) - 1)
+    Else
+        Wok = api_GetComputerName(NBuffer, Buffsize)
+        atCNames = Left$(NBuffer, InStr(NBuffer, Chr(0)) - 1)
+    End If
+
+
+End Function
+
+Public Function ConvertDelimitedToArray(strDelimiter As String _
+    , strValue As String) As Variant
+    Dim intDelimiters As Integer 'Added 14/10/2005
+    Dim strTemp As String
+    Dim intPosn As Integer
+    Dim k As Integer
+    Dim varArray() As Variant
+    'ReDim Preserve X(10, 10, 15)
+    'Count number of delimiters
+    intDelimiters = 0
+    For k = 1 To Len(strValue)
+        If Mid(strValue, k, Len(strDelimiter)) = strDelimiter Then
+            intDelimiters = intDelimiters + 1
+        End If
+    Next
+    intDelimiters = intDelimiters + 1
+    ReDim varArray(intDelimiters) As Variant
+    If intDelimiters=1 Then
+     varArray(0)= strValue
+    Else
+     k = -1
+     If Len(strValue & "") > 0 And InStr(strValue, strDelimiter) > 0 Then
+         strTemp = strValue
+         Do Until InStr(strTemp, strDelimiter) = 0
+             intPosn = InStr(strTemp, strDelimiter)
+             k = k + 1
+
+             varArray(k) = Left(strTemp, intPosn - 1)
+             strTemp = Mid(strTemp, intPosn + Len(strDelimiter))
+         Loop
+         varArray(k + 1) = strTemp
+
+     End If
+ End If
+    ConvertDelimitedToArray = varArray
+End Function
+
+Public Function FormatForCode(ListVar1  as string	,ListVar2 as string	)
+ Dim stringValue As String
+ Dim stringResult As String
+ Dim integerCounter As Integer
+ Dim variantArray() As Variant
+    stringValue= Trim (ListVar2)
+    variantArray = ConvertDelimitedToArray(" ", stringValue)
+    Dim stringDelimiter As String
+    If InStr(ListVar1,"Dot Notation")>0 Then
+     stringDelimiter="."
+    ElseIf InStr(ListVar1,"Hyphen")>0 Then
+     stringDelimiter="-"
+    ElseIf InStr(ListVar1,"Tabs")>0 Then
+     stringDelimiter=""
+    ElseIf InStr(ListVar1,"Words" )>0 Then
+     stringDelimiter=" "
+    Else
+     stringDelimiter=""
+    End If
+ For integerCounter = 0 To UBound(variantArray) -1
+  If integerCounter=0 Then
+   If ListVar1="Variable"  Or ListVar1="Pascal" Or InStr(ListVar1,"Words")>0 OR ListVar1="Dot Notation" Or ListVar1="Tabs" Then
+    stringResult=  UCase(Mid(variantArray(integerCounter), 1,1)) & LCase(Mid(variantArray(integerCounter), 2))
+   Else ' Camel case or lower is now implied
+    stringResult= LCase(variantArray(integerCounter))
+   End If
+  Else
+   If InStr(ListVar1,"Camel" )>0 Or InStr(ListVar1,"Words")>0 Or InStr(ListVar1,"Pascal" ) >0 Or InStr(ListVar1,"Variable" ) >0  Or ListVar1="Dot Notation" Or ListVar1="Tabs" Then
+    stringResult= stringResult   & stringDelimiter & UCase(Mid(variantArray(integerCounter), 1,1)) & LCase(Mid(variantArray(integerCounter), 2))
+   Else
+    stringResult= stringResult   & stringDelimiter & LCase(Mid(variantArray(integerCounter), 1,1)) & LCase(Mid(variantArray(integerCounter), 2))
+   End If
+  End If
+  If InStr(ListVar1,"Tabs")>0 Then
+   FormatForCode= stringResult & "{Tab}"
+   Exit Function
+   stringResult=""
+  end if
+ Next
+ FormatForCode= stringResult
+
+End function
+
