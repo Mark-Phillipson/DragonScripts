@@ -1,5 +1,14 @@
+'#Reference {B691E011-1797-432E-907A-4D8C69339129}#6.1#0#C:\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library#ADODB
+
 Public Declare Function api_GetUserName Lib "advapi32.dll" Alias "GetUserNameA" (ByVal lpBuffer As String, nSize As Long) As Long
     Public Declare Function api_GetComputerName Lib "kernel32" Alias "GetComputerNameA" (ByVal lpBuffer As String, nSize As Long) As Long
+Private Declare Function GetForegroundWindow Lib "user32" () As Long
+
+Public Function GetCurrentWindowHandle() As Long
+    ' Get the handle to the window that has the focus
+    GetCurrentWindowHandle = GetForegroundWindow()
+End Function
+
 
 'Advanced Scripting generic functions
 Function str2int (num As String )
@@ -14,7 +23,7 @@ Function str2int (num As String )
 			str2int = 2
 		Case "three"
 			str2int = 3
-		Case "four"
+		Case ""
 			str2int = 4
 		Case "five"
 			str2int = 5
@@ -220,7 +229,7 @@ Function Strip(varFld As Variant, StrCharToRemove As String) As String
 End Function
 
 Function GetConnectionString() As String
-GetConnectionString="Provider=SQLOLEDB;Data Source=DESKTOP-UROO8T1;Initial Catalog=VoiceLauncher;Integrated Security=SSPI;"
+GetConnectionString="Provider=SQLOLEDB;Data Source=np:J40L4V3;Initial Catalog=VoiceLauncher;Integrated Security=SSPI;"
 '		GetConnectionString="Provider=SQLOLEDB;Data Source=SURFACEPRO;Initial Catalog=MyDatabase;Integrated Security=SSPI;"
 
 '		GetConnectionString="Provider=SQLOLEDB;Data ' Source=mspsystems.database.windows.net,1433;Initial ' Catalog=DevelopmentProjects;UID=Mark;PWD=uygfuiHqduf40;"
@@ -247,8 +256,6 @@ NBuffer = Space$(Buffsize)
         Wok = api_GetComputerName(NBuffer, Buffsize)
         atCNames = Left$(NBuffer, InStr(NBuffer, Chr(0)) - 1)
     End If
-
-
 End Function
 
 Public Function ConvertDelimitedToArray(strDelimiter As String _
@@ -331,3 +338,35 @@ Public Function FormatForCode(ListVar1  as string	,ListVar2 as string	)
 
 End function
 
+Function GetHtmlTag(strName As String) As String
+    Dim Connection As ADODB.Connection
+    Dim Recordset As New ADODB.Recordset
+    Dim stringConnectionString As String
+    Set Connection = New ADODB.Connection
+    Connection.ConnectionString =GetConnectionString()
+    Connection.Open
+
+ Dim strSQLText As String
+ Dim k As Integer
+   strSQLText = "SELECT [ListValue] FROM [dbo].[HtmlTags] WHERE dbo.HtmlTags.SpokenForm='" & strName & "'"
+     Recordset.Open strSQLText, Connection
+    If Not Recordset.BOF And Not Recordset.EOF Then 'there is one or more rows returned
+        Recordset.MoveFirst
+  GetHtmlTag =Recordset![ListValue]
+ Else
+  'MsgBox " cannot find HTML TAG for " & strName
+     Shell "C:\Users\MPhil\Source\Repos\SpeechRecognitionHelpers\ExecuteCommands\bin\Release\ExecuteCommands.exe" _
+ & " " & chr(34) & " Error Message: " & "Cannot find HTML TAG for " & strName & chr(34) ,vbNormalFocus
+
+ End If
+
+ Recordset.Close
+
+
+End Function
+
+Sub MsgBox(message as string,Optional icon as integer=0,Optional title as string="")
+     Shell "C:\Users\MPhil\Source\Repos\SpeechRecognitionHelpers\ExecuteCommands\bin\Release\ExecuteCommands.exe" _
+ & " " & chr(34) & " Error Message: " & message & chr(34) ,vbNormalFocus
+
+End Sub
